@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "@rocketseat/eslint-config/react"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.tsx"
+      ],
+      "excludedFiles": [
+        "page.tsx",
+        "layout.tsx"
+      ],
+      "plugins": [
+        "import"
+      ],
+      "rules": {
+        "import/no-default-export": "error"
+      }
+    }
+  ]
+}
