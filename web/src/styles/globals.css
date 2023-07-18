@@ -28,6 +28,15 @@ body {
     @apply bg-dark-300;
   }
 
+  /* SCROLLBAR - hide scrollbar for chrome and firefox */
+  .hiddenScrollbar::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  .hiddenScrollbarFirefox {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
   /* CONTAINER - Usado para dar um espaçamento esquerdo e direito */
   .wrapper {
     @apply mx-auto w-[96%] max-w-7xl;
