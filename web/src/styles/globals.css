@@ -35,7 +35,7 @@ body {
 
   /* Use to add accessibility focus to an element focus:ring-offset- is color to background */
   .accessibilityFocus {
-    @apply focus-visible:outline-none focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-300 focus-visible:focus:ring-2;
+    @apply focus-visible:outline-none focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800 focus-visible:focus:ring-2;
   }
 
   /* FONTES - Estilos de fontes do projeto, obs definir fonte-family */

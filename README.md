@@ -1,5 +1,5 @@
 <h1 align="center"> 
-	Template Projeto NextJs 13 APP diretório.
+	Projeto DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript e Tailwindcss.
 </h1>
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
@@ -8,29 +8,37 @@
  <a href="#-instalação">Instalações</a> •
  <a href="#-funcionalidades">Funcionalidades</a> •
  <a href="#-deploy">Deploy</a> •
+ <a href="#-good-habits">Good habits</a> •
  <a href="#-autor">Autor</a> • 
  <a href="#-licença">Licença</a>
 </p>
 
 &nbsp;
+
+![timer-responsivo](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/Monitor_laptop_Tablet_Celular-Fundos_limpos.png#vitrinedev)
+
+![timer-home](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/home-timer.png)
+
+![timer-history](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/history-timer.png)
+
 <a id="-sobre-o-projeto"></a>
 
 ## 💻 Sobre o projeto
 
-🚀 Inicie rapidamente seu projeto com nosso template para NextJs 13. Pré-configurado com NodeJs, TypeScript, JavaScript, React, Tailwind, Dotenv, ZodJs, EsLint e Prettier, este template acelera seu fluxo de trabalho e permite que você se concentre no que realmente importa.
+🚀 Olá, sou Livio Alvarenga, um desenvolvedor Full Stack. Hoje, tenho o prazer de apresentar a vocês uma poderosa ferramenta que desenvolvi - DT Money gestão financeira. Utilizando tecnologias modernas como NodeJs, TypeScript, JavaScript, NextJs e React, esse aplicativo oferece uma maneira eficiente de ...
 
 &nbsp;
 
 <p align="center">
-  <a href="#license"><img src="https://img.shields.io/github/license/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma?color=ff0000"></a>
-  <a href="https://github.com/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma/issues"><img src="https://img.shields.io/github/issues/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma" alt="issue site Template-Api-Rest-Node-Docker-Prisma" /></a>
-  <a href="https://github.com/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma"><img src="https://img.shields.io/github/languages/count/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma" alt="total amount of programming languages used in the project" /></a>
-  <a href="https://github.com/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma"><img src="https://img.shields.io/github/languages/top/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma" alt="most used language in the projects" /></a>
-  <a href="https://github.com/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma"><img src="https://img.shields.io/github/repo-size/LivioAlvarenga/Template-Api-Rest-Node-Docker-Prisma" alt="repository size" /></a>
+  <a href="#license"><img src="https://img.shields.io/github/license/LivioAlvarenga/dt-money-finance?color=ff0000"></a>
+  <a href="https://github.com/LivioAlvarenga/dt-money-finance/issues"><img src="https://img.shields.io/github/issues/LivioAlvarenga/dt-money-finance" alt="issue site dt-money-finance" /></a>
+  <a href="https://github.com/LivioAlvarenga/dt-money-finance"><img src="https://img.shields.io/github/languages/count/LivioAlvarenga/dt-money-finance" alt="total amount of programming languages used in the project" /></a>
+  <a href="https://github.com/LivioAlvarenga/dt-money-finance"><img src="https://img.shields.io/github/languages/top/LivioAlvarenga/dt-money-finance" alt="most used language in the projects" /></a>
+  <a href="https://github.com/LivioAlvarenga/dt-money-finance"><img src="https://img.shields.io/github/repo-size/LivioAlvarenga/dt-money-finance" alt="repository size" /></a>
 <p>
 
 <p align="center">
-  <a href= "https://vercel.com/"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
+  <a href= "#"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
 <p>
 
 &nbsp;
@@ -38,14 +46,15 @@
 ---
 
 &nbsp;
+
 <a id="-vitrine-dev"></a>
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                        |
-| --------------------- | ------------------------------------------------------------------------------------------------------ | 
-| :sparkles: Nome       | **Template**                                                                                           |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, Tailwind, Dotenv, ZodJs, EsLint e prettier. |     |
+| :placard: Vitrine.Dev |                                                                                                                 |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| :sparkles: Nome       | **Projeto DT Money gestão financeira com Nextjs 13 App Router, React, Typescript e Tailwindcss.**                                 |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, EsLint e prettier. |
 
 ---
 
@@ -65,9 +74,10 @@ As seguintes ferramentas foram usadas na construção do projeto
   <a href= "https://www.javascript.com/" target="_blank" rel="noopener noreferrer"><img alt="JavaScript badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/javascript-badge.svg"></a>
   <a href= "https://nextjs.org/"><img alt="Next.js badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d0444795ba750206fa52326b03a097df76171407/files/nextjs-badge.svg"></a>
   <a href= "https://reactjs.org/"><img alt="React badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d0444795ba750206fa52326b03a097df76171407/files/react-badge.svg"></a>
+  <a href= "https://www.react-hook-form.com/"><img alt="React Hook Form badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/5630b5b0e026450403bfbe5acbe6dc8844642233/files/reactHookForm-badge.svg"></a>
   <a href= "https://tailwindcss.com/"><img alt="Tailwind CSS badge" src="https://img.shields.io/static/v1?logoWidth=15&logoColor=06b6d4&logo=Tailwind CSS&label=Style&message=Tailwind CSS&color=06b6d4"></a>
-  <a href= "https://www.dotenv.org/" target="_blank" rel="noopener noreferrer"><img alt="Dotenv badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/4eed338fdcd547570ed365f2b344e43c8202e88f/files/dotenv-badge.svg"></a>
   <a href= "https://zod.dev/" target="_blank" rel="noopener noreferrer"><img alt="ZOD badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/7caba2f743ee9b61f0225a22da57466ecb67097c/files/zod-badge.svg"></a>
+  <a href= "https://www.figma.com/file/ddZDhVj3qZip1jZ9gibEAd/DT-Money-(Community)-(Copy)?mode=dev"><img alt="link projeto no figma" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/figma-badge.svg"></a>
   <a href= "https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer"><img alt="vscode download" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/vsCode-badge.svg"></a>
   <a href= "https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer"><img alt="code formatter prettier" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/prettier-badge.svg"></a>
   <a href= "https://eslint.org/" target="_blank" rel="noopener noreferrer"><img alt="code standardization eslint" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/59575ed19b13121cd113cfc66a71f18dea210c79/files/eslint-badge.svg"></a>
@@ -108,18 +118,6 @@ npx create-next-app@latest
 ```
 
 _Create **`.nvmrc`** file with version of NodeJs to use in project_
-&nbsp;
-
-### **.env** architecture
-
-```bash
-npm install dotenv # Install dotenv to use environment variables in NodeJs
-```
-
-_Create **`.env`** file with all environment variables and gitignore this file_
-
-_Edit **`.env.example`** file with all environment variables and not gitignore this file_
-
 &nbsp;
 
 ### Configurando **ESlint and Prettier**
@@ -170,28 +168,35 @@ npm install zod # Install zod to use types in NodeJs and validate data
 
 ### RF - Requisitos Funcionais
 
-- Deve ser possível ...;
-- Deve ser possível ...;
+- Em construção...
 
 ### RN - Regras de Negócio
 
-- O usuário não pode ...;
-- O usuário não pode ...;
+- O usuário não pode não pode começar uma tarefa sem inserir o nome da tarefa e o tempo de duração;
+- O usuário não pode começar outra tarefa sem interromper a tarefa atual;
 
 ### RNF - Requisitos Não Funcionais
 
 - Uso de Zod para validação de dados de entrada;
 - Uso de Eslint para padronização de código;
 - Uso de Prettier para padronização de código;
-- Uso de Dotenv para variáveis de ambiente;
+- Uso de TailwindCSS para estilização;
+- Uso de NextJs para SSR;
+- Uso de TypeScript para tipagem estática;
+- Uso de NextJs com App Router para rotas;
+- Uso Context API para compartilhar dados entre componentes;
+- Uso de CLSX para gerar classnames dinâmicos;
+- Uso de date-fns para manipulação de datas;
+- Uso de lucide-react para ícones;
+- Uso de react-hook-form para formulários;
 
 &nbsp;
 
 ### 🧭 Rodando a aplicação (Modo desenvolvimento)
 
 ```bash
-git clone https://github.com/livioalvarenga/Template-Api-Rest-Node-Docker-Prisma.git # Clone este repositório
-cd Template-Api-Rest-Node-Docker-Prisma # Acesse a pasta do projeto no seu terminal/cmd
+git clone https://github.com/LivioAlvarenga/t-money-finance # Clone este repositório
+cd t-money-finance # Acesse a pasta do projeto no seu terminal/cmd
 npm install # Instale as dependências
 npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
@@ -227,6 +232,31 @@ O deploy foi realizado na plataforma Vercel.com.
 As variáveis de ambiente configuradas incluem:
 
 - ...
+
+---
+
+&nbsp;
+<a id="-good-habits"></a>
+
+## ✅ Good Habits
+
+&nbsp;
+
+### ❗ 1 - Em construção...
+
+&nbsp;
+
+- Formulários Controlados
+
+Em construção...
+
+&nbsp;
+
+### ❗ 2 - Em construção...
+
+&nbsp;
+
+
 
 ---
 
