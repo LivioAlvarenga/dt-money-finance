@@ -8,3 +8,7 @@ export const priceFormatter = (value: number) => {
 export const dateFormatter = (date: string) => {
   return new Intl.DateTimeFormat('pt-BR').format(new Date(date))
 }
+
+export const textTitleFormatter = (text: string) => {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
