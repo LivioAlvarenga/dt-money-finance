@@ -154,16 +154,46 @@ module.exports = {
 npm install -D json-server # Install json-server to simulate API
 ```
 
-_Create **`server.json`** file with data to simulate API_
+_Create **`db.json`** file with data to simulate API / database_
+_Create **`src/lib/json-server.js`** file with json-server configuration_
+
+```javascript
+// src/lib/json-server.js
+const jsonServer = require('json-server')
+const path = require('path')
+const server = jsonServer.create()
+const router = jsonServer.router(path.join(__dirname, '../../db.json'))
+const middlewares = jsonServer.defaults({
+  delay: 500, // to simulate delay of API
+  watch: true,
+})
+
+server.use(middlewares)
+server.use(jsonServer.bodyParser)
+
+server.use((req, res, next) => {
+  if (req.method === 'POST') {
+    req.body.createdAt = new Date().toISOString()
+  }
+  // Continue to JSON Server router
+  next()
+})
+
+server.use(router)
+
+server.listen(3333, () => {
+  console.log('⚡ JSON Server is running at http://localhost:3333 ⚡')
+})
+
+```
+
+> Agora o json server irá salvar datas createdAt automaticamente com o valor Date.now() quando for feito um POST. Iguais a um banco de dados. Lembrando que o id é gerado automaticamente pelo json server.
 
 ```json
 // Create scripts in package.json
 "scripts": {
-  "dev:server": "json-server server.json -p 3333 -w -d 500",
+  "dev:server": "node src/lib/json-server.js",
 },
-
-// -p = port, -w = watch, -d = delay
-// delay 500ms to simulate delay of API, this is important to show loading in screen and disable button etc
 ```
 
 &nbsp;
@@ -210,6 +240,7 @@ npm i @radix-ui/react-dialog # Install Radix UI to Modal
 - Uso de lucide-react para ícones;
 - Uso de react-hook-form para formulários;
 - Uso de @hookform/resolvers para validação de formulários;
+- Uso de axios para requisições HTTP;
 
 &nbsp;
 

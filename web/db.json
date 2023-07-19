@@ -1,0 +1,220 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 12000,
+      "createdAt": "2023-07-19T12:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburger",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 50,
+      "createdAt": "2023-07-16T18:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "description": "Venda de software",
+      "type": "income",
+      "category": "Venda",
+      "price": 5000,
+      "createdAt": "2023-07-10T09:30:00.000Z"
+    },
+    {
+      "id": 4,
+      "description": "Pizza",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 30,
+      "createdAt": "2023-07-12T20:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "description": "Freelance de design",
+      "type": "income",
+      "category": "Trabalho",
+      "price": 3000,
+      "createdAt": "2023-07-17T11:30:00.000Z"
+    },
+    {
+      "id": 6,
+      "description": "Passagem de ônibus",
+      "type": "outcome",
+      "category": "Transporte",
+      "price": 4.5,
+      "createdAt": "2023-07-18T08:30:00.000Z"
+    },
+    {
+      "id": 7,
+      "description": "Conserto do computador",
+      "type": "outcome",
+      "category": "Manutenção",
+      "price": 350,
+      "createdAt": "2023-07-15T16:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "description": "Pagamento por projeto de design",
+      "type": "income",
+      "category": "Trabalho",
+      "price": 2000,
+      "createdAt": "2023-06-20T14:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "description": "Gasolina",
+      "type": "outcome",
+      "category": "Transporte",
+      "price": 100,
+      "createdAt": "2023-06-21T10:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "description": "Venda de e-book",
+      "type": "income",
+      "category": "Venda",
+      "price": 50,
+      "createdAt": "2023-06-21T15:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "description": "Compra de roupa",
+      "type": "outcome",
+      "category": "Compras",
+      "price": 150,
+      "createdAt": "2023-06-22T18:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "description": "Venda de arte digital",
+      "type": "income",
+      "category": "Venda",
+      "price": 120,
+      "createdAt": "2023-06-22T19:30:00.000Z"
+    },
+    {
+      "id": 13,
+      "description": "Freelance de programação",
+      "type": "income",
+      "category": "Trabalho",
+      "price": 7000,
+      "createdAt": "2023-06-23T15:30:00.000Z"
+    },
+    {
+      "id": 14,
+      "description": "Jantar em restaurante",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 100,
+      "createdAt": "2023-06-23T20:00:00.000Z"
+    },
+    {
+      "id": 15,
+      "description": "Venda de carro usado",
+      "type": "income",
+      "category": "Venda",
+      "price": 15000,
+      "createdAt": "2023-06-24T14:00:00.000Z"
+    },
+    {
+      "id": 16,
+      "description": "Compra de bicicleta",
+      "type": "outcome",
+      "category": "Esporte",
+      "price": 500,
+      "createdAt": "2023-06-24T16:30:00.000Z"
+    },
+    {
+      "id": 17,
+      "description": "Venda de curso online",
+      "type": "income",
+      "category": "Educação",
+      "price": 200,
+      "createdAt": "2023-07-06T10:00:00.000Z"
+    },
+    {
+      "id": 18,
+      "description": "Pagamento de mensalidade de academia",
+      "type": "outcome",
+      "category": "Esporte",
+      "price": 100,
+      "createdAt": "2023-06-05T12:00:00.000Z"
+    },
+    {
+      "id": 19,
+      "description": "Venda de mobília usada",
+      "type": "income",
+      "category": "Venda",
+      "price": 800,
+      "createdAt": "2023-07-04T15:00:00.000Z"
+    },
+    {
+      "id": 20,
+      "description": "Compra de jogo de videogame",
+      "type": "outcome",
+      "category": "Lazer",
+      "price": 250,
+      "createdAt": "2023-07-03T19:00:00.000Z"
+    },
+    {
+      "id": 21,
+      "description": "Recebimento de aluguel",
+      "type": "income",
+      "category": "Imóveis",
+      "price": 1200,
+      "createdAt": "2023-07-02T10:30:00.000Z"
+    },
+    {
+      "id": 22,
+      "description": "Pagamento de contas de casa",
+      "type": "outcome",
+      "category": "Casa",
+      "price": 400,
+      "createdAt": "2023-07-01T14:00:00.000Z"
+    },
+    {
+      "description": "Fazer sacolão",
+      "price": 170,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-19T19:00:49.766Z",
+      "id": 23
+    },
+    {
+      "description": "Comprei teclado",
+      "price": 350,
+      "category": "Trabalho",
+      "type": "outcome",
+      "createdAt": "2023-07-19T20:23:47.486Z",
+      "id": 24
+    },
+    {
+      "description": "Comprei teclado",
+      "price": 350,
+      "category": "Trabalho",
+      "type": "outcome",
+      "createdAt": "2023-07-19T20:27:29.201Z",
+      "id": 25
+    },
+    {
+      "description": "Comprei pastel",
+      "price": 7,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-19T20:48:18.988Z",
+      "id": 26
+    },
+    {
+      "description": "comprei um fusca",
+      "price": 35000,
+      "category": "Lazer",
+      "type": "outcome",
+      "createdAt": "2023-07-19T20:58:39.184Z",
+      "id": 27
+    }
+  ]
+}
