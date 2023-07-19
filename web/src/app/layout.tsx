@@ -1,5 +1,6 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { TransactionProvider } from '@/context/TransactionsContext'
 import { inter400, inter700, playfair400 } from '@/styles/fonts'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
@@ -89,9 +90,11 @@ export default function RootLayout({
       <body
         className={`${inter400.variable} ${inter700.variable} ${playfair400.variable} flex min-h-screen flex-col scroll-smooth bg-dark-700 font-inter400 text-base font-normal leading-normal tracking-[.031rem] text-gray-300 selection:bg-primary selection:text-tWhite`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <TransactionProvider>
+          <Header />
+          {children}
+          <Footer />
+        </TransactionProvider>
       </body>
     </html>
   )

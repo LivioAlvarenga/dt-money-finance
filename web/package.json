@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:server": "json-server server.json -p 3333 -w -d 500",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -1,6 +1,10 @@
+import { useSummary } from '@/hooks/useSummary'
+import { priceFormatter } from '@/utils/formatter'
 import { ArrowDownCircle, ArrowUpCircle, DollarSign } from 'lucide-react'
 
 export function Summary() {
+  const summary = useSummary()
+
   return (
     <section className="lg:wrapper relative -bottom-[74px] w-screen overflow-hidden">
       <div className="hiddenScrollbar hiddenScrollbarFirefox flex w-screen gap-8 overflow-x-scroll px-[2%] lg:w-auto lg:justify-between lg:overflow-x-hidden lg:px-0">
@@ -11,7 +15,7 @@ export function Summary() {
             <ArrowUpCircle size={32} className="text-green-500" />
           </header>
           <strong className="headline5 mt-4 block font-inter700">
-            R$ 17.400,00
+            {priceFormatter(summary.income)}
           </strong>
         </div>
 
@@ -21,7 +25,7 @@ export function Summary() {
             <ArrowDownCircle size={32} className="text-red-300" />
           </header>
           <strong className="headline5 mt-4 block font-inter700">
-            R$ 17.400,00
+            {priceFormatter(summary.outcome)}
           </strong>
         </div>
 
@@ -31,7 +35,7 @@ export function Summary() {
             <DollarSign size={32} className="text-tBlack" />
           </header>
           <strong className="headline5 mt-4 block font-inter700 text-tBlack">
-            R$ 17.400,00
+            {priceFormatter(summary.total)}
           </strong>
         </div>
       </div>

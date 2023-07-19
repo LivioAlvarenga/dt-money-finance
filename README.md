@@ -148,9 +148,23 @@ module.exports = {
 
 &nbsp;
 
-### **TypeScript** architecture
+### **Server** architecture
 
-...
+```bash
+npm install -D json-server # Install json-server to simulate API
+```
+
+_Create **`server.json`** file with data to simulate API_
+
+```json
+// Create scripts in package.json
+"scripts": {
+  "dev:server": "json-server server.json -p 3333 -w -d 500",
+},
+
+// -p = port, -w = watch, -d = delay
+// delay 500ms to simulate delay of API, this is important to show loading in screen and disable button etc
+```
 
 &nbsp;
 
@@ -158,8 +172,6 @@ module.exports = {
 
 ```bash
 npm install zod # Install zod to use types in NodeJs and validate data
-
-npm install -D json-server # Install json-server to simulate API
 
 npm install @radix-ui/react-radio-group # Install Radix UI to RadioGroup
 
