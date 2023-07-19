@@ -3,7 +3,11 @@
 import { SearchForm } from '@/components/SearchForm'
 import { Summary } from '@/components/Summary'
 import { TransactionsContext } from '@/context/TransactionsContext'
-import { dateFormatter, priceFormatter } from '@/utils/formatter'
+import {
+  dateFormatter,
+  priceFormatter,
+  textTitleFormatter,
+} from '@/utils/formatter'
 import clsx from 'clsx'
 import {
   Calendar,
@@ -52,7 +56,7 @@ export default function Transactions() {
                   className="flex w-full flex-wrap justify-between rounded-md bg-gray-600 px-8 py-5 lg:flex-nowrap lg:items-center lg:justify-start"
                 >
                   <td className="mb-3 w-full lg:mb-0 lg:w-1/2">
-                    {transaction.description}
+                    {textTitleFormatter(transaction.description)}
                   </td>
                   <td
                     className={clsx(
@@ -68,7 +72,7 @@ export default function Transactions() {
                   </td>
                   <td className="flex items-center gap-2 text-gray-500 lg:w-[20%] lg:text-gray-300">
                     <ChevronRightSquare size={16} className="lg:hidden" />
-                    {transaction.category}
+                    {textTitleFormatter(transaction.category)}
                   </td>
                   <td className="flex items-center gap-2 text-gray-500 lg:w-[10%] lg:text-gray-300">
                     <Calendar size={16} className="lg:hidden" />

@@ -1,5 +1,6 @@
 'use client'
 
+import { api } from '@/lib/axios'
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
 interface TransactionProps {
@@ -11,8 +12,17 @@ interface TransactionProps {
   createdAt: string
 }
 
+interface CreateTransactionInputProps {
+  description: string
+  price: number
+  type: 'income' | 'outcome'
+  category: string
+}
+
 interface TransactionContextType {
   transactions: TransactionProps[]
+  fetchTransactions: (search?: string) => Promise<void>
+  createTransaction: (transaction: CreateTransactionInputProps) => Promise<void>
 }
 
 interface TransactionProviderProps {
@@ -24,18 +34,39 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 export function TransactionProvider({ children }: TransactionProviderProps) {
   const [transactions, setTransactions] = useState<TransactionProps[]>([])
 
-  async function loadTransactions() {
-    const response = await fetch('http://localhost:3333/transactions')
-    const data = await response.json()
-    setTransactions(data)
+  async function fetchTransactions(search?: string) {
+    const response = await api.get('/transactions', {
+      params: {
+        _sort: 'createdAt',
+        _order: 'desc',
+        q: search,
+      },
+    })
+
+    setTransactions(response.data)
+  }
+
+  async function createTransaction(transaction: CreateTransactionInputProps) {
+    const { description, price, category, type } = transaction
+
+    const response = await api.post('/transactions', {
+      description,
+      price,
+      category,
+      type,
+    })
+
+    setTransactions((state) => [response.data, ...state])
   }
 
   useEffect(() => {
-    loadTransactions()
+    fetchTransactions()
   }, [])
 
   return (
-    <TransactionsContext.Provider value={{ transactions }}>
+    <TransactionsContext.Provider
+      value={{ transactions, fetchTransactions, createTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   )
