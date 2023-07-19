@@ -22,7 +22,7 @@ export function Header() {
         />
 
         {/* new transaction button */}
-        <button className="button h-[50px] rounded-md border-0 bg-primary px-5 text-tWhite duration-200 ease-linear lg:cursor-pointer lg:hover:bg-tertiary">
+        <button className="accessibilityFocus button h-[50px] rounded-md border-0 bg-primary px-5 text-tBlack duration-200 ease-linear lg:cursor-pointer lg:hover:bg-tertiary">
           Nova transação
         </button>
       </div>
