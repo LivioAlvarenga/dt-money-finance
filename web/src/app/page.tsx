@@ -95,7 +95,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="z-50 flex justify-center lg:hidden">
+        <div className="flex justify-center lg:hidden">
           <span className="h-[6px] w-1/3 rounded-md bg-gray-600" />
         </div>
       </div>

@@ -53,7 +53,7 @@
 
 | :placard: Vitrine.Dev |                                                                                                                 |
 | --------------------- | --------------------------------------------------------------------------------------------------------------- |
-| :sparkles: Nome       | **Projeto DT Money gestão financeira com Nextjs 13 App Router, React, Typescript e Tailwindcss.**                                 |
+| :sparkles: Nome       | **Projeto DT Money gestão financeira com Nextjs 13 App Router, React, Typescript e Tailwindcss.**               |
 | :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, EsLint e prettier. |
 
 ---
@@ -158,6 +158,12 @@ module.exports = {
 
 ```bash
 npm install zod # Install zod to use types in NodeJs and validate data
+
+npm install -D json-server # Install json-server to simulate API
+
+npm install @radix-ui/react-radio-group # Install Radix UI to RadioGroup
+
+npm i @radix-ui/react-dialog # Install Radix UI to Modal
 ```
 
 ---
@@ -182,6 +188,8 @@ npm install zod # Install zod to use types in NodeJs and validate data
 - Uso de Eslint para padronização de código;
 - Uso de Prettier para padronização de código;
 - Uso de TailwindCSS para estilização;
+- Uso de Json Server para simular uma API;
+- Uso de Radix UI para Modal e RadioGroup;
 - Uso de NextJs para SSR;
 - Uso de TypeScript para tipagem estática;
 - Uso de NextJs com App Router para rotas;
@@ -256,8 +264,6 @@ Em construção...
 ### ❗ 2 - Em construção...
 
 &nbsp;
-
-
 
 ---
 
