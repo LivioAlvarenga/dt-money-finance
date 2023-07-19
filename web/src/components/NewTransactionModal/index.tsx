@@ -1,8 +1,39 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { ArrowDownCircle, ArrowUpCircle, X } from 'lucide-react'
+import { Controller, useForm } from 'react-hook-form'
+import * as z from 'zod'
+
+const newTransactionFormSchema = z.object({
+  description: z.string().nonempty(),
+  price: z.number().positive(),
+  category: z.string().nonempty(),
+  type: z.enum(['income', 'outcome']),
+})
+
+type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<NewTransactionFormInputs>({
+    resolver: zodResolver(newTransactionFormSchema),
+    defaultValues: {
+      type: 'income',
+    },
+  })
+
+  function handleCreateNewTransaction(data: NewTransactionFormInputs) {
+    console.log(
+      '🚀 ~ file: index.tsx:27 ~ handleCreateNewTransaction ~ data:',
+      data,
+    )
+  }
+
   return (
     // Portal is a React component that renders its children into a new React tree
     <Dialog.Portal>
@@ -19,52 +50,71 @@ export function NewTransactionModal() {
             />
           </Dialog.Close>
 
-          <form action="" className="mt-8 flex flex-col gap-4">
+          <form
+            onSubmit={handleSubmit(handleCreateNewTransaction)}
+            className="mt-8 flex flex-col gap-4"
+          >
             <input
               type="text"
               placeholder="Descrição"
               required
+              {...register('description')}
               className="accessibilityFocus rounded-md border-0 bg-gray-900 p-4 text-gray-300 placeholder:text-gray-500"
             />
             <input
               type="number"
               placeholder="Preço"
               required
+              {...register('price', { valueAsNumber: true })}
               className="accessibilityFocus rounded-md border-0 bg-gray-900 p-4 text-gray-300 placeholder:text-gray-500"
             />
             <input
               type="text"
               placeholder="Categoria"
               required
+              {...register('category')}
               className="accessibilityFocus rounded-md border-0 bg-gray-900 p-4 text-gray-300 placeholder:text-gray-500"
             />
-            <RadioGroup.Root className="grid grid-cols-2 gap-2">
-              <RadioGroup.Item
-                value="income"
-                className="accessibilityFocus button group mt-5 flex h-[58px] flex-grow items-center justify-center gap-3 rounded-md border-0 px-5 text-gray-300 duration-200 ease-linear data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-700 data-[state=checked]:text-tWhite lg:cursor-pointer lg:data-[state=unchecked]:hover:bg-gray-600"
-              >
-                <ArrowUpCircle
-                  size={24}
-                  className="duration-200 ease-linear group-data-[state=checked]:text-tWhite group-data-[state=unchecked]:text-green-500 lg:data-[state=unchecked]:group-hover:text-green-500"
-                />
-                <span>Entrada</span>
-              </RadioGroup.Item>
+            <Controller
+              control={control}
+              name="type"
+              render={({ field }) => {
+                return (
+                  <RadioGroup.Root
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    className="grid grid-cols-2 gap-2"
+                  >
+                    <RadioGroup.Item
+                      value="income"
+                      className="accessibilityFocus button group mt-5 flex h-[58px] flex-grow items-center justify-center gap-3 rounded-md border-0 px-5 text-gray-300 duration-200 ease-linear data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-700 data-[state=checked]:text-tWhite lg:cursor-pointer lg:data-[state=unchecked]:hover:bg-gray-600"
+                    >
+                      <ArrowUpCircle
+                        size={24}
+                        className="duration-200 ease-linear group-data-[state=checked]:text-tWhite group-data-[state=unchecked]:text-green-500 lg:data-[state=unchecked]:group-hover:text-green-500"
+                      />
+                      <span>Entrada</span>
+                    </RadioGroup.Item>
 
-              <RadioGroup.Item
-                value="outcome"
-                className="accessibilityFocus button group mt-5 flex h-[58px] flex-grow items-center justify-center gap-3 rounded-md border-0 px-5 text-gray-300 duration-200 ease-linear data-[state=checked]:bg-red-500 data-[state=unchecked]:bg-gray-700 data-[state=checked]:text-tWhite lg:cursor-pointer lg:data-[state=unchecked]:hover:bg-gray-600"
-              >
-                <ArrowDownCircle
-                  size={24}
-                  className="duration-200 ease-linear group-data-[state=checked]:text-tWhite group-data-[state=unchecked]:text-red-300 lg:data-[state=unchecked]:group-hover:text-red-300"
-                />
-                <span>Saída</span>
-              </RadioGroup.Item>
-            </RadioGroup.Root>
+                    <RadioGroup.Item
+                      value="outcome"
+                      className="accessibilityFocus button group mt-5 flex h-[58px] flex-grow items-center justify-center gap-3 rounded-md border-0 px-5 text-gray-300 duration-200 ease-linear data-[state=checked]:bg-red-500 data-[state=unchecked]:bg-gray-700 data-[state=checked]:text-tWhite lg:cursor-pointer lg:data-[state=unchecked]:hover:bg-gray-600"
+                    >
+                      <ArrowDownCircle
+                        size={24}
+                        className="duration-200 ease-linear group-data-[state=checked]:text-tWhite group-data-[state=unchecked]:text-red-300 lg:data-[state=unchecked]:group-hover:text-red-300"
+                      />
+                      <span>Saída</span>
+                    </RadioGroup.Item>
+                  </RadioGroup.Root>
+                )
+              }}
+            />
 
             <button
               type="submit"
-              className="accessibilityFocus button mt-8 h-[50px] rounded-md border-0 bg-primary px-5 text-tBlack duration-200 ease-linear lg:cursor-pointer lg:hover:bg-tertiary"
+              disabled={isSubmitting}
+              className="accessibilityFocus button mt-8 h-[50px] rounded-md border-0 bg-primary px-5 text-tBlack duration-200 ease-linear disabled:cursor-not-allowed disabled:opacity-60 lg:enabled:cursor-pointer lg:enabled:hover:bg-tertiary"
             >
               Cadastrar
             </button>

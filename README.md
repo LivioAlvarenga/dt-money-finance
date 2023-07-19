@@ -201,15 +201,15 @@ npm i @radix-ui/react-dialog # Install Radix UI to Modal
 - Uso de Prettier para padronização de código;
 - Uso de TailwindCSS para estilização;
 - Uso de Json Server para simular uma API;
-- Uso de Radix UI para Modal e RadioGroup;
+- Uso de Radix UI para Modal e RadioGroup (componentes com acessibilidade);
 - Uso de NextJs para SSR;
 - Uso de TypeScript para tipagem estática;
 - Uso de NextJs com App Router para rotas;
 - Uso Context API para compartilhar dados entre componentes;
 - Uso de CLSX para gerar classnames dinâmicos;
-- Uso de date-fns para manipulação de datas;
 - Uso de lucide-react para ícones;
 - Uso de react-hook-form para formulários;
+- Uso de @hookform/resolvers para validação de formulários;
 
 &nbsp;
 
