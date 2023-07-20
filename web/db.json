@@ -2,26 +2,20 @@
   "transactions": [
     {
       "id": 17,
-      "description": "Venda de curso online",
+      "description": "Venda de site",
       "type": "income",
       "category": "Trabalho",
-      "price": 800,
-      "createdAt": "2023-07-06T10:00:00.000Z"
+      "price": 1000,
+      "createdAt": "2023-06-06T10:00:00.000Z",
+      "updatedAt": "2023-07-20T20:16:59.198Z"
     },
     {
-      "id": 19,
-      "description": "teclado",
-      "type": "outcome",
-      "category": "trabalho",
-      "price": 350.25,
-      "createdAt": "2023-07-04T15:00:00.000Z"
-    },
-    {
-      "description": "Fazer sacolão",
-      "price": 178.64,
+      "description": "Fazer supermercado",
+      "price": 970.52,
       "category": "Alimentação",
       "type": "outcome",
-      "createdAt": "2023-07-20T18:53:31.746Z",
+      "createdAt": "2023-04-20T18:53:31.746Z",
+      "updatedAt": "2023-07-20T20:16:31.546Z",
       "id": 20
     }
   ]

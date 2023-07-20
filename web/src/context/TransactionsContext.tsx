@@ -38,6 +38,7 @@ interface TransactionContextType {
   createTransaction: (transaction: CreateTransactionInputProps) => Promise<void>
   deleteTransaction: (id: number) => Promise<void>
   editTransaction: (transaction: EditTransactionInputProps) => Promise<void>
+  getTransactionById: (id: number) => Promise<TransactionProps>
   nextPage: (page: number) => void
   prevPage: (page: number) => void
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>
@@ -99,6 +100,11 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     setTotalTransactions(totalTransactions)
     setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
   }, [searchTerm])
+
+  async function getTransactionById(id: number) {
+    const response = await api.get(`/transactions/${id}`)
+    return response.data
+  }
 
   async function createTransaction(transaction: CreateTransactionInputProps) {
     const { description, price, category, type } = transaction
@@ -189,6 +195,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
         createTransaction,
         editTransaction,
         deleteTransaction,
+        getTransactionById,
         nextPage,
         prevPage,
         setCurrentPage,

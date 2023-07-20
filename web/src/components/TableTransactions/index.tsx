@@ -14,7 +14,7 @@ import { EditTransactionModal } from '../EditTransactionModal'
 
 export function TableTransactions() {
   const { transactions, deleteTransaction } = useContext(TransactionsContext)
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState<number | null>(null)
 
   function handleDeleteTransaction(id: number) {
     deleteTransaction(id)
@@ -27,8 +27,10 @@ export function TableTransactions() {
           return (
             <Dialog.Root
               key={transaction.id}
-              open={openModal}
-              onOpenChange={setOpenModal}
+              open={openModal === transaction.id}
+              onOpenChange={(isOpen) =>
+                setOpenModal(isOpen ? transaction.id : null)
+              }
             >
               <Dialog.Trigger asChild>
                 <div className="relative flex w-full flex-wrap justify-between rounded-md bg-gray-600 px-8 py-5 lg:cursor-pointer lg:flex-nowrap lg:items-center lg:justify-start">
@@ -69,7 +71,7 @@ export function TableTransactions() {
                 </div>
               </Dialog.Trigger>
               <EditTransactionModal
-                transaction={transaction}
+                id={transaction.id}
                 setOpenModal={setOpenModal}
               />
             </Dialog.Root>

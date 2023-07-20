@@ -20,25 +20,17 @@ const newTransactionFormSchema = z.object({
 
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
-interface TransactionProps {
-  id: number
-  description: string
-  price: number
-  type: 'income' | 'outcome'
-  category: string
-  createdAt: string
-}
-
 interface EditTransactionModalProps {
-  transaction: TransactionProps
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  id: number
+  setOpenModal: React.Dispatch<React.SetStateAction<number | null>>
 }
 
 export function EditTransactionModal({
-  transaction,
+  id,
   setOpenModal,
 }: EditTransactionModalProps) {
-  const { editTransaction } = useContext(TransactionsContext)
+  const { editTransaction, getTransactionById } =
+    useContext(TransactionsContext)
 
   const {
     control,
@@ -48,12 +40,6 @@ export function EditTransactionModal({
     reset,
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
-    defaultValues: {
-      description: transaction.description,
-      price: transaction.price.toString(),
-      category: transaction.category,
-      type: transaction.type,
-    },
   })
 
   async function handleEditTransaction(data: NewTransactionFormInputs) {
@@ -62,7 +48,7 @@ export function EditTransactionModal({
     const parsedPrice = parsePrice(price)
     if (parsedPrice !== null) {
       await editTransaction({
-        id: transaction.id,
+        id,
         description,
         price: parsedPrice,
         category,
@@ -70,25 +56,30 @@ export function EditTransactionModal({
       })
 
       reset()
-      setOpenModal(false)
+      setOpenModal(null)
     } else {
       toast.error("Por favor, insira o preço no formato correto (ex: '5,10')")
     }
   }
 
   useEffect(() => {
-    reset({
-      description: transaction.description,
-      price: transaction.price.toString(),
-      category: transaction.category,
-      type: transaction.type,
-    })
-  }, [transaction, reset])
+    async function fetchTransaction() {
+      const fetchedTransaction = await getTransactionById(id)
+      reset({
+        description: fetchedTransaction.description,
+        price: fetchedTransaction.price.toString(),
+        category: fetchedTransaction.category,
+        type: fetchedTransaction.type,
+      })
+    }
+
+    fetchTransaction()
+  }, [id, reset, getTransactionById])
 
   return (
     // Portal is a React component that renders its children into a new React tree
     <Dialog.Portal>
-      <Dialog.Overlay className="fixed inset-0 h-screen w-screen bg-black/75">
+      <Dialog.Overlay className="fixed inset-0 h-screen w-screen bg-black/70">
         <Dialog.Content className="fixed bottom-0 flex w-full flex-col rounded-t-[20px] bg-gray-800 px-6 pb-3 pt-6 lg:bottom-1/2 lg:right-1/2 lg:w-auto lg:min-w-[525px] lg:translate-x-1/2 lg:translate-y-1/2 lg:rounded-2xl lg:p-12">
           <Dialog.Title className="headline6 font-inter700">
             Editando transação
