@@ -255,6 +255,46 @@
       "type": "outcome",
       "createdAt": "2023-07-20T11:11:59.409Z",
       "id": 32
+    },
+    {
+      "description": "Fazer sacolão",
+      "price": 70,
+      "category": "alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-20T12:38:19.705Z",
+      "id": 33
+    },
+    {
+      "description": "venda de mouse",
+      "price": 50,
+      "category": "venda",
+      "type": "income",
+      "createdAt": "2023-07-20T12:47:59.930Z",
+      "id": 34
+    },
+    {
+      "description": "Fazer sacolão",
+      "price": 10,
+      "category": "alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-20T12:48:36.419Z",
+      "id": 35
+    },
+    {
+      "description": "venda de colchão",
+      "price": 150,
+      "category": "venda",
+      "type": "income",
+      "createdAt": "2023-07-20T12:49:05.259Z",
+      "id": 36
+    },
+    {
+      "description": "vendi relogio",
+      "price": 100,
+      "category": "venda",
+      "type": "income",
+      "createdAt": "2023-07-20T13:31:11.320Z",
+      "id": 37
     }
   ]
 }

@@ -20,7 +20,7 @@ export default function Transactions() {
       '0 0 10px #26a9e0, 0 0 20px #26a9e0, 0 0 40px #26a9e0, 0 0 80px #26a9e0',
   }
 
-  const { transactions } = useContext(TransactionsContext)
+  const { transactions, totalTransactions } = useContext(TransactionsContext)
 
   return (
     <main className="flex flex-col items-start justify-start">
@@ -34,8 +34,10 @@ export default function Transactions() {
         <div className="wrapper flex items-center justify-between pt-8 lg:hidden">
           <h2>Transações</h2>
           <div className="text-gray-500">
-            <span>4</span>
-            <span className="pl-2">itens</span> {/* TODO verify if is plural */}
+            <span>{totalTransactions}</span>
+            <span className="pl-2">
+              {totalTransactions === 1 ? 'item' : 'itens'}
+            </span>
           </div>
         </div>
 

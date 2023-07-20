@@ -1,9 +1,11 @@
-import { useSummary } from '@/hooks/useSummary'
+import { TransactionsContext } from '@/context/TransactionsContext'
 import { priceFormatter } from '@/utils/formatter'
 import { ArrowDownCircle, ArrowUpCircle, DollarSign } from 'lucide-react'
+import { useContext } from 'react'
 
 export function Summary() {
-  const summary = useSummary()
+  // const summary = useSummary()
+  const { summary } = useContext(TransactionsContext)
 
   return (
     <section className="lg:wrapper relative -bottom-[74px] w-screen overflow-hidden">

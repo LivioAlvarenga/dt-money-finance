@@ -30,6 +30,12 @@ interface TransactionContextType {
   currentPage: number
   searchTerm: string
   totalPagination: number
+  totalTransactions: number
+  summary: {
+    income: number
+    outcome: number
+    total: number
+  }
 }
 
 interface TransactionProviderProps {
@@ -46,6 +52,8 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   const [pageList, setPageList] = useState<number[]>([])
   const [totalPagination, setTotalPagination] = useState(0)
   const [searchTerm, setSearchTerm] = useState('')
+  const [totalTransactions, setTotalTransactions] = useState(0)
+  const [summary, setSummary] = useState({ income: 0, outcome: 0, total: 0 })
 
   async function fetchTransactions(
     page = currentPage,
@@ -71,6 +79,8 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       },
     })
     const totalTransactions = response.data.length
+
+    setTotalTransactions(totalTransactions)
     setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
   }
 
@@ -87,6 +97,13 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     setTransactions((state) =>
       [response.data, ...state].slice(0, TRANSACTION_LIMIT),
     )
+
+    setTotalTransactions((prevState) => prevState + 1)
+  }
+
+  async function fetchSummary() {
+    const response = await api.get('/summary')
+    setSummary(response.data)
   }
 
   function nextPage(page: number) {
@@ -117,6 +134,11 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     getTotalPagination()
   }, [transactions, searchTerm])
 
+  // Fetch summary
+  useEffect(() => {
+    fetchSummary()
+  }, [transactions])
+
   return (
     <TransactionsContext.Provider
       value={{
@@ -130,6 +152,8 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
         currentPage,
         searchTerm,
         totalPagination,
+        totalTransactions,
+        summary,
       }}
     >
       {children}

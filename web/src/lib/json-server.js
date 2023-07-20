@@ -18,6 +18,32 @@ server.use((req, res, next) => {
   next()
 })
 
+// Custom routes - to get summary
+server.get('/summary', (req, res) => {
+  const transactions = router.db.get('transactions').value()
+
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === 'income') {
+        acc.income += transaction.price
+        acc.total += transaction.price
+      } else {
+        acc.outcome += transaction.price
+        acc.total -= transaction.price
+      }
+
+      return acc
+    },
+    {
+      income: 0,
+      outcome: 0,
+      total: 0,
+    },
+  )
+
+  res.jsonp(summary)
+})
+
 server.use(router)
 
 server.listen(3333, () => {
