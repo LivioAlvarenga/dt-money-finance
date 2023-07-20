@@ -28,6 +28,7 @@ interface CreateTransactionInputProps {
 interface TransactionContextType {
   transactions: TransactionProps[]
   createTransaction: (transaction: CreateTransactionInputProps) => Promise<void>
+  deleteTransaction: (id: number) => Promise<void>
   nextPage: (page: number) => void
   prevPage: (page: number) => void
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>
@@ -107,6 +108,18 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     setTotalTransactions((prevState) => prevState + 1)
   }
 
+  async function deleteTransaction(id: number) {
+    await api.delete(`/transactions/${id}`)
+
+    setTransactions((prevTransactions) =>
+      prevTransactions.filter((transaction) => transaction.id !== id),
+    )
+
+    setTotalTransactions((prevTotal) => prevTotal - 1)
+
+    fetchTransactions()
+  }
+
   async function fetchSummary() {
     const response = await api.get('/summary')
     setSummary(response.data)
@@ -150,6 +163,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       value={{
         transactions,
         createTransaction,
+        deleteTransaction,
         nextPage,
         prevPage,
         setCurrentPage,
