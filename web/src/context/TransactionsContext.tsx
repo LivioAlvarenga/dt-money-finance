@@ -21,17 +21,14 @@ interface CreateTransactionInputProps {
 
 interface TransactionContextType {
   transactions: TransactionProps[]
-  fetchTransactions: (
-    page?: number,
-    limit?: number,
-    search?: string,
-  ) => Promise<void>
   createTransaction: (transaction: CreateTransactionInputProps) => Promise<void>
   nextPage: (page: number) => void
   prevPage: (page: number) => void
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>
   pageList: number[]
   currentPage: number
+  searchTerm: string
   totalPagination: number
 }
 
@@ -48,11 +45,11 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   const [currentPage, setCurrentPage] = useState(1)
   const [pageList, setPageList] = useState<number[]>([])
   const [totalPagination, setTotalPagination] = useState(0)
+  const [searchTerm, setSearchTerm] = useState('')
 
   async function fetchTransactions(
     page = currentPage,
     limit = TRANSACTION_LIMIT,
-    search?: string,
   ) {
     const response = await api.get('/transactions', {
       params: {
@@ -60,15 +57,19 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
         _order: 'desc',
         _page: page,
         _limit: limit,
-        q: search,
+        q: searchTerm,
       },
     })
 
-    setTransactions(response.data)
+    setTransactions([...response.data]) // Create a new array to update the state
   }
 
   async function getTotalPagination() {
-    const response = await api.get('/transactions')
+    const response = await api.get('/transactions', {
+      params: {
+        q: searchTerm,
+      },
+    })
     const totalTransactions = response.data.length
     setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
   }
@@ -109,24 +110,25 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   // Fetch transactions initially and on page changes
   useEffect(() => {
     fetchTransactions()
-  }, [currentPage])
+  }, [searchTerm, currentPage])
 
   // Fetch total pagination
   useEffect(() => {
     getTotalPagination()
-  }, [transactions])
+  }, [transactions, searchTerm])
 
   return (
     <TransactionsContext.Provider
       value={{
         transactions,
-        fetchTransactions,
         createTransaction,
         nextPage,
         prevPage,
         setCurrentPage,
+        setSearchTerm,
         pageList,
         currentPage,
+        searchTerm,
         totalPagination,
       }}
     >

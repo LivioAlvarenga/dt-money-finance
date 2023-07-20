@@ -247,6 +247,14 @@
       "type": "income",
       "createdAt": "2023-07-20T10:09:33.604Z",
       "id": 31
+    },
+    {
+      "description": "compra de café",
+      "price": 5,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-20T11:11:59.409Z",
+      "id": 32
     }
   ]
 }
