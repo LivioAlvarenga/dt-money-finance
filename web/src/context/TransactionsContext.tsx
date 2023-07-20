@@ -1,7 +1,13 @@
 'use client'
 
 import { api } from '@/lib/axios'
-import React, { ReactNode, createContext, useEffect, useState } from 'react'
+import React, {
+  ReactNode,
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 
 interface TransactionProps {
   id: number
@@ -55,24 +61,24 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   const [totalTransactions, setTotalTransactions] = useState(0)
   const [summary, setSummary] = useState({ income: 0, outcome: 0, total: 0 })
 
-  async function fetchTransactions(
-    page = currentPage,
-    limit = TRANSACTION_LIMIT,
-  ) {
-    const response = await api.get('/transactions', {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-        _page: page,
-        _limit: limit,
-        q: searchTerm,
-      },
-    })
+  const fetchTransactions = useCallback(
+    async (page = currentPage, limit = TRANSACTION_LIMIT) => {
+      const response = await api.get('/transactions', {
+        params: {
+          _sort: 'createdAt',
+          _order: 'desc',
+          _page: page,
+          _limit: limit,
+          q: searchTerm,
+        },
+      })
 
-    setTransactions([...response.data]) // Create a new array to update the state
-  }
+      setTransactions([...response.data]) // Create a new array to update the state
+    },
+    [currentPage, searchTerm],
+  )
 
-  async function getTotalPagination() {
+  const getTotalPagination = useCallback(async () => {
     const response = await api.get('/transactions', {
       params: {
         q: searchTerm,
@@ -82,7 +88,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
 
     setTotalTransactions(totalTransactions)
     setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
-  }
+  }, [searchTerm])
 
   async function createTransaction(transaction: CreateTransactionInputProps) {
     const { description, price, category, type } = transaction
@@ -127,12 +133,12 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   // Fetch transactions initially and on page changes
   useEffect(() => {
     fetchTransactions()
-  }, [searchTerm, currentPage])
+  }, [fetchTransactions])
 
   // Fetch total pagination
   useEffect(() => {
     getTotalPagination()
-  }, [transactions, searchTerm])
+  }, [transactions, searchTerm, getTotalPagination])
 
   // Fetch summary
   useEffect(() => {

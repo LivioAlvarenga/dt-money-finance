@@ -12,6 +12,7 @@ import {
 import clsx from 'clsx'
 import { Calendar, ChevronRightSquare } from 'lucide-react'
 import { useContext } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 export default function Transactions() {
   const textShadow = {
@@ -89,6 +90,7 @@ export default function Transactions() {
           <span className="h-[6px] w-1/3 rounded-md bg-gray-600" />
         </div>
       </div>
+      <Toaster position="bottom-center" aria-live="assertive" />
     </main>
   )
 }

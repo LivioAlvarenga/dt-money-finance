@@ -205,7 +205,11 @@ npm install zod # Install zod to use types in NodeJs and validate data
 
 npm install @radix-ui/react-radio-group # Install Radix UI to RadioGroup
 
-npm i @radix-ui/react-dialog # Install Radix UI to Modal
+npm install @radix-ui/react-dialog # Install Radix UI to Modal
+
+npm install clsx # Install clsx to generate dynamic classnames
+
+npm install react-hot-toast # Install react-hot-toast to use toast notifications
 ```
 
 ---

@@ -295,6 +295,30 @@
       "type": "income",
       "createdAt": "2023-07-20T13:31:11.320Z",
       "id": 37
+    },
+    {
+      "description": "Achei na rua",
+      "price": 0.5,
+      "category": "credito",
+      "type": "income",
+      "createdAt": "2023-07-20T15:01:39.829Z",
+      "id": 38
+    },
+    {
+      "description": "Fazer sacolão",
+      "price": 5.75,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-20T15:54:03.857Z",
+      "id": 42
+    },
+    {
+      "description": "Fazer sacolão",
+      "price": 9,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-20T15:54:19.382Z",
+      "id": 43
     }
   ]
 }

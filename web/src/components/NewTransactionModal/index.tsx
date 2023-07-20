@@ -1,17 +1,19 @@
 'use client'
 
 import { TransactionsContext } from '@/context/TransactionsContext'
+import { parsePrice } from '@/utils/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { ArrowDownCircle, ArrowUpCircle, X } from 'lucide-react'
 import { useContext } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import * as z from 'zod'
 
 const newTransactionFormSchema = z.object({
   description: z.string().nonempty(),
-  price: z.number().positive(),
+  price: z.string(),
   category: z.string().nonempty(),
   type: z.enum(['income', 'outcome']),
 })
@@ -35,16 +37,21 @@ export function NewTransactionModal() {
   })
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    const { description, price, category, type } = data
+    const { description, category, type, price } = data
 
-    await createTransaction({
-      description,
-      price,
-      category,
-      type,
-    })
+    const parsedPrice = parsePrice(price)
+    if (parsedPrice !== null) {
+      await createTransaction({
+        description,
+        price: parsedPrice,
+        category,
+        type,
+      })
 
-    reset()
+      reset()
+    } else {
+      toast.error("Por favor, insira o preço no formato correto (ex: '5,10')")
+    }
   }
 
   return (
@@ -75,10 +82,10 @@ export function NewTransactionModal() {
               className="accessibilityFocus rounded-md border-0 bg-gray-900 p-4 text-gray-300 placeholder:text-gray-500"
             />
             <input
-              type="number"
+              type="text"
               placeholder="Preço"
               required
-              {...register('price', { valueAsNumber: true })}
+              {...register('price')}
               className="accessibilityFocus rounded-md border-0 bg-gray-900 p-4 text-gray-300 placeholder:text-gray-500"
             />
             <input
