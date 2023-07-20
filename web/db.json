@@ -215,6 +215,38 @@
       "type": "outcome",
       "createdAt": "2023-07-19T20:58:39.184Z",
       "id": 27
+    },
+    {
+      "description": "Iphone 8",
+      "price": 1000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2023-07-19T21:22:29.197Z",
+      "id": 28
+    },
+    {
+      "description": "Gominha",
+      "price": 5,
+      "category": "Escritório",
+      "type": "outcome",
+      "createdAt": "2023-07-19T21:24:50.853Z",
+      "id": 29
+    },
+    {
+      "description": "Banana",
+      "price": 11,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-20T10:08:53.827Z",
+      "id": 30
+    },
+    {
+      "description": "venda cadeira bebê",
+      "price": 150,
+      "category": "venda",
+      "type": "income",
+      "createdAt": "2023-07-20T10:09:33.604Z",
+      "id": 31
     }
   ]
 }

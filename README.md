@@ -1,5 +1,5 @@
 <h1 align="center"> 
-	Projeto DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript e Tailwindcss.
+	Projeto DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss e Axios.
 </h1>
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
@@ -15,11 +15,11 @@
 
 &nbsp;
 
-![timer-responsivo](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/Monitor_laptop_Tablet_Celular-Fundos_limpos.png#vitrinedev)
+![timer-responsivo](https://raw.githubusercontent.com/LivioAlvarenga/dt-money-finance/main/files/Monitor_laptop_Tablet_Celular-Fundos_limpos.png#vitrinedev)
 
-![timer-home](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/home-timer.png)
+![timer-home](https://raw.githubusercontent.com/LivioAlvarenga/dt-money-finance/main/files/home-timer.png)
 
-![timer-history](https://raw.githubusercontent.com/LivioAlvarenga/pomodoro-timer/main/files/history-timer.png)
+![timer-history](https://raw.githubusercontent.com/LivioAlvarenga/dt-money-finance/main/files/history-timer.png)
 
 <a id="-sobre-o-projeto"></a>
 
@@ -51,10 +51,10 @@
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                                 |
-| --------------------- | --------------------------------------------------------------------------------------------------------------- |
-| :sparkles: Nome       | **Projeto DT Money gestão financeira com Nextjs 13 App Router, React, Typescript e Tailwindcss.**               |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, EsLint e prettier. |
+| :placard: Vitrine.Dev |                                                                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| :sparkles: Nome       | **Projeto DT Money gestão financeira com Nextjs 13 App Router, React, Typescript,Tailwindcss e Axios.**                |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, EsLint e prettier. |
 
 ---
 
@@ -78,6 +78,7 @@ As seguintes ferramentas foram usadas na construção do projeto
   <a href= "https://www.radix-ui.com/"><img alt="Radix UI badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/56aa50fa69dabb03400754d307a197f28810c7e4/files/radix-ui-badge.svg"></a>
   <a href= "https://tailwindcss.com/"><img alt="Tailwind CSS badge" src="https://img.shields.io/static/v1?logoWidth=15&logoColor=06b6d4&logo=Tailwind CSS&label=Style&message=Tailwind CSS&color=06b6d4"></a>
   <a href= "https://zod.dev/" target="_blank" rel="noopener noreferrer"><img alt="ZOD badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/7caba2f743ee9b61f0225a22da57466ecb67097c/files/zod-badge.svg"></a>
+  <a href= "https://axios-http.com/"><img alt="Axios badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/c9f5fabeb5b6cbc25fb1151431e0b8e7412a3786/files/axios-badge.svg"></a>
   <a href= "https://www.figma.com/file/ddZDhVj3qZip1jZ9gibEAd/DT-Money-(Community)-(Copy)?mode=dev"><img alt="link projeto no figma" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/figma-badge.svg"></a>
   <a href= "https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer"><img alt="vscode download" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/vsCode-badge.svg"></a>
   <a href= "https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer"><img alt="code formatter prettier" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/prettier-badge.svg"></a>
@@ -159,32 +160,31 @@ _Create **`src/lib/json-server.js`** file with json-server configuration_
 
 ```javascript
 // src/lib/json-server.js
-const jsonServer = require('json-server')
-const path = require('path')
-const server = jsonServer.create()
-const router = jsonServer.router(path.join(__dirname, '../../db.json'))
+const jsonServer = require("json-server");
+const path = require("path");
+const server = jsonServer.create();
+const router = jsonServer.router(path.join(__dirname, "../../db.json"));
 const middlewares = jsonServer.defaults({
   delay: 500, // to simulate delay of API
   watch: true,
-})
+});
 
-server.use(middlewares)
-server.use(jsonServer.bodyParser)
+server.use(middlewares);
+server.use(jsonServer.bodyParser);
 
 server.use((req, res, next) => {
-  if (req.method === 'POST') {
-    req.body.createdAt = new Date().toISOString()
+  if (req.method === "POST") {
+    req.body.createdAt = new Date().toISOString();
   }
   // Continue to JSON Server router
-  next()
-})
+  next();
+});
 
-server.use(router)
+server.use(router);
 
 server.listen(3333, () => {
-  console.log('⚡ JSON Server is running at http://localhost:3333 ⚡')
-})
-
+  console.log("⚡ JSON Server is running at http://localhost:3333 ⚡");
+});
 ```
 
 > Agora o json server irá salvar datas createdAt automaticamente com o valor Date.now() quando for feito um POST. Iguais a um banco de dados. Lembrando que o id é gerado automaticamente pelo json server.
@@ -250,6 +250,7 @@ npm i @radix-ui/react-dialog # Install Radix UI to Modal
 git clone https://github.com/LivioAlvarenga/t-money-finance # Clone este repositório
 cd t-money-finance # Acesse a pasta do projeto no seu terminal/cmd
 npm install # Instale as dependências
+npm run dev:server # Execute o json-server para simular uma API. A API será executada na porta:3333 - acesse http://localhost:3333
 npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
 # Read the observations in home page

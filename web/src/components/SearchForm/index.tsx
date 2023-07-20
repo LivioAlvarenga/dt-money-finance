@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 const searchFormSchema = z.object({
-  search: z.string().nonempty(),
+  search: z.string(),
 })
 
 type SearchFormInputs = z.infer<typeof searchFormSchema>
@@ -20,12 +20,14 @@ export function SearchForm() {
     register,
     handleSubmit,
     formState: { isSubmitting },
+    reset,
   } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
   })
 
   async function handleSearchTransactions(data: SearchFormInputs) {
-    await fetchTransactions(data.search)
+    await fetchTransactions(1, undefined, data.search)
+    reset()
   }
 
   return (

@@ -2,6 +2,7 @@
 
 import { SearchForm } from '@/components/SearchForm'
 import { Summary } from '@/components/Summary'
+import { TransactionsPagination } from '@/components/TransactionsPagination'
 import { TransactionsContext } from '@/context/TransactionsContext'
 import {
   dateFormatter,
@@ -9,12 +10,7 @@ import {
   textTitleFormatter,
 } from '@/utils/formatter'
 import clsx from 'clsx'
-import {
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  ChevronRightSquare,
-} from 'lucide-react'
+import { Calendar, ChevronRightSquare } from 'lucide-react'
 import { useContext } from 'react'
 
 export default function Transactions() {
@@ -47,7 +43,7 @@ export default function Transactions() {
         <SearchForm />
 
         {/* table */}
-        <table className="w-full border-collapse border-spacing-x-2 overflow-hidden bg-gray-800">
+        <table className="min-h-[402px] w-full border-collapse border-spacing-x-2 overflow-hidden bg-gray-800">
           <tbody className="wrapper flex flex-col items-center justify-center gap-4 lg:gap-2">
             {transactions.map((transaction) => {
               return (
@@ -85,29 +81,7 @@ export default function Transactions() {
         </table>
 
         {/* pagination */}
-        <div className="wrapper my-7 flex items-center justify-center gap-2">
-          <button className="accessibilityFocus group flex h-[48px] w-[48px] items-center justify-center rounded-md border-0 bg-transparent lg:cursor-pointer">
-            <ChevronLeft
-              size={30}
-              className="text-gray-600 duration-200 ease-linear lg:group-hover:scale-125"
-            />
-          </button>
-          <button className="accessibilityFocus button flex h-[48px] w-[48px] items-center justify-center rounded-md border-0 bg-primary p-4  duration-200 ease-linear lg:cursor-pointer lg:hover:bg-tertiary">
-            <span className="subtitle1 text-tBlack">1</span>
-          </button>
-          <button className="accessibilityFocus button flex h-[48px] w-[48px] items-center justify-center rounded-md border-0 bg-gray-600 p-4  duration-200 ease-linear lg:cursor-pointer lg:hover:bg-tertiary">
-            <span className="subtitle1 text-gray-300">2</span>
-          </button>
-          <button className="accessibilityFocus button flex h-[48px] w-[48px] items-center justify-center rounded-md border-0 bg-gray-600 p-4  duration-200 ease-linear lg:cursor-pointer lg:hover:bg-tertiary">
-            <span className="subtitle1 text-gray-300">3</span>
-          </button>
-          <button className="accessibilityFocus group flex h-[48px] w-[48px] items-center justify-center rounded-md border-0 bg-transparent lg:cursor-pointer">
-            <ChevronRight
-              size={30}
-              className="text-primary duration-200 ease-linear lg:group-hover:scale-125"
-            />
-          </button>
-        </div>
+        <TransactionsPagination />
 
         <div className="flex justify-center lg:hidden">
           <span className="h-[6px] w-1/3 rounded-md bg-gray-600" />
