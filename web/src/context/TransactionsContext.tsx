@@ -25,10 +25,19 @@ interface CreateTransactionInputProps {
   category: string
 }
 
+interface EditTransactionInputProps {
+  id: number
+  description: string
+  price: number
+  type: 'income' | 'outcome'
+  category: string
+}
+
 interface TransactionContextType {
   transactions: TransactionProps[]
   createTransaction: (transaction: CreateTransactionInputProps) => Promise<void>
   deleteTransaction: (id: number) => Promise<void>
+  editTransaction: (transaction: EditTransactionInputProps) => Promise<void>
   nextPage: (page: number) => void
   prevPage: (page: number) => void
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>
@@ -108,6 +117,21 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     setTotalTransactions((prevState) => prevState + 1)
   }
 
+  async function editTransaction(transaction: EditTransactionInputProps) {
+    const { id, description, price, category, type } = transaction
+
+    const response = await api.patch(`/transactions/${id}`, {
+      description,
+      price,
+      category,
+      type,
+    })
+
+    setTransactions((state) =>
+      state.map((t) => (t.id === id ? response.data : t)),
+    )
+  }
+
   async function deleteTransaction(id: number) {
     await api.delete(`/transactions/${id}`)
 
@@ -163,6 +187,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       value={{
         transactions,
         createTransaction,
+        editTransaction,
         deleteTransaction,
         nextPage,
         prevPage,
