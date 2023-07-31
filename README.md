@@ -15,11 +15,12 @@
 
 &nbsp;
 
-![timer-responsivo](https://raw.githubusercontent.com/LivioAlvarenga/dt-money-finance/main/files/Monitor_laptop_Tablet_Celular-Fundos_limpos.png#vitrinedev)
 
-![timer-home](https://raw.githubusercontent.com/LivioAlvarenga/dt-money-finance/main/files/home-timer.png)
+![DT Money Desktop](https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/desktop.png?raw=true#vitrinedev)
 
-![timer-history](https://raw.githubusercontent.com/LivioAlvarenga/dt-money-finance/main/files/history-timer.png)
+![DT Money Tablet](https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/tablet.png?raw=true)
+
+![DT Money mobile](https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/mobile.png?raw=true)
 
 <a id="-sobre-o-projeto"></a>
 
@@ -165,7 +166,7 @@ const path = require("path");
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "../../db.json"));
 const middlewares = jsonServer.defaults({
-  delay: 500, // to simulate delay of API
+  delay: 500,
   watch: true,
 });
 
@@ -175,9 +176,40 @@ server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = new Date().toISOString();
+    req.body.updatedAt = new Date().toISOString();
+  }
+
+  if (req.method === "PUT" || req.method === "PATCH") {
+    req.body.updatedAt = new Date().toISOString();
   }
   // Continue to JSON Server router
   next();
+});
+
+// Custom routes - to get summary
+server.get("/summary", (req, res) => {
+  const transactions = router.db.get("transactions").value();
+
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === "income") {
+        acc.income += transaction.price;
+        acc.total += transaction.price;
+      } else {
+        acc.outcome += transaction.price;
+        acc.total -= transaction.price;
+      }
+
+      return acc;
+    },
+    {
+      income: 0,
+      outcome: 0,
+      total: 0,
+    }
+  );
+
+  res.jsonp(summary);
 });
 
 server.use(router);
@@ -187,7 +219,8 @@ server.listen(3333, () => {
 });
 ```
 
-> Agora o json server irá salvar datas createdAt automaticamente com o valor Date.now() quando for feito um POST. Iguais a um banco de dados. Lembrando que o id é gerado automaticamente pelo json server.
+> Agora o json server irá salvar datas createdAt e updatedAt automaticamente com o valor Date.now() quando for feito um POST e PUT.
+> Adicionei também um GET na rota summary para passar o total income, outcome e total de todas as transações. Desta forma não preciso fazer um reduce no front-end para calcular o total de income, outcome e total. Fazer isso no front-end é uma má prática, pois o front-end não deve ter essa responsabilidade.
 
 ```json
 // Create scripts in package.json
@@ -221,12 +254,64 @@ npm install react-hot-toast # Install react-hot-toast to use toast notifications
 
 ### RF - Requisitos Funcionais
 
-- Em construção...
+- Deve utilizar mobile first e ser responsivo;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/mobile.gif?raw=true">
+<p>
+
+- Deve ser possível adicionar uma nova transação através de um modal ao clicar no botão Nova Transação;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/add-transaction.gif?raw=true">
+<p>
+
+- Deve ser possível remover uma transação através de um ícone de lixeira;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/delete-transaction.gif?raw=true">
+<p>
+
+- Deve ser possível alterar dados de uma transação através de um modal ao clicar na linha da tabela;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/edit-transaction.gif?raw=true">
+<p>
+
+- Deve ser possível ter total de entradas, saídas e total;
+
+<p align="center">
+  <img alt="deploy badge Vercel" src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/income-outcome-total.PNG?raw=true">
+<p>
+
+- Deve ser possível exibir as transações em uma tabela paginada;
+- Deve ser possível passar as paginas da tabela com botões de navegação;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/pagination-transactions.gif?raw=true">
+<p>
+
+- Deve ser possível em mobile ver um titulo com total de transações;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/quantity-transaction-mobile.PNG?raw=true">
+<p>
+
+- Deve ser possível atualizar os valores de entrada, saída e total ao adicionar, remover e alterar uma transação;
+- Deve ser possível fazer uma pesquisa full de transações através de descrição, preço ou categoria. O sistema deverá funcionar a paginação somente com este filtro;
+- Deve ser possível remover o filtro após pesquisa;
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/search-transactions.gif?raw=true">
+<p>
+
 
 ### RN - Regras de Negócio
 
-- O usuário não pode não pode começar uma tarefa sem inserir o nome da tarefa e o tempo de duração;
-- O usuário não pode começar outra tarefa sem interromper a tarefa atual;
+- O usuário não pode criar/editar transação com campos vazios e inválidos;
+- O usuário não pode criar transação com preço negativo;
+- O usuário não pode paginar a tabela com paginas negativas e nem maiores que o total de paginas;
+- Os botões de navegação/input deverão ser desativados enquanto estiver carregando os dados da API;
 
 ### RNF - Requisitos Não Funcionais
 
@@ -299,17 +384,62 @@ As variáveis de ambiente configuradas incluem:
 
 &nbsp;
 
-### ❗ 1 - Em construção...
+### ❗ 1 - O hook useCallBack
 
 &nbsp;
 
-- Formulários Controlados
+- O que é `useCallback`?
 
-Em construção...
+`useCallback` é um hook do React que retorna uma **versão memorizada** de uma função callback que só muda se uma das dependências mudar. Ele é útil quando você tem um componente filho otimizado que depende de uma função callback do componente pai. Se você não usar o `useCallback`, o componente filho será re-renderizado toda vez que a função pai for re-renderizada, mesmo que a função callback não tenha mudado.
+
+- Qual problema o `useCallback` resolve?
+
+O `useCallback` resolve o problema de performance de re-renderização de componentes filhos que dependem de funções callback do componente pai. Sem o `useCallback`, o componente filho será re-renderizado toda vez que a função pai for re-renderizada, mesmo que a função callback não tenha mudado.
+
+Imagine que você tem um componente pai que passa uma função callback para um componente filho. Sem `useCallback`, uma nova função callback é criada toda vez que o componente pai é renderizado. Isso significa que o *componente filho também é renderizado* toda vez que o componente pai é renderizado porque a função callback passada para ele é considerada uma nova prop.
+
+Agora, *isso pode não ser um problema se a renderização do componente filho for barata*. No entanto, se a renderização do componente filho for cara ou se o componente filho estiver otimizado (por exemplo, com `React.memo` ou `shouldComponentUpdate`), você terá **renderizações desnecessárias**.
+
+>`useCallback` resolve esse problema, criando uma versão memorizada da função callback que só muda se uma das dependências mudar. Isso significa que, se as dependências não mudarem, a mesma função callback será passada ao componente filho, evitando renderizações desnecessárias.
 
 &nbsp;
 
-### ❗ 2 - Em construção...
+***Tudo certo, mas show me the code!***
+
+&nbsp;
+
+```tsx
+import React, { useState } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    console.log('Criando uma nova função increment.');
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      Count: {count}
+      <Button onClick={increment} />
+    </div>
+  );
+}
+
+const Button = React.memo(({ onClick }) => {
+  console.log('Renderizando o componente Button.');
+  return (
+    <button type="button" onClick={onClick}>
+      Increment count
+    </button>
+  );
+});
+
+export default App;
+```
+
+No exemplo acima, o componente `Button` é otimizado com `React.memo`, o que significa que ele só será renderizado se suas props mudarem. No entanto, como a `função increment` é ***recriada toda vez que o App é renderizado***, `Button` ***também será renderizado toda vez que App for renderizado***.
 
 &nbsp;
 
