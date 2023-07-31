@@ -1,13 +1,13 @@
 {
   "transactions": [
     {
-      "id": 17,
       "description": "Venda de site",
       "type": "income",
       "category": "Trabalho",
       "price": 1000,
       "createdAt": "2023-06-06T10:00:00.000Z",
-      "updatedAt": "2023-07-20T20:16:59.198Z"
+      "updatedAt": "2023-07-20T20:16:59.198Z",
+      "id": 1
     },
     {
       "description": "Fazer supermercado",
@@ -16,7 +16,196 @@
       "type": "outcome",
       "createdAt": "2023-04-20T18:53:31.746Z",
       "updatedAt": "2023-07-20T20:16:31.546Z",
+      "id": 2
+    },
+    {
+      "description": "Comprei teclado",
+      "price": 170,
+      "category": "Manutenção",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:29:43.977Z",
+      "updatedAt": "2023-07-31T12:29:43.977Z",
+      "id": 3
+    },
+    {
+      "description": "Desenvolvimento de API",
+      "price": 5500,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2023-07-31T12:30:09.430Z",
+      "updatedAt": "2023-07-31T12:30:09.430Z",
+      "id": 4
+    },
+    {
+      "description": "Comprei pastel",
+      "price": 7.5,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:30:29.448Z",
+      "updatedAt": "2023-07-31T12:30:29.448Z",
+      "id": 5
+    },
+    {
+      "description": "Venda de software",
+      "price": 2000,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2023-07-31T12:32:00.000Z",
+      "updatedAt": "2023-07-31T12:32:00.000Z",
+      "id": 7
+    },
+    {
+      "description": "Pagamento de energia",
+      "price": 180,
+      "category": "Utilidades",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:33:00.000Z",
+      "updatedAt": "2023-07-31T12:33:00.000Z",
+      "id": 8
+    },
+    {
+      "description": "Consultoria",
+      "price": 3000,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2023-07-31T12:34:00.000Z",
+      "updatedAt": "2023-07-31T12:34:00.000Z",
+      "id": 9
+    },
+    {
+      "description": "Jantar em restaurante",
+      "price": 100,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:35:00.000Z",
+      "updatedAt": "2023-07-31T12:35:00.000Z",
+      "id": 10
+    },
+    {
+      "description": "Assinatura de serviço online",
+      "price": 20,
+      "category": "Entretenimento",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:36:00.000Z",
+      "updatedAt": "2023-07-31T12:36:00.000Z",
+      "id": 11
+    },
+    {
+      "description": "Venda de e-book",
+      "price": 150,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2023-07-31T12:37:00.000Z",
+      "updatedAt": "2023-07-31T12:37:00.000Z",
+      "id": 12
+    },
+    {
+      "description": "Concerto de violão",
+      "price": 60,
+      "category": "Manutenção",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:38:00.000Z",
+      "updatedAt": "2023-07-31T12:38:00.000Z",
+      "id": 13
+    },
+    {
+      "description": "Venda de curso online",
+      "price": 400,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2023-07-31T12:39:00.000Z",
+      "updatedAt": "2023-07-31T12:39:00.000Z",
+      "id": 14
+    },
+    {
+      "description": "Comprei sapatos",
+      "price": 120,
+      "category": "Vestuário",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:40:00.000Z",
+      "updatedAt": "2023-07-31T12:40:00.000Z",
+      "id": 15
+    },
+    {
+      "description": "Venda de fotos",
+      "price": 70,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2023-07-31T12:41:00.000Z",
+      "updatedAt": "2023-07-31T12:41:00.000Z",
+      "id": 16
+    },
+    {
+      "description": "Comprei uma planta",
+      "price": 25,
+      "category": "Casa",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:42:00.000Z",
+      "updatedAt": "2023-07-31T12:42:00.000Z",
+      "id": 17
+    },
+    {
+      "description": "Venda de pintura",
+      "price": 300,
+      "category": "Arte",
+      "type": "income",
+      "createdAt": "2023-07-31T12:43:00.000Z",
+      "updatedAt": "2023-07-31T12:43:00.000Z",
+      "id": 18
+    },
+    {
+      "description": "Comprei um smartphone",
+      "price": 900,
+      "category": "Eletrônicos",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:44:00.000Z",
+      "updatedAt": "2023-07-31T12:44:00.000Z",
+      "id": 19
+    },
+    {
+      "description": "Venda de música",
+      "price": 10,
+      "category": "Música",
+      "type": "income",
+      "createdAt": "2023-07-31T12:45:00.000Z",
+      "updatedAt": "2023-07-31T12:45:00.000Z",
       "id": 20
+    },
+    {
+      "description": "Corte de cabelo",
+      "price": 30,
+      "category": "Beleza",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:46:00.000Z",
+      "updatedAt": "2023-07-31T12:46:00.000Z",
+      "id": 21
+    },
+    {
+      "description": "Venda de artesanato",
+      "price": 50,
+      "category": "Arte",
+      "type": "income",
+      "createdAt": "2023-07-31T12:47:00.000Z",
+      "updatedAt": "2023-07-31T12:47:00.000Z",
+      "id": 22
+    },
+    {
+      "description": "Comprei uma bicicleta",
+      "price": 400,
+      "category": "Esporte",
+      "type": "outcome",
+      "createdAt": "2023-07-31T12:48:00.000Z",
+      "updatedAt": "2023-07-31T13:55:30.489Z",
+      "id": 23
+    },
+    {
+      "description": "Comprei teclado",
+      "price": 100,
+      "category": "Trabalho",
+      "type": "outcome",
+      "createdAt": "2023-07-31T14:08:59.426Z",
+      "updatedAt": "2023-07-31T14:08:59.426Z",
+      "id": 24
     }
   ]
 }
