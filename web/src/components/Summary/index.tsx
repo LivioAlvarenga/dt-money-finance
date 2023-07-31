@@ -1,3 +1,5 @@
+'use client'
+
 import { TransactionsContext } from '@/context/TransactionsContext'
 import { priceFormatter } from '@/utils/formatter'
 import { ArrowDownCircle, ArrowUpCircle, DollarSign } from 'lucide-react'
