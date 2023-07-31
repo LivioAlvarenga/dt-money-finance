@@ -8,31 +8,32 @@ import React from 'react'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
-    template: 'Pomodoro Timer por Livio Alvarenga | %s',
+    default: 'DT Money por Livio Alvarenga | Gestão Financeira',
+    template: 'DT Money por Livio Alvarenga | %s',
   },
   description:
-    'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
+    'O DT Money de Livio Alvarenga é uma aplicação de gestão financeira altamente eficaz. Desenvolvido com tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, este aplicativo oferece uma maneira eficiente de gerenciar suas finanças.',
   keywords:
-    'Pomodoro Timer, Gestão de Tempo, Gestão de Tarefas, NodeJs, TypeScript, JavaScript, Nextjs, React, Livio Alvarenga, Portfolio, Desenvolvedor FullStack',
+    'DT Money, Gestão Financeira, Nextjs 13, React, TypeScript, Tailwindcss, Axios, Livio Alvarenga, Portfolio, Desenvolvedor FullStack',
   openGraph: {
-    title: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
+    title: 'DT Money por Livio Alvarenga | Gestão Financeira',
     description:
-      'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
-    url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app',
-    siteName: 'Pomodoro Timer por Livio Alvarenga',
+      'O DT Money de Livio Alvarenga é uma aplicação de gestão financeira altamente eficaz. Desenvolvido com tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, este aplicativo oferece uma maneira eficiente de gerenciar suas finanças.',
+    url: 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app', // ! TODO: Change this URL
+    siteName: 'DT Money por Livio Alvarenga',
     images: [
+      // TODO: Update these image URLs and dimensions
       {
-        url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/logo-og-800-600.png',
+        url: 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/logo-og-800-600.png',
         width: 800,
         height: 600,
-        alt: 'Logo do desenvolver fullstack Livio Alvarenga',
+        alt: 'Logo do DT Money por Livio Alvarenga',
       },
       {
-        url: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/logo-og-1800-1600.png',
+        url: 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/logo-og-1800-1600.png',
         width: 1800,
         height: 1600,
-        alt: 'Logo do desenvolver fullstack Livio Alvarenga',
+        alt: 'Logo do DT Money por Livio Alvarenga',
       },
     ],
     locale: 'pt_BR',
@@ -55,13 +56,13 @@ export const metadata: Metadata = {
   ],
   twitter: {
     card: 'summary_large_image',
-    title: 'Pomodoro Timer por Livio Alvarenga | Gestão de Tarefas e Tempo',
+    title: 'DT Money por Livio Alvarenga | Gestão Financeira',
     description:
-      'O Pomodoro Timer de Livio Alvarenga é uma ferramenta de gestão de tempo altamente eficaz. Desenvolvido com tecnologias modernas como NodeJs, TypeScript, JavaScript, Nextjs, React e outros, este aplicativo permite inserir tarefas e gerenciar seu tempo com eficácia. Experimente a funcionalidade do timer e veja seu progresso em tempo real.',
+      'O DT Money de Livio Alvarenga é uma aplicação de gestão financeira altamente eficaz. Desenvolvido com tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, este aplicativo oferece uma maneira eficiente de gerenciar suas finanças.',
     creator: '@AlvarengaLivio',
     creatorId: 'https://twitter.com/AlvarengaLivio',
     images: [
-      'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/logo-og-800-600.png',
+      'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/logo-og-800-600.png', // TODO: Update this image URL
     ],
   },
   viewport: {
@@ -72,12 +73,12 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code', // ! TODO: Change this
   },
   alternates: {
-    canonical: 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/',
+    canonical: 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/', // ! TODO: Change this URL
     languages: {
-      'pt-BR': 'https://pomodoro-timer-qaf7ns626-livioalvarenga.vercel.app/',
+      'pt-BR': 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/', // ! TODO: Change this URL
     },
   },
-  category: 'Gestão de Tempo e Tarefas',
+  category: 'Gestão Financeira',
 }
 
 export default function RootLayout({

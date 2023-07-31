@@ -26,7 +26,16 @@
 
 ## 💻 Sobre o projeto
 
-🚀 Olá, sou Livio Alvarenga, um desenvolvedor Full Stack. Hoje, tenho o prazer de apresentar a vocês uma poderosa ferramenta que desenvolvi - DT Money gestão financeira. Utilizando tecnologias modernas como NodeJs, TypeScript, JavaScript, NextJs e React, esse aplicativo oferece uma maneira eficiente de ...
+🚀 Olá, sou Livio Alvarenga, um desenvolvedor Full Stack. Hoje, tenho o prazer de apresentar a vocês uma solução inovadora que desenvolvi - o DT Money, uma aplicação de gestão financeira. Utilizando tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, esse aplicativo oferece uma maneira eficiente de gerenciar suas finanças.
+
+Com o DT Money, você pode ter controle total sobre suas transações financeiras, registrando entradas e saídas, categorizando-as e visualizando o balanço geral. Projetado com uma interface amigável e responsiva, o aplicativo é compatível com diferentes dispositivos, incluindo desktop, tablet e mobile.
+
+Neste repositório, você encontrará todo o código-fonte, bem como detalhes sobre as funcionalidades e tecnologias empregadas. Além das tecnologias já mencionadas, inclui recursos como um roteador de aplicativos, integração com a API e componentes reutilizáveis.
+
+Eu defini algumas regras de negócio que devem ser observadas, e também incorporei boas práticas de desenvolvimento, como o uso de hooks e componentização.
+
+Convido vocês a explorarem o aplicativo em detalhes, aprendendo com o código e contribuindo se desejarem. Seja bem-vindo ao meu universo de codificação!
+
 
 &nbsp;
 
