@@ -309,6 +309,8 @@ A API esta localizada em **`src/app/api/transactions-json`**.
 
 A acessibilidade é um dos pilares do desenvolvimento web. Por isso, é importante que o projeto seja acessível para todos os usuários. Para isso, utilizei o Radix UI para criar componentes acessíveis, como o Modal e o RadioGroup. Também me preocupei com uma paleta de cores que atendesse aos padrões de acessibilidade.
 
+Utilizei tags semânticas para melhorar a acessibilidade do projeto. Além de boas praticas de uso dos atributos alt, title e aria-label...
+
 ```bash
 npm install @radix-ui/react-radio-group # Install Radix UI to RadioGroup
 
