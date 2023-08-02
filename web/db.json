@@ -3,24 +3,24 @@
     {
       "id": "ab26ed9d-4486-4688-9604-35969cc7054c",
       "description": "Vendi celular Iphone",
-      "price": 1500,
+      "price": 130000,
       "category": "venda",
       "type": "income",
       "createdAt": "2023-08-01T18:39:12.127Z",
-      "updatedAt": "2023-08-02T12:02:41.116Z"
+      "updatedAt": "2023-08-02T20:44:27.684Z"
     },
     {
       "description": "Comprei pastel",
-      "price": 45.1,
+      "price": 4550,
       "category": "Alimentação",
       "type": "outcome",
       "id": "3b58fb8f-6336-4295-9523-86fc5c4378e7",
       "createdAt": "2023-08-02T12:01:46.645Z",
-      "updatedAt": "2023-08-02T13:12:42.303Z"
+      "updatedAt": "2023-08-02T18:26:32.736Z"
     },
     {
       "description": "Achei na rua",
-      "price": 50,
+      "price": 5000,
       "category": "credito",
       "type": "income",
       "id": "451dec25-035c-46bc-b361-20cc436251c6",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Supermercado",
-      "price": 1260,
+      "price": 126000,
       "category": "Alimentação",
       "type": "outcome",
       "id": "ee72fa09-2f57-45b7-b416-696022fb81d7",
@@ -38,16 +38,16 @@
     },
     {
       "description": "Desenvolvimento de API",
-      "price": 4000,
+      "price": 300000,
       "category": "Trabalho",
       "type": "income",
       "id": "66bffb0b-b08f-460f-9601-58a52dd95b7d",
       "createdAt": "2023-08-02T12:04:23.290Z",
-      "updatedAt": "2023-08-02T12:04:23.290Z"
+      "updatedAt": "2023-08-02T18:27:05.003Z"
     },
     {
       "description": "Emprestimo",
-      "price": 2000,
+      "price": 200000,
       "category": "Emprestimo",
       "type": "outcome",
       "id": "6d36cd2a-de0b-4b76-a045-e2eaae90e35e",
@@ -56,7 +56,7 @@
     },
     {
       "description": "Ir ao teatro",
-      "price": 150,
+      "price": 15000,
       "category": "Entretenimento",
       "type": "outcome",
       "id": "8b72e19f-c115-4d71-9bd4-4c2132ed746d",
@@ -65,7 +65,7 @@
     },
     {
       "description": "Jantar de gala",
-      "price": 454.8,
+      "price": 45480,
       "category": "entretenimento",
       "type": "outcome",
       "id": "122f2281-9762-4f14-aa80-11a7f6ba008c",
@@ -74,7 +74,7 @@
     },
     {
       "description": "IPVA",
-      "price": 900,
+      "price": 90000,
       "category": "Veiculo",
       "type": "outcome",
       "id": "2bb4f649-a808-401c-975d-43dad3eaab34",
@@ -84,7 +84,7 @@
     {
       "id": "319037d0-455b-43be-8ae4-62eaab7beaa7",
       "description": "comprei remedio",
-      "price": 350,
+      "price": 35000,
       "category": "saude",
       "type": "outcome",
       "createdAt": "2023-08-02T12:43:14.220Z",
@@ -93,11 +93,47 @@
     {
       "id": "eaa8feeb-ce6f-4d09-9bff-24ede81c19d8",
       "description": "Criar banco de dados",
-      "price": 1000,
+      "price": 150000,
       "category": "Trabalho",
       "type": "income",
       "createdAt": "2023-08-02T12:53:21.865Z",
-      "updatedAt": "2023-08-02T12:53:21.865Z"
+      "updatedAt": "2023-08-02T18:39:05.398Z"
+    },
+    {
+      "description": "Comprei um teclado",
+      "price": 15525,
+      "category": "Trabalho",
+      "type": "outcome",
+      "id": "8b540341-9f04-41bf-890f-c7a03f6c1d17",
+      "createdAt": "2023-08-02T18:27:36.788Z",
+      "updatedAt": "2023-08-02T18:27:36.788Z"
+    },
+    {
+      "description": "comprar pão",
+      "price": 3415,
+      "category": "Alimentação",
+      "type": "outcome",
+      "id": "7bbc3aad-9656-4ccb-b0ca-421d21e3f1b0",
+      "createdAt": "2023-08-02T18:36:23.712Z",
+      "updatedAt": "2023-08-02T20:44:50.139Z"
+    },
+    {
+      "id": "d01c54e4-adf0-42ca-9b19-718f830d37d9",
+      "description": "Jujubas",
+      "price": 122,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-08-02T20:45:36.485Z",
+      "updatedAt": "2023-08-02T21:04:59.913Z"
+    },
+    {
+      "description": "Blusa",
+      "price": 9908,
+      "category": "vestuário",
+      "type": "outcome",
+      "id": "b4eca396-0301-4192-9644-8a2ac6d63b4f",
+      "createdAt": "2023-08-02T21:07:46.466Z",
+      "updatedAt": "2023-08-02T21:07:46.466Z"
     }
   ]
 }

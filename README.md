@@ -212,14 +212,36 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.use((req, res, next) => {
+  // middleware to transform the price to cents
+  if (req.method === "GET") {
+    const originalSend = res.jsonp;
+    res.jsonp = function (data) {
+      // transform the transactions, if it is an array
+      if (Array.isArray(data)) {
+        data.forEach((transaction) => {
+          transaction.price = transaction.price / 100; // transform to cents
+        });
+      }
+      // transform the transaction, if it is an object
+      else if (typeof data === "object" && data.price) {
+        data.price = data.price / 100; // transform to cents
+      }
+      originalSend.call(this, data);
+    };
+  }
+
+  // middleware to add createdAt, updatedAt and id
   if (req.method === "POST") {
     req.body.id = randomUUID();
     req.body.createdAt = new Date().toISOString();
     req.body.updatedAt = new Date().toISOString();
+    req.body.price = req.body.price * 100; // transform to cents
   }
 
+  // middleware to add updatedAt
   if (req.method === "PUT" || req.method === "PATCH") {
     req.body.updatedAt = new Date().toISOString();
+    req.body.price = req.body.price * 100; // transform to cents
   }
   // Continue to JSON Server router
   next();
@@ -231,12 +253,14 @@ server.get("/transactions/summary", (req, res) => {
 
   const summary = transactions.reduce(
     (acc, transaction) => {
+      const priceInCents = transaction.price / 100; // transform to cents
+
       if (transaction.type === "income") {
-        acc.income += transaction.price;
-        acc.total += transaction.price;
+        acc.income += priceInCents;
+        acc.total += priceInCents;
       } else {
-        acc.outcome += transaction.price;
-        acc.total -= transaction.price;
+        acc.outcome += priceInCents;
+        acc.total -= priceInCents;
       }
 
       return acc;
@@ -307,7 +331,7 @@ A API esta localizada em **`src/app/api/transactions-json`**.
 
 ### **Docker** architecture
 
->Instalando Docker https://docs.docker.com/get-docker/
+> Instalando Docker https://docs.docker.com/get-docker/
 
 ```bash
 # Command to run postgres image database without docker-compose. This image is from bitnami (https://hub.docker.com/r/bitnami/postgresql)
@@ -559,6 +583,15 @@ npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação se
 ```bash
 npm run build # Compilar o TypeScript em modo de produção
 npm run start # Iniciar o servidor em modo de produção
+```
+
+### 🧭 Prisma
+
+```bash
+npm run studio # Iniciar o Prisma Studio para visualizar o banco de dados
+npm run migrate # Criar migrations do banco de dados
+npm run seed # Popular o banco de dados com dados de desenvolvimento
+npm run generate # Gerar diagrama do banco de dados
 ```
 
 ### 🧭 Testes

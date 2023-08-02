@@ -117,8 +117,11 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       type,
     })
 
+    const { price: priceInCents, ...rest } = response.data
+    const priceInReal = Math.round((priceInCents / 100) * 100) / 100
+
     setTransactions((state) =>
-      [response.data, ...state].slice(0, TRANSACTION_LIMIT),
+      [{ ...rest, price: priceInReal }, ...state].slice(0, TRANSACTION_LIMIT),
     )
 
     setTotalTransactions((prevState) => prevState + 1)
@@ -134,8 +137,11 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       type,
     })
 
+    const { price: priceInCents, ...rest } = response.data
+    const priceInReal = Math.round((priceInCents / 100) * 100) / 100
+
     setTransactions((state) =>
-      state.map((t) => (t.id === id ? response.data : t)),
+      state.map((t) => (t.id === id ? { ...rest, price: priceInReal } : t)),
     )
   }
 

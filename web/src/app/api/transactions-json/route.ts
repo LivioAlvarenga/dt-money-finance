@@ -41,7 +41,13 @@ export async function GET(req: NextRequest) {
   const startIdx = (page - 1) * limit
   transactions = transactions.slice(startIdx, startIdx + limit)
 
-  return NextResponse.json(transactions)
+  // transform price to real
+  const transactionsInReal = transactions.map((transaction: any) => ({
+    ...transaction,
+    price: Math.round((transaction.price / 100) * 100) / 100,
+  }))
+
+  return NextResponse.json(transactionsInReal)
 }
 
 export async function POST(req: NextRequest) {
@@ -53,10 +59,12 @@ export async function POST(req: NextRequest) {
 
   const createdAt = new Date().toISOString()
 
+  const priceInCents = Math.ceil(price * 100) // transform price to cents
+
   const newTransaction = {
     id: randomUUID(),
     description,
-    price,
+    price: priceInCents,
     category,
     type,
     createdAt,

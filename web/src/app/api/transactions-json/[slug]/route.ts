@@ -17,7 +17,12 @@ export async function GET(
   )
 
   if (transaction) {
-    return NextResponse.json(transaction)
+    const transactionInReal = {
+      ...transaction,
+      price: Math.round((transaction.price / 100) * 100) / 100, // transform price to real
+    }
+
+    return NextResponse.json(transactionInReal)
   } else {
     return NextResponse.json({ message: 'Transaction not found', status: 404 })
   }
@@ -84,10 +89,12 @@ export async function PATCH(
     )
   }
 
+  const priceInCents = Math.ceil(price * 100) // transform price to cents
+
   const updatedTransaction = {
     ...data.transactions[transactionIndex],
     description,
-    price,
+    price: priceInCents,
     category,
     type,
     updatedAt: new Date().toISOString(),

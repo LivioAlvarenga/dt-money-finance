@@ -25,12 +25,14 @@ export async function GET(req: NextRequest) {
   // Calcular o resumo (income, outcome, total) das transações
   const summary = transactions.reduce(
     (acc: Summary, transaction: { type: string; price: number }) => {
+      const priceInCents = Math.round((transaction.price / 100) * 100) / 100 // transform to cents
+
       if (transaction.type === 'income') {
-        acc.income += transaction.price
-        acc.total += transaction.price
+        acc.income += priceInCents
+        acc.total += priceInCents
       } else {
-        acc.outcome += transaction.price
-        acc.total -= transaction.price
+        acc.outcome += priceInCents
+        acc.total -= priceInCents
       }
 
       return acc
