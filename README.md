@@ -293,7 +293,7 @@ Iniciei o projeto com json-server para simular uma API. E assim foi possível fi
 Porem o objetivo era criar uma API Rest no NextJs 13 com App router e utilizar o Prisma para conectar com o banco de dados MariaDB (MySQL). Assim para testar a funcionalidade da API com Next mantive o database em json e criei uma API transactions-json com os mesmos endpoints do json-server.
 Assim foi possível testar a funcionalidade da API com Next e manter o front-end funcionando para posteriormente conectar com o banco de dados MariaDB (MySQL).
 
-Para testar esta funcionalidade dev modificar a variável de ambiente NEXT_PUBLIC_API_URL, assim não terá que rodar o script dev:server para simular a API na porta 3333.
+Para testar esta funcionalidade, deve se modificar a variável de ambiente NEXT_PUBLIC_API_URL, assim não terá que rodar o script dev:server para simular a API na porta 3333.
 
 ```env
 NEXT_PUBLIC_URL_API="http://localhost:3000/api/transactions-json"
@@ -445,7 +445,6 @@ NEXT_PUBLIC_URL_API="http://localhost:3000/api/transactions-json"
 
 npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
-
 
 ### 🧭 Rodando a aplicação (Modo produção)
 
