@@ -305,6 +305,112 @@ A API esta localizada em **`src/app/api/transactions-json`**.
 
 &nbsp;
 
+### **Docker** architecture
+
+>Instalando Docker https://docs.docker.com/get-docker/
+
+```bash
+# Command to run postgres image database without docker-compose. This image is from bitnami (https://hub.docker.com/r/bitnami/postgresql)
+docker run --name api-solid-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid -p 5432:5432 bitnami/postgresql
+# We don't use this command because we use docker-compose to run all images, this command is just to show how to run a single image
+```
+
+```json
+// Create scripts in package.json
+"scripts": {
+  "start-docker": "docker-compose up -d", // Create script to run docker-compose in background
+  "stop-docker": "docker-compose stop" // Create script to stop docker-compose
+},
+```
+
+_Create **`docker-compose.yml`** file with all docker-compose config_
+
+_Create **`.dockerignore`** file with all docker-compose ignore files_
+
+```bash
+# Commands to use docker
+docker ps # List all running containers
+docker ps -a # List all containers
+docker images # List all images
+docker pull mysql # Pull mysql image database (if you want to use mysql)
+docker pull postgres # Pull postgres image database (if you want to use postgres)
+docker pull mariadb # Pull mariadb image database (if you want to use mariadb)
+docker start <container_id or container_name> # <container_id> Start container with id | <container_name> Start container with name
+docker stop <container_id or container_name> # <container_id> Stop container with id | <container_name> Stop container with name
+docker pause <container_id or container_name> # <container_id> Pause container with id | <container_name> Pause container with name
+docker unpause <container_id or container_name> # <container_id> Unpause container with id | <container_name> Unpause container with name
+docker rm <container_id or container_name> # <container_id> Remove container with id | <container_name> Remove container with name
+docker logs <container_id or container_name> # <container_id> Show logs of container with id | <container_name> Show logs of container with name
+docker inspect <container_id or container_name> # <container_id> Show all information of container with id | <container_name> Show all information of container with name
+docker-compose --version # Show docker-compose version
+docker-compose up # Run docker-compose, show logs in terminal
+docker-compose up -d # Run docker-compose in background, not show logs in terminal
+docker-compose start # Start o docker-compose
+docker-compose stop # Stop o docker-compose, not remove all data in database
+docker-compose down # Stop and remove o docker-compose, obs remove all data in database
+```
+
+&nbsp;
+
+### **PrismaJs** database architecture
+
+```bash
+npm install prisma # Install Prisma
+npm i prisma-erd-generator @mermaid-js/mermaid-cli # Install Prisma ERD generator
+npm i @prisma/client # Install Prisma client
+
+npx prisma init # Create prisma folder with prisma.schema and prisma folder
+npx prisma migrate dev # Enter a name for the new migration: » created tab Habits
+npx prisma studio # Open Prisma Studio in browser
+npx prisma studio -b chrome -p 5173 # Open Prisma Studio in browser with specific port and browser
+npx prisma generate # Generate diagram in prisma folder
+npx prisma db seed # Seed database with data in prisma/seed.ts - Populate database with data for development
+```
+
+```typescript
+// Add generator in prisma.schema
+generator erd {
+  provider = "prisma-erd-generator"
+}
+```
+
+```json
+// Create scripts in package.json
+"scripts": {
+  "studio": "npx prisma studio -b chrome -p 5173", // Create script to open Prisma Studio in browser with specific port and browser
+  "generate": "npx prisma generate", // Create script to generate diagram in prisma folder
+  "migrate": "npx prisma migrate dev", // Create script to migrate database
+  "seed": "npx prisma db seed" // Create script to seed database
+},
+```
+
+**`Environment variables to databases mysql`**
+
+&nbsp;
+
+_Create **`DATABASE_URL`** in .env and .env.example file with **`MySql`**_
+
+```.env
+DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
+
+SHADOW_DATABASE_URL="mysql://OTHER_USER:PASSWORD@HOST:PORT/OTHER_DATABASE_NAME"
+```
+
+> I used mysql, but you can use postgresql, mariadb, sqlite, sqlserver, mongodb, etc.
+
+```typescript
+// Add datasource in prisma.schema to mysql database
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+// https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database
+// Exist provider that user cannot have access to create a database, to resolve this problem, you can use shadow database
+```
+
+&nbsp;
+
 ### **Acessibilidade** architecture
 
 A acessibilidade é um dos pilares do desenvolvimento web. Por isso, é importante que o projeto seja acessível para todos os usuários. Para isso, utilizei o Radix UI para criar componentes acessíveis, como o Modal e o RadioGroup. Também me preocupei com uma paleta de cores que atendesse aos padrões de acessibilidade.
