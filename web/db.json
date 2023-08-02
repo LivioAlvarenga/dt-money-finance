@@ -1,211 +1,103 @@
 {
   "transactions": [
     {
-      "description": "Venda de site",
+      "id": "ab26ed9d-4486-4688-9604-35969cc7054c",
+      "description": "Vendi celular Iphone",
+      "price": 1500,
+      "category": "venda",
       "type": "income",
-      "category": "Trabalho",
-      "price": 1000,
-      "createdAt": "2023-06-06T10:00:00.000Z",
-      "updatedAt": "2023-07-20T20:16:59.198Z",
-      "id": 1
-    },
-    {
-      "description": "Fazer supermercado",
-      "price": 970.52,
-      "category": "Alimentação",
-      "type": "outcome",
-      "createdAt": "2023-04-20T18:53:31.746Z",
-      "updatedAt": "2023-07-20T20:16:31.546Z",
-      "id": 2
-    },
-    {
-      "description": "Comprei teclado",
-      "price": 170,
-      "category": "Manutenção",
-      "type": "outcome",
-      "createdAt": "2023-07-31T12:29:43.977Z",
-      "updatedAt": "2023-07-31T12:29:43.977Z",
-      "id": 3
-    },
-    {
-      "description": "Desenvolvimento de API",
-      "price": 5500,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2023-07-31T12:30:09.430Z",
-      "updatedAt": "2023-07-31T12:30:09.430Z",
-      "id": 4
+      "createdAt": "2023-08-01T18:39:12.127Z",
+      "updatedAt": "2023-08-02T12:02:41.116Z"
     },
     {
       "description": "Comprei pastel",
-      "price": 7.5,
+      "price": 45.1,
       "category": "Alimentação",
       "type": "outcome",
-      "createdAt": "2023-07-31T12:30:29.448Z",
-      "updatedAt": "2023-07-31T12:30:29.448Z",
-      "id": 5
+      "id": "3b58fb8f-6336-4295-9523-86fc5c4378e7",
+      "createdAt": "2023-08-02T12:01:46.645Z",
+      "updatedAt": "2023-08-02T13:12:42.303Z"
     },
     {
-      "description": "Venda de software",
+      "description": "Achei na rua",
+      "price": 50,
+      "category": "credito",
+      "type": "income",
+      "id": "451dec25-035c-46bc-b361-20cc436251c6",
+      "createdAt": "2023-08-02T12:02:56.446Z",
+      "updatedAt": "2023-08-02T12:02:56.446Z"
+    },
+    {
+      "description": "Supermercado",
+      "price": 1260,
+      "category": "Alimentação",
+      "type": "outcome",
+      "id": "ee72fa09-2f57-45b7-b416-696022fb81d7",
+      "createdAt": "2023-08-02T12:04:01.167Z",
+      "updatedAt": "2023-08-02T12:52:45.681Z"
+    },
+    {
+      "description": "Desenvolvimento de API",
+      "price": 4000,
+      "category": "Trabalho",
+      "type": "income",
+      "id": "66bffb0b-b08f-460f-9601-58a52dd95b7d",
+      "createdAt": "2023-08-02T12:04:23.290Z",
+      "updatedAt": "2023-08-02T12:04:23.290Z"
+    },
+    {
+      "description": "Emprestimo",
       "price": 2000,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2023-07-31T12:32:00.000Z",
-      "updatedAt": "2023-07-31T12:32:00.000Z",
-      "id": 7
-    },
-    {
-      "description": "Pagamento de energia",
-      "price": 180,
-      "category": "Utilidades",
+      "category": "Emprestimo",
       "type": "outcome",
-      "createdAt": "2023-07-31T12:33:00.000Z",
-      "updatedAt": "2023-07-31T12:33:00.000Z",
-      "id": 8
+      "id": "6d36cd2a-de0b-4b76-a045-e2eaae90e35e",
+      "createdAt": "2023-08-02T12:23:40.859Z",
+      "updatedAt": "2023-08-02T12:23:40.859Z"
     },
     {
-      "description": "Consultoria",
-      "price": 3000,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2023-07-31T12:34:00.000Z",
-      "updatedAt": "2023-07-31T12:34:00.000Z",
-      "id": 9
-    },
-    {
-      "description": "Jantar em restaurante",
-      "price": 100,
-      "category": "Alimentação",
-      "type": "outcome",
-      "createdAt": "2023-07-31T12:35:00.000Z",
-      "updatedAt": "2023-07-31T12:35:00.000Z",
-      "id": 10
-    },
-    {
-      "description": "Assinatura de serviço online",
-      "price": 20,
+      "description": "Ir ao teatro",
+      "price": 150,
       "category": "Entretenimento",
       "type": "outcome",
-      "createdAt": "2023-07-31T12:36:00.000Z",
-      "updatedAt": "2023-07-31T12:36:00.000Z",
-      "id": 11
+      "id": "8b72e19f-c115-4d71-9bd4-4c2132ed746d",
+      "createdAt": "2023-08-02T12:24:03.967Z",
+      "updatedAt": "2023-08-02T12:24:03.967Z"
     },
     {
-      "description": "Venda de e-book",
-      "price": 150,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2023-07-31T12:37:00.000Z",
-      "updatedAt": "2023-07-31T12:37:00.000Z",
-      "id": 12
-    },
-    {
-      "description": "Concerto de violão",
-      "price": 60,
-      "category": "Manutenção",
+      "description": "Jantar de gala",
+      "price": 454.8,
+      "category": "entretenimento",
       "type": "outcome",
-      "createdAt": "2023-07-31T12:38:00.000Z",
-      "updatedAt": "2023-07-31T12:38:00.000Z",
-      "id": 13
+      "id": "122f2281-9762-4f14-aa80-11a7f6ba008c",
+      "createdAt": "2023-08-02T12:24:30.614Z",
+      "updatedAt": "2023-08-02T12:24:30.614Z"
     },
     {
-      "description": "Venda de curso online",
-      "price": 400,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2023-07-31T12:39:00.000Z",
-      "updatedAt": "2023-07-31T12:39:00.000Z",
-      "id": 14
-    },
-    {
-      "description": "Comprei sapatos",
-      "price": 120,
-      "category": "Vestuário",
-      "type": "outcome",
-      "createdAt": "2023-07-31T12:40:00.000Z",
-      "updatedAt": "2023-07-31T12:40:00.000Z",
-      "id": 15
-    },
-    {
-      "description": "Venda de fotos",
-      "price": 70,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2023-07-31T12:41:00.000Z",
-      "updatedAt": "2023-07-31T12:41:00.000Z",
-      "id": 16
-    },
-    {
-      "description": "Comprei uma planta",
-      "price": 25,
-      "category": "Casa",
-      "type": "outcome",
-      "createdAt": "2023-07-31T12:42:00.000Z",
-      "updatedAt": "2023-07-31T12:42:00.000Z",
-      "id": 17
-    },
-    {
-      "description": "Venda de pintura",
-      "price": 300,
-      "category": "Arte",
-      "type": "income",
-      "createdAt": "2023-07-31T12:43:00.000Z",
-      "updatedAt": "2023-07-31T12:43:00.000Z",
-      "id": 18
-    },
-    {
-      "description": "Comprei um smartphone",
+      "description": "IPVA",
       "price": 900,
-      "category": "Eletrônicos",
+      "category": "Veiculo",
       "type": "outcome",
-      "createdAt": "2023-07-31T12:44:00.000Z",
-      "updatedAt": "2023-07-31T12:44:00.000Z",
-      "id": 19
+      "id": "2bb4f649-a808-401c-975d-43dad3eaab34",
+      "createdAt": "2023-08-02T12:25:11.709Z",
+      "updatedAt": "2023-08-02T12:25:11.709Z"
     },
     {
-      "description": "Venda de música",
-      "price": 10,
-      "category": "Música",
-      "type": "income",
-      "createdAt": "2023-07-31T12:45:00.000Z",
-      "updatedAt": "2023-07-31T12:45:00.000Z",
-      "id": 20
-    },
-    {
-      "description": "Corte de cabelo",
-      "price": 30,
-      "category": "Beleza",
+      "id": "319037d0-455b-43be-8ae4-62eaab7beaa7",
+      "description": "comprei remedio",
+      "price": 350,
+      "category": "saude",
       "type": "outcome",
-      "createdAt": "2023-07-31T12:46:00.000Z",
-      "updatedAt": "2023-07-31T12:46:00.000Z",
-      "id": 21
+      "createdAt": "2023-08-02T12:43:14.220Z",
+      "updatedAt": "2023-08-02T13:07:08.206Z"
     },
     {
-      "description": "Venda de artesanato",
-      "price": 50,
-      "category": "Arte",
-      "type": "income",
-      "createdAt": "2023-07-31T12:47:00.000Z",
-      "updatedAt": "2023-07-31T12:47:00.000Z",
-      "id": 22
-    },
-    {
-      "description": "Comprei uma bicicleta",
-      "price": 400,
-      "category": "Esporte",
-      "type": "outcome",
-      "createdAt": "2023-07-31T12:48:00.000Z",
-      "updatedAt": "2023-07-31T13:55:30.489Z",
-      "id": 23
-    },
-    {
-      "description": "Comprei teclado",
-      "price": 100,
+      "id": "eaa8feeb-ce6f-4d09-9bff-24ede81c19d8",
+      "description": "Criar banco de dados",
+      "price": 1000,
       "category": "Trabalho",
-      "type": "outcome",
-      "createdAt": "2023-07-31T14:08:59.426Z",
-      "updatedAt": "2023-07-31T14:08:59.426Z",
-      "id": 24
+      "type": "income",
+      "createdAt": "2023-08-02T12:53:21.865Z",
+      "updatedAt": "2023-08-02T12:53:21.865Z"
     }
   ]
 }

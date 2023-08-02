@@ -21,8 +21,8 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 interface EditTransactionModalProps {
-  id: number
-  setOpenModal: React.Dispatch<React.SetStateAction<number | null>>
+  id: string
+  setOpenModal: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 export function EditTransactionModal({
@@ -67,7 +67,7 @@ export function EditTransactionModal({
       const fetchedTransaction = await getTransactionById(id)
       reset({
         description: fetchedTransaction.description,
-        price: fetchedTransaction.price.toString(),
+        price: fetchedTransaction.price.toString().replace('.', ','),
         category: fetchedTransaction.category,
         type: fetchedTransaction.type,
       })

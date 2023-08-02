@@ -1,4 +1,5 @@
 const jsonServer = require('json-server')
+const { randomUUID } = require('crypto')
 const path = require('path')
 const server = jsonServer.create()
 const router = jsonServer.router(path.join(__dirname, '../../db.json'))
@@ -12,6 +13,7 @@ server.use(jsonServer.bodyParser)
 
 server.use((req, res, next) => {
   if (req.method === 'POST') {
+    req.body.id = randomUUID()
     req.body.createdAt = new Date().toISOString()
     req.body.updatedAt = new Date().toISOString()
   }
@@ -47,6 +49,13 @@ server.get('/summary', (req, res) => {
   )
 
   res.jsonp(summary)
+})
+
+server.get('/count', (req, res) => {
+  const transactions = router.db.get('transactions').value()
+
+  const count = transactions.length
+  res.jsonp({ count })
 })
 
 server.use(router)

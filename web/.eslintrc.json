@@ -10,7 +10,8 @@
       ],
       "excludedFiles": [
         "page.tsx",
-        "layout.tsx"
+        "layout.tsx",
+        "**/api/**/*"
       ],
       "plugins": [
         "import"

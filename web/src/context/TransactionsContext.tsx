@@ -1,6 +1,7 @@
 'use client'
 
 import { api } from '@/lib/axios'
+import 'dotenv/config'
 import React, {
   ReactNode,
   createContext,
@@ -10,7 +11,7 @@ import React, {
 } from 'react'
 
 interface TransactionProps {
-  id: number
+  id: string
   description: string
   price: number
   type: 'income' | 'outcome'
@@ -26,7 +27,7 @@ interface CreateTransactionInputProps {
 }
 
 interface EditTransactionInputProps {
-  id: number
+  id: string
   description: string
   price: number
   type: 'income' | 'outcome'
@@ -36,9 +37,9 @@ interface EditTransactionInputProps {
 interface TransactionContextType {
   transactions: TransactionProps[]
   createTransaction: (transaction: CreateTransactionInputProps) => Promise<void>
-  deleteTransaction: (id: number) => Promise<void>
+  deleteTransaction: (id: string) => Promise<void>
   editTransaction: (transaction: EditTransactionInputProps) => Promise<void>
-  getTransactionById: (id: number) => Promise<TransactionProps>
+  getTransactionById: (id: string) => Promise<TransactionProps>
   nextPage: (page: number) => void
   prevPage: (page: number) => void
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>
@@ -62,6 +63,11 @@ interface TransactionProviderProps {
 export const TransactionsContext = createContext({} as TransactionContextType)
 
 const TRANSACTION_LIMIT = 5
+
+const END_POINT =
+  process.env.NEXT_PUBLIC_URL_API === 'http://localhost:3333'
+    ? '/'
+    : '/transactions/'
 
 export function TransactionProvider({ children }: TransactionProviderProps) {
   const [transactions, setTransactions] = useState<TransactionProps[]>([])
@@ -101,7 +107,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
   }, [searchTerm])
 
-  async function getTransactionById(id: number) {
+  async function getTransactionById(id: string) {
     const response = await api.get(`/transactions/${id}`)
     return response.data
   }
@@ -138,7 +144,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     )
   }
 
-  async function deleteTransaction(id: number) {
+  async function deleteTransaction(id: string) {
     await api.delete(`/transactions/${id}`)
 
     setTransactions((prevTransactions) =>
@@ -151,8 +157,13 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }
 
   async function fetchSummary() {
-    const response = await api.get('/summary')
+    const response = await api.get(`${END_POINT}summary`)
     setSummary(response.data)
+  }
+
+  async function fetchCount() {
+    const response = await api.get(`${END_POINT}count`)
+    setTotalTransactions(response.data.totalTransactions)
   }
 
   function nextPage(page: number) {
@@ -186,6 +197,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   // Fetch summary
   useEffect(() => {
     fetchSummary()
+    fetchCount()
   }, [transactions])
 
   return (

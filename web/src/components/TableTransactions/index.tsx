@@ -14,9 +14,9 @@ import { EditTransactionModal } from '../EditTransactionModal'
 
 export function TableTransactions() {
   const { transactions, deleteTransaction } = useContext(TransactionsContext)
-  const [openModal, setOpenModal] = useState<number | null>(null)
+  const [openModal, setOpenModal] = useState<string | null>(null)
 
-  function handleDeleteTransaction(id: number) {
+  function handleDeleteTransaction(id: string) {
     deleteTransaction(id)
   }
 
