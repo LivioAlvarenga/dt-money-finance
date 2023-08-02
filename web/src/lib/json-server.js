@@ -26,7 +26,7 @@ server.use((req, res, next) => {
 })
 
 // Custom routes - to get summary
-server.get('/summary', (req, res) => {
+server.get('/transactions/summary', (req, res) => {
   const transactions = router.db.get('transactions').value()
 
   const summary = transactions.reduce(
@@ -51,7 +51,7 @@ server.get('/summary', (req, res) => {
   res.jsonp(summary)
 })
 
-server.get('/count', (req, res) => {
+server.get('/transactions/count', (req, res) => {
   const transactions = router.db.get('transactions').value()
 
   const count = transactions.length

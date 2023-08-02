@@ -64,11 +64,6 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 
 const TRANSACTION_LIMIT = 5
 
-const END_POINT =
-  process.env.NEXT_PUBLIC_URL_API === 'http://localhost:3333'
-    ? '/'
-    : '/transactions/'
-
 export function TransactionProvider({ children }: TransactionProviderProps) {
   const [transactions, setTransactions] = useState<TransactionProps[]>([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -80,7 +75,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
 
   const fetchTransactions = useCallback(
     async (page = currentPage, limit = TRANSACTION_LIMIT) => {
-      const response = await api.get('/transactions', {
+      const response = await api.get('', {
         params: {
           _sort: 'createdAt',
           _order: 'desc',
@@ -96,7 +91,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   )
 
   const getTotalPagination = useCallback(async () => {
-    const response = await api.get('/transactions', {
+    const response = await api.get('', {
       params: {
         q: searchTerm,
       },
@@ -108,14 +103,14 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }, [searchTerm])
 
   async function getTransactionById(id: string) {
-    const response = await api.get(`/transactions/${id}`)
+    const response = await api.get(`/${id}`)
     return response.data
   }
 
   async function createTransaction(transaction: CreateTransactionInputProps) {
     const { description, price, category, type } = transaction
 
-    const response = await api.post('/transactions', {
+    const response = await api.post('', {
       description,
       price,
       category,
@@ -132,7 +127,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   async function editTransaction(transaction: EditTransactionInputProps) {
     const { id, description, price, category, type } = transaction
 
-    const response = await api.patch(`/transactions/${id}`, {
+    const response = await api.patch(`/${id}`, {
       description,
       price,
       category,
@@ -145,7 +140,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }
 
   async function deleteTransaction(id: string) {
-    await api.delete(`/transactions/${id}`)
+    await api.delete(`/${id}`)
 
     setTransactions((prevTransactions) =>
       prevTransactions.filter((transaction) => transaction.id !== id),
@@ -157,12 +152,12 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }
 
   async function fetchSummary() {
-    const response = await api.get(`${END_POINT}summary`)
+    const response = await api.get(`/summary`)
     setSummary(response.data)
   }
 
   async function fetchCount() {
-    const response = await api.get(`${END_POINT}count`)
+    const response = await api.get(`/count`)
     setTotalTransactions(response.data.totalTransactions)
   }
 
