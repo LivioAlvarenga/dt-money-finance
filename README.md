@@ -1,5 +1,5 @@
 <h1 align="center"> 
-	Projeto DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss e Axios.
+	Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest Nextjs.
 </h1>
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
@@ -14,7 +14,6 @@
 </p>
 
 &nbsp;
-
 
 ![DT Money Desktop](https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/desktop.png?raw=true#vitrinedev)
 
@@ -35,7 +34,6 @@ Neste repositório, você encontrará todo o código-fonte, bem como detalhes so
 Eu defini algumas regras de negócio que devem ser observadas, e também incorporei boas práticas de desenvolvimento, como o uso de hooks e componentização.
 
 Convido vocês a explorarem o aplicativo em detalhes, aprendendo com o código e contribuindo se desejarem. Seja bem-vindo ao meu universo de codificação!
-
 
 &nbsp;
 
@@ -61,10 +59,10 @@ Convido vocês a explorarem o aplicativo em detalhes, aprendendo com o código e
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                                        |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| :sparkles: Nome       | **Projeto DT Money gestão financeira com Nextjs 13 App Router, React, Typescript,Tailwindcss e Axios.**                |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, EsLint e prettier. |
+| :placard: Vitrine.Dev |                                                                                                                                                             |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :sparkles: Nome       | **Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest Nextjs.** |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, Docker, Prisma, MySql, Vitest, EsLint, prettier.        |
 
 ---
 
@@ -90,6 +88,11 @@ As seguintes ferramentas foram usadas na construção do projeto
   <a href= "https://zod.dev/" target="_blank" rel="noopener noreferrer"><img alt="ZOD badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/7caba2f743ee9b61f0225a22da57466ecb67097c/files/zod-badge.svg"></a>
   <a href= "https://axios-http.com/"><img alt="Axios badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/c9f5fabeb5b6cbc25fb1151431e0b8e7412a3786/files/axios-badge.svg"></a>
   <a href= "https://www.figma.com/file/ddZDhVj3qZip1jZ9gibEAd/DT-Money-(Community)-(Copy)?mode=dev"><img alt="link projeto no figma" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/figma-badge.svg"></a>
+  <a href= "https://www.dotenv.org/" target="_blank" rel="noopener noreferrer"><img alt="Dotenv badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/4eed338fdcd547570ed365f2b344e43c8202e88f/files/dotenv-badge.svg"></a>
+  <a href= "https://www.prisma.io/"><img alt="Prisma badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/ef5ebd0021ccb0a8d244f5636b2b238ab0af09e7/files/prisma-badge.svg"></a>
+  <a href= "https://www.docker.com/"><img alt="Docker badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d7f6873e652db237a89583607eb70757ebaaa6d1/files/docker-badge.svg"></a>
+  <a href= "https://www.mysql.com/"><img alt="MySQL badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d7f6873e652db237a89583607eb70757ebaaa6d1/files/mysql-badge.svg"></a>
+  <a href= "https://vitest.dev/"><img alt="Vitest Badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/28993b470420f2c44db532b4e6e662e60a186954/files/vitest-badge.svg"></a>
   <a href= "https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer"><img alt="vscode download" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/vsCode-badge.svg"></a>
   <a href= "https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer"><img alt="code formatter prettier" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/prettier-badge.svg"></a>
   <a href= "https://eslint.org/" target="_blank" rel="noopener noreferrer"><img alt="code standardization eslint" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/59575ed19b13121cd113cfc66a71f18dea210c79/files/eslint-badge.svg"></a>
@@ -104,7 +107,7 @@ As seguintes ferramentas foram usadas na construção do projeto
 
 &nbsp;
 
-### Criando **projeto NextJs**
+### Criando **projeto NextJs Frontend / Backend**
 
 ```bash
 # Create project nodejs with npm and -y to accept all default options
@@ -129,7 +132,22 @@ npx create-next-app@latest
 },
 ```
 
-_Create **`.nvmrc`** file with version of NodeJs to use in project_
+_Create **`.gitignore`** file_
+
+_Create **`.npmrc`** file with `save-exact=true` to save exact version of dependencies_
+
+&nbsp;
+
+### **.env** architecture
+
+```bash
+npm install dotenv # Install dotenv to use environment variables in NodeJs
+```
+
+_Create **`.env`** file with all environment variables and gitignore this file_
+
+_Create **`.env.example`** file with all environment variables and not gitignore this file_
+
 &nbsp;
 
 ### Configurando **ESlint and Prettier**
@@ -143,7 +161,17 @@ _Edit **`.eslintrc.json`** file with extends Rocketseat ESLint config_
 
 ```json
 {
-  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"]
+  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"],
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "excludedFiles": ["page.tsx", "layout.tsx", "**/api/**/*"],
+      "plugins": ["import"],
+      "rules": {
+        "import/no-default-export": "error"
+      }
+    }
+  ]
 }
 ```
 
@@ -159,7 +187,7 @@ module.exports = {
 
 &nbsp;
 
-### **Server** architecture
+### **Json-Server** architecture
 
 ```bash
 npm install -D json-server # Install json-server to simulate API
@@ -171,6 +199,7 @@ _Create **`src/lib/json-server.js`** file with json-server configuration_
 ```javascript
 // src/lib/json-server.js
 const jsonServer = require("json-server");
+const { randomUUID } = require("crypto");
 const path = require("path");
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "../../db.json"));
@@ -184,6 +213,7 @@ server.use(jsonServer.bodyParser);
 
 server.use((req, res, next) => {
   if (req.method === "POST") {
+    req.body.id = randomUUID();
     req.body.createdAt = new Date().toISOString();
     req.body.updatedAt = new Date().toISOString();
   }
@@ -196,7 +226,7 @@ server.use((req, res, next) => {
 });
 
 // Custom routes - to get summary
-server.get("/summary", (req, res) => {
+server.get("/transactions/summary", (req, res) => {
   const transactions = router.db.get("transactions").value();
 
   const summary = transactions.reduce(
@@ -221,6 +251,13 @@ server.get("/summary", (req, res) => {
   res.jsonp(summary);
 });
 
+server.get("/transactions/count", (req, res) => {
+  const transactions = router.db.get("transactions").value();
+
+  const count = transactions.length;
+  res.jsonp({ count });
+});
+
 server.use(router);
 
 server.listen(3333, () => {
@@ -228,8 +265,15 @@ server.listen(3333, () => {
 });
 ```
 
-> Agora o json server irá salvar datas createdAt e updatedAt automaticamente com o valor Date.now() quando for feito um POST e PUT.
-> Adicionei também um GET na rota summary para passar o total income, outcome e total de todas as transações. Desta forma não preciso fazer um reduce no front-end para calcular o total de income, outcome e total. Fazer isso no front-end é uma má prática, pois o front-end não deve ter essa responsabilidade.
+> Agora o json server irá salvar datas createdAt e updatedAt automaticamente com o valor Date.now() quando for feito um POST, PUT or PATCH.
+
+> Adicionei também um GET na rota /transactions/summary para passar o total income, outcome e total de todas as transações. Desta forma não preciso fazer um reduce no front-end para calcular o total de income, outcome e total. Fazer isso no front-end é uma má prática, pois o front-end não deve ter essa responsabilidade.
+
+> Adicionei também um GET na rota /transactions/count para passar o total de transações.
+
+```env
+NEXT_PUBLIC_URL_API="http://localhost:3333/transactions"
+```
 
 ```json
 // Create scripts in package.json
@@ -238,16 +282,45 @@ server.listen(3333, () => {
 },
 ```
 
+Além de modificar a variável de ambiente NEXT_PUBLIC_API_URL deve rodar o script dev:server para simular a API na porta 3333.
+
+&nbsp;
+
+### **API Nextjs com json de database** architecture
+
+Iniciei o projeto com json-server para simular uma API. E assim foi possível finalizar o front-end.
+
+Porem o objetivo era criar uma API Rest no NextJs 13 com App router e utilizar o Prisma para conectar com o banco de dados MariaDB (MySQL). Assim para testar a funcionalidade da API com Next mantive o database em json e criei uma API transactions-json com os mesmos endpoints do json-server.
+Assim foi possível testar a funcionalidade da API com Next e manter o front-end funcionando para posteriormente conectar com o banco de dados MariaDB (MySQL).
+
+Para testar esta funcionalidade dev modificar a variável de ambiente NEXT_PUBLIC_API_URL, assim não terá que rodar o script dev:server para simular a API na porta 3333.
+
+```env
+NEXT_PUBLIC_URL_API="http://localhost:3000/api/transactions-json"
+```
+
+A API esta localizada em **`src/app/api/transactions-json`**.
+
+> Mesmo apos desenvolver a API Rest com NextJs e SOLID, manterei tanto o json-server quanto o transactions-json para demostrar a evolução do projeto.
+
+&nbsp;
+
+### **Acessibilidade** architecture
+
+A acessibilidade é um dos pilares do desenvolvimento web. Por isso, é importante que o projeto seja acessível para todos os usuários. Para isso, utilizei o Radix UI para criar componentes acessíveis, como o Modal e o RadioGroup. Também me preocupei com uma paleta de cores que atendesse aos padrões de acessibilidade.
+
+```bash
+npm install @radix-ui/react-radio-group # Install Radix UI to RadioGroup
+
+npm install @radix-ui/react-dialog # Install Radix UI to Modal
+```
+
 &nbsp;
 
 ### **Others** libraries
 
 ```bash
 npm install zod # Install zod to use types in NodeJs and validate data
-
-npm install @radix-ui/react-radio-group # Install Radix UI to RadioGroup
-
-npm install @radix-ui/react-dialog # Install Radix UI to Modal
 
 npm install clsx # Install clsx to generate dynamic classnames
 
@@ -314,7 +387,6 @@ npm install react-hot-toast # Install react-hot-toast to use toast notifications
   <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/search-transactions.gif?raw=true">
 <p>
 
-
 ### RN - Regras de Negócio
 
 - O usuário não pode criar/editar transação com campos vazios e inválidos;
@@ -329,6 +401,7 @@ npm install react-hot-toast # Install react-hot-toast to use toast notifications
 - Uso de Prettier para padronização de código;
 - Uso de TailwindCSS para estilização;
 - Uso de Json Server para simular uma API;
+- Uso de API Nextjs com App Router para criar uma API Rest;
 - Uso de Radix UI para Modal e RadioGroup (componentes com acessibilidade);
 - Uso de NextJs para SSR;
 - Uso de TypeScript para tipagem estática;
@@ -339,24 +412,40 @@ npm install react-hot-toast # Install react-hot-toast to use toast notifications
 - Uso de react-hook-form para formulários;
 - Uso de @hookform/resolvers para validação de formulários;
 - Uso de axios para requisições HTTP;
+- Uso de toast para notificações;
+- Uso de Prisma para conectar com o banco de dados MariaDB (MySQL);
+- Uso de Docker para criar um container com o banco de dados MariaDB (MySQL);
+- Uso de Vitest para testes unitários;
 
 &nbsp;
 
-### 🧭 Rodando a aplicação (Modo desenvolvimento)
+### 🧭 Rodando a aplicação (Modo desenvolvimento) com json-server
 
 ```bash
 git clone https://github.com/LivioAlvarenga/t-money-finance # Clone este repositório
-cd t-money-finance # Acesse a pasta do projeto no seu terminal/cmd
+cd dt-money-finance # Acesse a pasta do projeto no seu terminal/cmd
 npm install # Instale as dependências
+
+# Modificar variável de ambiente NEXT_PUBLIC_URL_API no arquivo .env para:
+NEXT_PUBLIC_URL_API="http://localhost:3333/transactions"
+
 npm run dev:server # Execute o json-server para simular uma API. A API será executada na porta:3333 - acesse http://localhost:3333
 npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
-
-# Read the observations in home page
 ```
 
-_Create **`.npmrc`** file with `save-exact=true` to save exact version of dependencies. Create only if you want to save exact version of dependencies and do this after install all dependencies_
+### 🧭 Rodando a aplicação (Modo desenvolvimento) com API Nextjs com json de database
 
-_Open **`.gitignore`** and add files folder, because this folder is to put files of project that is not committed in git_
+```bash
+git clone https://github.com/LivioAlvarenga/t-money-finance # Clone este repositório
+cd dt-money-finance # Acesse a pasta do projeto no seu terminal/cmd
+npm install # Instale as dependências
+
+# Modificar variável de ambiente NEXT_PUBLIC_URL_API no arquivo .env para:
+NEXT_PUBLIC_URL_API="http://localhost:3000/api/transactions-json"
+
+npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
+```
+
 
 ### 🧭 Rodando a aplicação (Modo produção)
 
@@ -405,26 +494,26 @@ As variáveis de ambiente configuradas incluem:
 
 O `useCallback` resolve o problema de performance de re-renderização de componentes filhos que dependem de funções callback do componente pai. Sem o `useCallback`, o componente filho será re-renderizado toda vez que a função pai for re-renderizada, mesmo que a função callback não tenha mudado.
 
-Imagine que você tem um componente pai que passa uma função callback para um componente filho. Sem `useCallback`, uma nova função callback é criada toda vez que o componente pai é renderizado. Isso significa que o *componente filho também é renderizado* toda vez que o componente pai é renderizado porque a função callback passada para ele é considerada uma nova prop.
+Imagine que você tem um componente pai que passa uma função callback para um componente filho. Sem `useCallback`, uma nova função callback é criada toda vez que o componente pai é renderizado. Isso significa que o _componente filho também é renderizado_ toda vez que o componente pai é renderizado porque a função callback passada para ele é considerada uma nova prop.
 
-Agora, *isso pode não ser um problema se a renderização do componente filho for barata*. No entanto, se a renderização do componente filho for cara ou se o componente filho estiver otimizado (por exemplo, com `React.memo` ou `shouldComponentUpdate`), você terá **renderizações desnecessárias**.
+Agora, _isso pode não ser um problema se a renderização do componente filho for barata_. No entanto, se a renderização do componente filho for cara ou se o componente filho estiver otimizado (por exemplo, com `React.memo` ou `shouldComponentUpdate`), você terá **renderizações desnecessárias**.
 
->`useCallback` resolve esse problema, criando uma versão memorizada da função callback que só muda se uma das dependências mudar. Isso significa que, se as dependências não mudarem, a mesma função callback será passada ao componente filho, evitando renderizações desnecessárias.
+> `useCallback` resolve esse problema, criando uma versão memorizada da função callback que só muda se uma das dependências mudar. Isso significa que, se as dependências não mudarem, a mesma função callback será passada ao componente filho, evitando renderizações desnecessárias.
 
 &nbsp;
 
-***Tudo certo, mas show me the code!***
+**_Tudo certo, mas show me the code!_**
 
 &nbsp;
 
 ```tsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
 
   const increment = () => {
-    console.log('Criando uma nova função increment.');
+    console.log("Criando uma nova função increment.");
     setCount(count + 1);
   };
 
@@ -437,7 +526,7 @@ function App() {
 }
 
 const Button = React.memo(({ onClick }) => {
-  console.log('Renderizando o componente Button.');
+  console.log("Renderizando o componente Button.");
   return (
     <button type="button" onClick={onClick}>
       Increment count
@@ -448,7 +537,7 @@ const Button = React.memo(({ onClick }) => {
 export default App;
 ```
 
-No exemplo acima, o componente `Button` é otimizado com `React.memo`, o que significa que ele só será renderizado se suas props mudarem. No entanto, como a `função increment` é ***recriada toda vez que o App é renderizado***, `Button` ***também será renderizado toda vez que App for renderizado***.
+No exemplo acima, o componente `Button` é otimizado com `React.memo`, o que significa que ele só será renderizado se suas props mudarem. No entanto, como a `função increment` é **_recriada toda vez que o App é renderizado_**, `Button` **_também será renderizado toda vez que App for renderizado_**.
 
 &nbsp;
 
