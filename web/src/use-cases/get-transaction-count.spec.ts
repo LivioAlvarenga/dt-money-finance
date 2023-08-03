@@ -39,4 +39,10 @@ describe('Get Transaction Count Use Case', () => {
 
     expect(transactionsCount).toEqual(2)
   })
+
+  it('should return zero if there are no transactions', async () => {
+    const { transactionsCount } = await sut.execute()
+
+    expect(transactionsCount).toEqual(0)
+  })
 })

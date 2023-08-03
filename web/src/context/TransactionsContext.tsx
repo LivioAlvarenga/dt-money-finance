@@ -158,8 +158,12 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }
 
   async function fetchSummary() {
-    const response = await api.get(`/summary`)
-    setSummary(response.data)
+    try {
+      const response = await api.get(`/summary`)
+      setSummary(response.data)
+    } catch (error) {
+      console.error('💥An error occurred while fetching the summary:', error)
+    }
   }
 
   async function fetchCount() {

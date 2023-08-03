@@ -7,4 +7,30 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
 
     return countTransactions
   }
+
+  async sumIncomeTransactions() {
+    const incomeSummary = await prisma.transaction.aggregate({
+      _sum: {
+        price: true,
+      },
+      where: {
+        type: 'income',
+      },
+    })
+
+    return incomeSummary._sum.price || 0
+  }
+
+  async sumOutcomeTransactions() {
+    const outcomeSummary = await prisma.transaction.aggregate({
+      _sum: {
+        price: true,
+      },
+      where: {
+        type: 'outcome',
+      },
+    })
+
+    return outcomeSummary._sum.price || 0
+  }
 }
