@@ -435,6 +435,76 @@ datasource db {
 
 &nbsp;
 
+### **Vitest** architecture
+
+```bash
+npm install -D vitest # Install Vitest
+npm install -D vite-tsconfig-paths # To vite understand tsconfig paths
+npm install -D @vitest/coverage-c8 # Install coverage vitest
+npm install -D @vitest/ui # Install vitest ui
+npm install -D supertest # Install supertest to test http requests
+npm install -D @types/supertest # Install types supertest
+```
+
+_Create **`vitest.config.ts`** file with all vitest config_
+
+```typescript
+import tsconfigPaths from "vite-tsconfig-paths";
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  plugins: [tsconfigPaths()],
+});
+// now vitest can understand tsconfig paths
+```
+
+```json
+// Create scripts in package.json
+"scripts": {
+  "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma", // Create vitest-environment-prisma in node_modules
+  "test:install-prisma-environment": "npm link vitest-environment-prisma", // Install vitest-environment-prisma in node_modules
+  "test": "vitest run --dir src/use-cases", // Run all tests without watch
+  "test:watch": "vitest --dir src/use-cases", // Run all tests with watch
+  "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment", // Run before test:e2e, run-s is to run scripts in sequence (npm install -D npm-run-all)
+  "test:e2e": "vitest run --dir src/http", // Run all tests without watch in specific folder
+  "test:e2e:watch": "vitest --dir src/http", // Run all tests with watch in specific folder
+  "test:coverage": "vitest run --coverage", // Run all tests with coverage
+  "test:ui": "vitest --ui", // Run all tests with ui
+},
+```
+
+_Create **`vitest-environment-prisma`** to test environment with prisma_
+
+```bash
+cd prisma/vitest-environment-prisma # Enter in vitest-environment-prisma folder
+npm init -y # Create package.json
+npm link # Link vitest-environment-prisma to node_modules
+cd ../../ # Return to root folder
+npm link vitest-environment-prisma # Link vitest-environment-prisma to node_modules
+```
+
+Edit **`package.json`** file like this
+
+```json
+{
+  "name": "vitest-environment-prisma",
+  "main": "prisma-test-environment.ts"
+}
+```
+
+_Create **`prisma-test-environment.ts`** in vitest-environment-prisma folder_
+
+_Edit **`vite.config.ts`** file with all vitest config_
+
+```typescript
+// Any test inside src/http/controllers will run in environment with prisma/vitest-environment-prisma
+test: {
+  environmentMatchGlobs: [['src/http/controllers/**', 'prisma']],
+},
+```
+
+&nbsp;
+
 ### **Acessibilidade** architecture
 
 A acessibilidade é um dos pilares do desenvolvimento web. Por isso, é importante que o projeto seja acessível para todos os usuários. Para isso, utilizei o Radix UI para criar componentes acessíveis, como o Modal e o RadioGroup. Também me preocupei com uma paleta de cores que atendesse aos padrões de acessibilidade.

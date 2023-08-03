@@ -3,6 +3,10 @@
     "next/core-web-vitals",
     "@rocketseat/eslint-config/react"
   ],
+  "rules": {
+    "camelcase": "off",
+    "no-useless-constructor": "off"
+  },
   "overrides": [
     {
       "files": [
