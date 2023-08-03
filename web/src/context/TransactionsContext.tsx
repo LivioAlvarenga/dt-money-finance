@@ -163,8 +163,12 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }
 
   async function fetchCount() {
-    const response = await api.get(`/count`)
-    setTotalTransactions(response.data.totalTransactions)
+    try {
+      const response = await api.get(`/count`)
+      setTotalTransactions(response.data.totalTransactions)
+    } catch (error) {
+      console.error('💥An error occurred while fetching the count:', error)
+    }
   }
 
   function nextPage(page: number) {
