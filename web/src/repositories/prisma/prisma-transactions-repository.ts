@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma'
 import {
   CreateTransactionDTO,
+  GetTransactionsParams,
+  TransactionDTO,
   TransactionsRepository,
 } from '../transactions-repository'
 
@@ -46,5 +48,46 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
     })
 
     return outcomeSummary._sum.price || 0
+  }
+
+  async getTransactions(
+    params: GetTransactionsParams,
+  ): Promise<TransactionDTO[]> {
+    const {
+      sort = 'createdAt',
+      order = 'desc',
+      page = 1,
+      limit = 5,
+      searchTerm,
+    } = params
+
+    // ! TODO: add price, type and createdAt to the search
+
+    const whereConditions = {
+      OR: [
+        { description: { contains: searchTerm } },
+        { category: { contains: searchTerm } },
+      ],
+    }
+
+    const transactionsFromDB = await prisma.transaction.findMany({
+      where: searchTerm ? whereConditions : undefined,
+      orderBy: { [sort]: order },
+      skip: (page - 1) * limit,
+      take: limit,
+    })
+
+    const transactions = transactionsFromDB.map((transaction) => {
+      return {
+        id: transaction.id,
+        description: transaction.description,
+        price: transaction.price,
+        category: transaction.category,
+        type: transaction.type,
+        createdAt: transaction.createdAt.toISOString(),
+      }
+    })
+
+    return transactions
   }
 }

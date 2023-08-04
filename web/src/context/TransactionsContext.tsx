@@ -10,6 +10,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import toast from 'react-hot-toast'
 
 interface TransactionProps {
   id: string
@@ -76,17 +77,21 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
 
   const fetchTransactions = useCallback(
     async (page = currentPage, limit = TRANSACTION_LIMIT) => {
-      const response = await api.get('', {
-        params: {
-          _sort: 'createdAt',
-          _order: 'desc',
-          _page: page,
-          _limit: limit,
-          q: searchTerm,
-        },
-      })
+      try {
+        const response = await api.get('', {
+          params: {
+            _sort: 'createdAt',
+            _order: 'desc',
+            _page: page,
+            _limit: limit,
+            q: searchTerm,
+          },
+        })
 
-      setTransactions([...response.data]) // Create a new array to update the state
+        setTransactions([...response.data]) // Create a new array to update the state
+      } catch (error) {
+        errorToast(error)
+      }
     },
     [currentPage, searchTerm],
   )
@@ -94,6 +99,10 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   const getTotalPagination = useCallback(async () => {
     const response = await api.get('', {
       params: {
+        _sort: 'createdAt',
+        _order: 'desc',
+        _page: 1,
+        _limit: 5,
         q: searchTerm,
       },
     })
@@ -127,6 +136,8 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       )
 
       setTotalTransactions((prevState) => prevState + 1)
+
+      toast.success('Transação criada com sucesso!')
     } catch (error) {
       errorToast(error)
     }

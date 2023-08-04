@@ -24,3 +24,11 @@ export const transactionBodySchema = z.object({
         'A categoria deve conter apenas letras, números e os caracteres especiais: .,!?@#$%^&*()_+-=',
     }),
 })
+
+export const transactionParamsSchema = z.object({
+  sort: z.enum(['createdAt', 'description', 'category', 'price', 'type']),
+  order: z.enum(['asc', 'desc']),
+  page: z.coerce.number().min(1, { message: 'A página deve ser maior que 0' }),
+  limit: z.coerce.number().min(1, { message: 'O limite deve ser maior que 0' }),
+  searchTerm: z.string().optional(),
+})
