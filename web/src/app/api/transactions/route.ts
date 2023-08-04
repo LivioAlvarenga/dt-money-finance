@@ -1,11 +1,12 @@
+import { createTransaction } from '@/http/controllers/transactions/create-transaction'
 import { NextRequest, NextResponse } from 'next/server'
+
+export async function POST(req: NextRequest) {
+  return createTransaction(req)
+}
 
 export async function GET(req: NextRequest) {
   return NextResponse.json({ transaction: 'Transaction GET' })
-}
-
-export async function POST(req: NextRequest) {
-  return NextResponse.json({ transaction: 'Transaction POST' })
 }
 
 export async function PUT(req: NextRequest) {

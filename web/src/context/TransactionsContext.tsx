@@ -1,6 +1,7 @@
 'use client'
 
 import { api } from '@/lib/axios'
+import { errorToast } from '@/utils/errorToast'
 import 'dotenv/config'
 import React, {
   ReactNode,
@@ -110,21 +111,25 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   async function createTransaction(transaction: CreateTransactionInputProps) {
     const { description, price, category, type } = transaction
 
-    const response = await api.post('', {
-      description,
-      price,
-      category,
-      type,
-    })
+    try {
+      const response = await api.post('', {
+        description,
+        price,
+        category,
+        type,
+      })
 
-    const { price: priceInCents, ...rest } = response.data
-    const priceInReal = Math.round((priceInCents / 100) * 100) / 100
+      const { price: priceInCents, ...rest } = response.data
+      const priceInReal = Math.round((priceInCents / 100) * 100) / 100
 
-    setTransactions((state) =>
-      [{ ...rest, price: priceInReal }, ...state].slice(0, TRANSACTION_LIMIT),
-    )
+      setTransactions((state) =>
+        [{ ...rest, price: priceInReal }, ...state].slice(0, TRANSACTION_LIMIT),
+      )
 
-    setTotalTransactions((prevState) => prevState + 1)
+      setTotalTransactions((prevState) => prevState + 1)
+    } catch (error) {
+      errorToast(error)
+    }
   }
 
   async function editTransaction(transaction: EditTransactionInputProps) {
@@ -162,7 +167,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       const response = await api.get(`/summary`)
       setSummary(response.data)
     } catch (error) {
-      console.error('💥An error occurred while fetching the summary:', error)
+      errorToast(error)
     }
   }
 
@@ -171,7 +176,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
       const response = await api.get(`/count`)
       setTotalTransactions(response.data.totalTransactions)
     } catch (error) {
-      console.error('💥An error occurred while fetching the count:', error)
+      errorToast(error)
     }
   }
 
