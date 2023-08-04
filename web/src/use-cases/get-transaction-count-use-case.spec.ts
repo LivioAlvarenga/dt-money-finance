@@ -1,6 +1,6 @@
 import { InMemoryTransactionsRepository } from '@/repositories/in-memory/in-memory-transactions-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { GetTransactionCountUseCase } from './get-transaction-count'
+import { GetTransactionCountUseCase } from './get-transaction-count-use-case'
 
 let transactionsRepository: InMemoryTransactionsRepository
 let sut: GetTransactionCountUseCase

@@ -19,6 +19,13 @@ export function errorHandler(error: any, req: NextRequest): NextResponse {
   }
 
   if (error instanceof PrismaClientKnownRequestError) {
+    // switch (error.code) {
+    //   case 'P2002':
+    //     return NextResponse.json(
+    //       { error: 'Duplicate key error' },
+    //       { status: 400 },
+    //     )
+    // }
     return NextResponse.json(
       { error: 'Prisma Error', details: error.message },
       { status: 500 },

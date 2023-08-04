@@ -1,5 +1,5 @@
 import { PrismaTransactionsRepository } from '@/repositories/prisma/prisma-transactions-repository'
-import { GetTransactionSummaryUseCase } from '../get-transaction-summary'
+import { GetTransactionSummaryUseCase } from '../get-transaction-summary-use-case'
 
 export function makeGetTransactionSummaryUseCase() {
   const transactionsRepository = new PrismaTransactionsRepository()
