@@ -12,6 +12,15 @@ export interface TransactionDTO extends CreateTransactionDTO {
   createdAt: string
 }
 
+export interface TransactionResponse {
+  description: string
+  price: number
+  category: string
+  type: 'income' | 'outcome'
+  id: string
+  createdAt: Date
+}
+
 export interface GetTransactionsParams {
   sort: 'createdAt' | 'description' | 'category' | 'price' | 'type'
   order: 'asc' | 'desc'

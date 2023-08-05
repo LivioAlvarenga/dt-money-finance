@@ -11,7 +11,7 @@ export const transactionBodySchema = z.object({
       message:
         'A descrição deve conter apenas letras, números e os caracteres especiais: .,!?@#$%^&*()_+-=',
     }),
-  price: z.number().min(1, { message: 'O preço deve ser maior que 0' }),
+  price: z.number().positive({ message: 'O preço deve ser maior que 0' }),
   type: z.enum(['income', 'outcome']),
   category: z
     .string()

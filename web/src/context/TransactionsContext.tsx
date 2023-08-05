@@ -102,7 +102,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
         _sort: 'createdAt',
         _order: 'desc',
         _page: 1,
-        _limit: 5,
+        _limit: 9999,
         q: searchTerm,
       },
     })
@@ -128,11 +128,8 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
         type,
       })
 
-      const { price: priceInCents, ...rest } = response.data
-      const priceInReal = Math.round((priceInCents / 100) * 100) / 100
-
       setTransactions((state) =>
-        [{ ...rest, price: priceInReal }, ...state].slice(0, TRANSACTION_LIMIT),
+        [response.data, ...state].slice(0, TRANSACTION_LIMIT),
       )
 
       setTotalTransactions((prevState) => prevState + 1)
