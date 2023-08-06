@@ -97,24 +97,32 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   )
 
   const getTotalPagination = useCallback(async () => {
-    const response = await api.get('', {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-        _page: 1,
-        _limit: 9999,
-        q: searchTerm,
-      },
-    })
-    const totalTransactions = response.data.length
+    try {
+      const response = await api.get('', {
+        params: {
+          _sort: 'createdAt',
+          _order: 'desc',
+          _page: 1,
+          _limit: 9999,
+          q: searchTerm,
+        },
+      })
+      const totalTransactions = response.data.length
 
-    setTotalTransactions(totalTransactions)
-    setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
+      setTotalTransactions(totalTransactions)
+      setTotalPagination(Math.ceil(totalTransactions / TRANSACTION_LIMIT))
+    } catch (error) {
+      errorToast(error)
+    }
   }, [searchTerm])
 
   async function getTransactionById(id: string) {
-    const response = await api.get(`/${id}`)
-    return response.data
+    try {
+      const response = await api.get(`/${id}`)
+      return response.data
+    } catch (error) {
+      errorToast(error)
+    }
   }
 
   async function createTransaction(transaction: CreateTransactionInputProps) {
@@ -159,15 +167,23 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   }
 
   async function deleteTransaction(id: string) {
-    await api.delete(`/${id}`)
+    try {
+      const response = await api.delete(`/${id}`)
 
-    setTransactions((prevTransactions) =>
-      prevTransactions.filter((transaction) => transaction.id !== id),
-    )
+      setTransactions((prevTransactions) =>
+        prevTransactions.filter(
+          (transaction) => transaction.id !== response.data.id,
+        ),
+      )
 
-    setTotalTransactions((prevTotal) => prevTotal - 1)
+      setTotalTransactions((prevTotal) => prevTotal - 1)
 
-    fetchTransactions()
+      fetchTransactions()
+
+      toast.success('Transação deletada com sucesso!')
+    } catch (error) {
+      errorToast(error)
+    }
   }
 
   async function fetchSummary() {

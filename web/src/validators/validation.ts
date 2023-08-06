@@ -32,3 +32,7 @@ export const transactionParamsSchema = z.object({
   limit: z.coerce.number().min(1, { message: 'O limite deve ser maior que 0' }),
   searchTerm: z.string().optional(),
 })
+
+export const transactionIdSchema = z.object({
+  slug: z.string().uuid(),
+})

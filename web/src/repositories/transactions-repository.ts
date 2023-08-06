@@ -34,5 +34,6 @@ export interface TransactionsRepository {
   sumIncomeTransactions(): Promise<number>
   sumOutcomeTransactions(): Promise<number>
   createTransaction(data: CreateTransactionDTO): Promise<Transaction>
+  deleteTransaction(id: string): Promise<Transaction>
   getTransactions(params?: GetTransactionsParams): Promise<TransactionDTO[]>
 }

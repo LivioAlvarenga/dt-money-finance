@@ -42,11 +42,17 @@ export function errorHandler(error: any, req: NextRequest): NextResponse {
 // will return a new request handler that will call the provided request handler
 // and handle any errors that occur.
 export function withErrorHandler(
-  handler: (req: NextRequest) => Promise<NextResponse>,
+  handler: (
+    req: NextRequest,
+    params: { slug: string },
+  ) => Promise<NextResponse>,
 ) {
-  return async (req: NextRequest): Promise<NextResponse> => {
+  return async (
+    req: NextRequest,
+    params: { slug: string },
+  ): Promise<NextResponse> => {
     try {
-      return await handler(req)
+      return await handler(req, params)
     } catch (error) {
       return errorHandler(error, req)
     }
