@@ -36,4 +36,5 @@ export interface TransactionsRepository {
   createTransaction(data: CreateTransactionDTO): Promise<Transaction>
   deleteTransaction(id: string): Promise<Transaction>
   getTransactions(params?: GetTransactionsParams): Promise<TransactionDTO[]>
+  getTransaction(id: string): Promise<Transaction>
 }

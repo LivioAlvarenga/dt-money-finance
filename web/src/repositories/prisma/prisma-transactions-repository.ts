@@ -1,4 +1,6 @@
 import { prisma } from '@/lib/prisma'
+import { InvalidTransactionIdError } from '@/use-cases/errors/invalid-transaction-id-error'
+import { Transaction } from '@prisma/client'
 import {
   CreateTransactionDTO,
   GetTransactionsParams,
@@ -18,7 +20,7 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
     })
   }
 
-  async deleteTransaction(id: string) {
+  async deleteTransaction(id: string): Promise<Transaction> {
     return await prisma.transaction.delete({
       where: {
         id,
@@ -56,6 +58,20 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
     })
 
     return outcomeSummary._sum.price || 0
+  }
+
+  async getTransaction(id: string): Promise<Transaction> {
+    const transaction = await prisma.transaction.findUnique({
+      where: {
+        id,
+      },
+    })
+
+    if (!transaction) {
+      throw new InvalidTransactionIdError(id)
+    }
+
+    return transaction
   }
 
   async getTransactions(

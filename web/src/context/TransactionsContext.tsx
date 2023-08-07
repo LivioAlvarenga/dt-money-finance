@@ -119,6 +119,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   async function getTransactionById(id: string) {
     try {
       const response = await api.get(`/${id}`)
+
       return response.data
     } catch (error) {
       errorToast(error)

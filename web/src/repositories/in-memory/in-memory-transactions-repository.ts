@@ -1,3 +1,4 @@
+import { InvalidTransactionIdError } from '@/use-cases/errors/invalid-transaction-id-error'
 import { Transaction } from '@prisma/client'
 import {
   CreateTransactionDTO,
@@ -47,6 +48,16 @@ export class InMemoryTransactionsRepository implements TransactionsRepository {
     return this.items
       .filter((transaction) => transaction.type === 'outcome')
       .reduce((sum, item) => sum + item.price, 0)
+  }
+
+  async getTransaction(id: string): Promise<Transaction> {
+    const transaction = this.items.find((item) => item.id === id)
+
+    if (!transaction) {
+      throw new InvalidTransactionIdError(id)
+    }
+
+    return transaction
   }
 
   async getTransactions(

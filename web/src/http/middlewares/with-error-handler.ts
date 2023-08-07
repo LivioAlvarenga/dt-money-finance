@@ -1,3 +1,4 @@
+import { InvalidTransactionIdError } from '@/use-cases/errors/invalid-transaction-id-error'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
 import { NextRequest, NextResponse } from 'next/server'
 import { ZodError } from 'zod'
@@ -29,6 +30,13 @@ export function errorHandler(error: any, req: NextRequest): NextResponse {
     return NextResponse.json(
       { error: 'Prisma Error', details: error.message },
       { status: 500 },
+    )
+  }
+
+  if (error instanceof InvalidTransactionIdError) {
+    return NextResponse.json(
+      { error: 'Invalid Transaction Id', details: error.message },
+      { status: 404 },
     )
   }
 

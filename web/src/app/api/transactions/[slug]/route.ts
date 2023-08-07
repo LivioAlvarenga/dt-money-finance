@@ -1,4 +1,5 @@
 import { deleteTransaction } from '@/http/controllers/transactions/delete-transaction'
+import { getTransaction } from '@/http/controllers/transactions/get-transaction'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function DELETE(
@@ -12,7 +13,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { slug: string } },
 ) {
-  return NextResponse.json({ transaction: `Transaction ${params.slug} GET` })
+  return getTransaction(req, params)
 }
 
 export async function POST(
