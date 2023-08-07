@@ -8,7 +8,9 @@ export const getTransaction = withErrorHandler(
     const { slug: id } = transactionIdSchema.parse(params)
 
     const getTransactionUseCase = makeGetTransactionUseCase()
+
     const transaction = await getTransactionUseCase.execute(id)
+
     return NextResponse.json(transaction, { status: 200 })
   },
 )

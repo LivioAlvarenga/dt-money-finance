@@ -15,6 +15,7 @@ export const getTransactions = withErrorHandler(async (req: NextRequest) => {
   const paramsValidate = transactionParamsSchema.parse(params)
 
   const getTransactionsUseCase = makeGetTransactionsUseCase()
+
   const response = await getTransactionsUseCase.execute(paramsValidate)
 
   return NextResponse.json(response, { status: 200 })

@@ -5,7 +5,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export const createTransaction = withErrorHandler(async (req: NextRequest) => {
   const data = transactionBodySchema.parse(await req.json())
+
   const createTransactionUseCase = makeCreateTransactionUseCase()
+
   const transaction = await createTransactionUseCase.execute(data)
+
   return NextResponse.json(transaction, { status: 201 })
 })

@@ -6,8 +6,11 @@ import { NextRequest, NextResponse } from 'next/server'
 export const deleteTransaction = withErrorHandler(
   async (req: NextRequest, params: { slug: string }) => {
     const { slug: id } = transactionIdSchema.parse(params)
+
     const deleteTransactionUseCase = makeDeleteTransactionUseCase()
+
     const transactionDeleted = await deleteTransactionUseCase.execute(id)
+
     return NextResponse.json(transactionDeleted, { status: 200 })
   },
 )

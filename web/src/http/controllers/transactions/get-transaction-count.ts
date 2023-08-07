@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export const getTransactionCount = withErrorHandler(
   async (req: NextRequest) => {
     const getTransactionCountUseCase = makeGetTransactionCountUseCase()
+
     const response = await getTransactionCountUseCase.execute()
 
     return NextResponse.json(

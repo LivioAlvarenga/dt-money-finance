@@ -52,12 +52,12 @@ export function errorHandler(error: any, req: NextRequest): NextResponse {
 export function withErrorHandler(
   handler: (
     req: NextRequest,
-    params: { slug: string },
+    params?: { slug: string },
   ) => Promise<NextResponse>,
 ) {
   return async (
     req: NextRequest,
-    params: { slug: string },
+    params?: { slug: string },
   ): Promise<NextResponse> => {
     try {
       return await handler(req, params)
