@@ -3,6 +3,7 @@ import { InvalidTransactionIdError } from '@/use-cases/errors/invalid-transactio
 import { Transaction } from '@prisma/client'
 import {
   CreateTransactionDTO,
+  EditTransactionDTO,
   GetTransactionsParams,
   TransactionDTO,
   TransactionsRepository,
@@ -24,6 +25,27 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
     const transaction = await prisma.transaction.delete({
       where: {
         id,
+      },
+    })
+
+    if (!transaction) {
+      throw new InvalidTransactionIdError(id)
+    }
+
+    return transaction
+  }
+
+  async editTransaction(id: string, data: EditTransactionDTO) {
+    const transaction = await prisma.transaction.update({
+      where: {
+        id,
+      },
+      data: {
+        description: data.description,
+        price: data.price,
+        category: data.category,
+        type: data.type,
+        updatedAt: new Date(),
       },
     })
 

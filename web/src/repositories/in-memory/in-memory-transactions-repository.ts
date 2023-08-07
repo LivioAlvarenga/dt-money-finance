@@ -2,6 +2,7 @@ import { InvalidTransactionIdError } from '@/use-cases/errors/invalid-transactio
 import { Transaction } from '@prisma/client'
 import {
   CreateTransactionDTO,
+  EditTransactionDTO,
   GetTransactionsParams,
   TransactionDTO,
   TransactionsRepository,
@@ -32,6 +33,27 @@ export class InMemoryTransactionsRepository implements TransactionsRepository {
     const [deletedTransaction] = this.items.splice(index, 1)
 
     return deletedTransaction
+  }
+
+  async editTransaction(
+    id: string,
+    data: EditTransactionDTO,
+  ): Promise<Transaction> {
+    const index = this.items.findIndex((item) => item.id === id)
+
+    if (index === -1) {
+      throw new InvalidTransactionIdError(id)
+    }
+
+    const transaction = {
+      ...this.items[index],
+      ...data,
+      updatedAt: new Date(),
+    }
+
+    this.items[index] = transaction
+
+    return transaction
   }
 
   async countTransaction() {

@@ -152,19 +152,24 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   async function editTransaction(transaction: EditTransactionInputProps) {
     const { id, description, price, category, type } = transaction
 
-    const response = await api.patch(`/${id}`, {
-      description,
-      price,
-      category,
-      type,
-    })
+    try {
+      const response = await api.put(`/${id}`, {
+        description,
+        price,
+        category,
+        type,
+      })
 
-    const { price: priceInCents, ...rest } = response.data
-    const priceInReal = Math.round((priceInCents / 100) * 100) / 100
+      setTransactions((state) =>
+        state.map((transaction) =>
+          transaction.id === response.data.id ? response.data : transaction,
+        ),
+      )
 
-    setTransactions((state) =>
-      state.map((t) => (t.id === id ? { ...rest, price: priceInReal } : t)),
-    )
+      toast.success('Transação editada com sucesso!')
+    } catch (error) {
+      errorToast(error)
+    }
   }
 
   async function deleteTransaction(id: string) {

@@ -12,6 +12,13 @@ export interface TransactionDTO extends CreateTransactionDTO {
   createdAt: string
 }
 
+export interface EditTransactionDTO {
+  description: string
+  price: number
+  category: string
+  type: 'income' | 'outcome'
+}
+
 export interface TransactionResponse {
   description: string
   price: number
@@ -35,6 +42,7 @@ export interface TransactionsRepository {
   sumOutcomeTransactions(): Promise<number>
   createTransaction(data: CreateTransactionDTO): Promise<Transaction>
   deleteTransaction(id: string): Promise<Transaction>
-  getTransactions(params?: GetTransactionsParams): Promise<TransactionDTO[]>
   getTransaction(id: string): Promise<Transaction>
+  getTransactions(params?: GetTransactionsParams): Promise<TransactionDTO[]>
+  editTransaction(id: string, data: EditTransactionDTO): Promise<Transaction>
 }
