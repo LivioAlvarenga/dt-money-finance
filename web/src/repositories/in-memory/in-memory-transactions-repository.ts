@@ -26,7 +26,7 @@ export class InMemoryTransactionsRepository implements TransactionsRepository {
     const index = this.items.findIndex((item) => item.id === id)
 
     if (index === -1) {
-      throw new Error('Transaction not found')
+      throw new InvalidTransactionIdError(id)
     }
 
     const [deletedTransaction] = this.items.splice(index, 1)

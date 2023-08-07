@@ -21,11 +21,17 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
   }
 
   async deleteTransaction(id: string): Promise<Transaction> {
-    return await prisma.transaction.delete({
+    const transaction = await prisma.transaction.delete({
       where: {
         id,
       },
     })
+
+    if (!transaction) {
+      throw new InvalidTransactionIdError(id)
+    }
+
+    return transaction
   }
 
   async countTransaction() {

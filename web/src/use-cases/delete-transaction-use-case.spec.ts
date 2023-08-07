@@ -1,6 +1,7 @@
 import { InMemoryTransactionsRepository } from '@/repositories/in-memory/in-memory-transactions-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { DeleteTransactionUseCase } from './delete-transaction-use-case'
+import { InvalidTransactionIdError } from './errors/invalid-transaction-id-error'
 
 describe('Delete Transaction Use Case', () => {
   let transactionsRepository: InMemoryTransactionsRepository
@@ -24,12 +25,15 @@ describe('Delete Transaction Use Case', () => {
     expect(deletedTransaction.id).toEqual(transaction.id)
   })
 
-  it('should throw an error if the transaction does not exist', async () => {
+  it('should throw an InvalidTransactionIdError if the transaction does not exist', async () => {
     try {
       await sut.execute('non-existing-id')
     } catch (err) {
       const error = err as Error
-      expect(error.message).toEqual('Transaction not found')
+      expect(error).toBeInstanceOf(InvalidTransactionIdError)
+      expect(error.message).toEqual(
+        'A transação de id: non-existing-id não existe',
+      )
     }
   })
 })
