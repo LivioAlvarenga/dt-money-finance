@@ -1,5 +1,6 @@
 import { InvalidTransactionIdError } from '@/use-cases/errors/invalid-transaction-id-error'
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { ZodError } from 'zod'
 import { fromZodError } from 'zod-validation-error'
@@ -20,17 +21,21 @@ export function errorHandler(error: any, req: NextRequest): NextResponse {
   }
 
   if (error instanceof PrismaClientKnownRequestError) {
-    // switch (error.code) {
-    //   case 'P2002':
-    //     return NextResponse.json(
-    //       { error: 'Duplicate key error' },
-    //       { status: 400 },
-    //     )
-    // }
-    return NextResponse.json(
-      { error: 'Prisma Error', details: error.message },
-      { status: 500 },
-    )
+    switch (error.code) {
+      case 'P2025':
+        return NextResponse.json(
+          { error: 'Invalid Transaction Id', details: error.message },
+          { status: 404 },
+        )
+
+      // ... TODO: handle other Prisma errors here
+
+      default:
+        return NextResponse.json(
+          { error: 'Prisma Error', details: error.message },
+          { status: 500 },
+        )
+    }
   }
 
   if (error instanceof InvalidTransactionIdError) {

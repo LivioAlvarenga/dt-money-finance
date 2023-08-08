@@ -28,10 +28,6 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
       },
     })
 
-    if (!transaction) {
-      throw new InvalidTransactionIdError(id)
-    }
-
     return transaction
   }
 
@@ -45,13 +41,8 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
         price: data.price,
         category: data.category,
         type: data.type,
-        updatedAt: new Date(),
       },
     })
-
-    if (!transaction) {
-      throw new InvalidTransactionIdError(id)
-    }
 
     return transaction
   }
