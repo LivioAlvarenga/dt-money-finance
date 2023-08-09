@@ -80,6 +80,20 @@ describe('Fetch Transactions (e2e)', () => {
       expect(transaction.category).toBe(searchTerm)
     })
   })
+
+  it('should retrieve transactions based on the searchTerm for price', async () => {
+    const searchTerm = '60' // The price of the second transaction 50 + 1 * 10 = 60
+
+    const searchResponse = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `?_sort=createdAt&_order=desc&_page=1&_limit=3&q=${searchTerm}`,
+    )
+
+    const fetchedTransactionsForSearch = searchResponse.body
+
+    // Considerando que apenas uma transação tem o preço de 60
+    expect(fetchedTransactionsForSearch).toHaveLength(1)
+    expect(fetchedTransactionsForSearch[0].price).toBe(60)
+  })
 })
 
 describe('Fetch Transactions Validation (e2e)', () => {

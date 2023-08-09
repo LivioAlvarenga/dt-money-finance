@@ -6,6 +6,7 @@ import {
   EditTransactionDTO,
   GetTransactionsParams,
   TransactionDTO,
+  TransactionResponse,
   TransactionsRepository,
 } from '../transactions-repository'
 
@@ -96,29 +97,39 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
   async getTransactions(
     params: GetTransactionsParams,
   ): Promise<TransactionDTO[]> {
-    const {
-      sort = 'createdAt',
-      order = 'desc',
-      page = 1,
-      limit = 5,
-      searchTerm,
-    } = params
+    const { sort, order, page, limit, searchTerm } = params
 
-    // ! TODO: add price, type and createdAt to the search
+    // ! TODO: add createdAt to the search
 
-    const whereConditions = {
-      OR: [
-        { description: { contains: searchTerm } },
-        { category: { contains: searchTerm } },
-      ],
+    let transactionsFromDB: TransactionResponse[] = []
+
+    // If the search term is a number, we will search for the price.
+    const searchTermNumber = searchTerm ? parseFloat(searchTerm) : NaN
+
+    if (!isNaN(searchTermNumber)) {
+      const sql = `
+        SELECT * FROM transactions 
+        WHERE price LIKE ${`'%${searchTermNumber}%'`}
+        ORDER BY ${sort} ${order}
+        LIMIT ${limit} OFFSET ${(page - 1) * limit}
+      `
+
+      transactionsFromDB = await prisma.$queryRawUnsafe(sql)
+    } else {
+      const whereConditions = {
+        OR: [
+          { description: { contains: searchTerm } },
+          { category: { contains: searchTerm } },
+        ],
+      }
+
+      transactionsFromDB = await prisma.transaction.findMany({
+        where: searchTerm ? whereConditions : undefined,
+        orderBy: { [sort]: order },
+        skip: (page - 1) * limit,
+        take: limit,
+      })
     }
-
-    const transactionsFromDB = await prisma.transaction.findMany({
-      where: searchTerm ? whereConditions : undefined,
-      orderBy: { [sort]: order },
-      skip: (page - 1) * limit,
-      take: limit,
-    })
 
     const transactions = transactionsFromDB.map((transaction) => {
       return {
