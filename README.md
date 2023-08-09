@@ -439,8 +439,7 @@ datasource db {
 
 ```bash
 npm install -D vitest # Install Vitest
-npm install -D vite-tsconfig-paths # To vite understand tsconfig paths
-npm install -D @vitest/coverage-c8 # Install coverage vitest
+npm install -D @vitest/coverage-v8 # Install coverage vitest
 npm install -D @vitest/ui # Install vitest ui
 npm install -D supertest # Install supertest to test http requests
 npm install -D @types/supertest # Install types supertest
@@ -461,47 +460,25 @@ export default defineConfig({
 ```json
 // Create scripts in package.json
 "scripts": {
-  "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma", // Create vitest-environment-prisma in node_modules
-  "test:install-prisma-environment": "npm link vitest-environment-prisma", // Install vitest-environment-prisma in node_modules
-  "test": "vitest run --dir src/use-cases", // Run all tests without watch
-  "test:watch": "vitest --dir src/use-cases", // Run all tests with watch
-  "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment", // Run before test:e2e, run-s is to run scripts in sequence (npm install -D npm-run-all)
-  "test:e2e": "vitest run --dir src/http", // Run all tests without watch in specific folder
-  "test:e2e:watch": "vitest --dir src/http", // Run all tests with watch in specific folder
-  "test:coverage": "vitest run --coverage", // Run all tests with coverage
-  "test:ui": "vitest --ui", // Run all tests with ui
+  "test": "vitest run --dir src/use-cases", // Create script to run vitest
+  "test:watch": "vitest --dir src/use-cases", // Create script to run vitest in watch mode
+  "test:ui": "vitest --ui --no-threads", // Create script to run vitest with ui in browser with no-threads
+  "test:coverage": "vitest run --coverage --no-threads", // Create script to run vitest with coverage in browser with no-threads
+  "test:e2e": "vitest run --dir src/http/controllers --no-threads" // Create script to run vitest with e2e in browser with no-threads
 },
 ```
 
-_Create **`vitest-environment-prisma`** to test environment with prisma_
+Observe que testes e2e, ui e coverage não utilizam threads, pois não foi possível criar um vitest-environment-prisma para rodar os teste e2e isolados, sendo assim utilizamos o mesmo banco de dados para todos os testes, e isso pode gerar problemas de concorrência. Por isso não utilizamos threads.
 
-```bash
-cd prisma/vitest-environment-prisma # Enter in vitest-environment-prisma folder
-npm init -y # Create package.json
-npm link # Link vitest-environment-prisma to node_modules
-cd ../../ # Return to root folder
-npm link vitest-environment-prisma # Link vitest-environment-prisma to node_modules
-```
+Estamos usando uma API interna do NextJs e não consegui que o vitest reconhecesse o vitest-environment-prisma. Por isso o desafio foi criar testes e2e que apos cada teste ele limpasse os dados criados pelos testes.
 
-Edit **`package.json`** file like this
+Como a API inicia junto com a aplicação Nextjs, sendo assim mesmo trocando a variável de ambiente DATABASE_URL apos cada teste, a API não reconhece a troca da variável de ambiente. Por mais este motivo optei por realizar os testes e2e no mesmo banco de dados de desenvolvimento.
 
-```json
-{
-  "name": "vitest-environment-prisma",
-  "main": "prisma-test-environment.ts"
-}
-```
+O preço a ser pago é não rodar os testes e2e em paralelo, pois não podemos utilizar threads. Com isso perdemos um pouco de performance, mas ganhamos em confiabilidade. Neste trade-off optei por confiabilidade.
 
-_Create **`prisma-test-environment.ts`** in vitest-environment-prisma folder_
+Poderia criar uma API SOLID REST isolada, mas o objetivo era criar uma API REST com NextJs 13 e App Router. Assim optei por utilizar a API interna do NextJs.
 
-_Edit **`vite.config.ts`** file with all vitest config_
-
-```typescript
-// Any test inside src/http/controllers will run in environment with prisma/vitest-environment-prisma
-test: {
-  environmentMatchGlobs: [['src/http/controllers/**', 'prisma']],
-},
-```
+Sem mais delongas, let's code! 🚀🚀🚀
 
 &nbsp;
 
@@ -617,7 +594,7 @@ npm install react-hot-toast # Install react-hot-toast to use toast notifications
 - Uso de toast para notificações;
 - Uso de Prisma para conectar com o banco de dados MariaDB (MySQL);
 - Uso de Docker para criar um container com o banco de dados MariaDB (MySQL);
-- Uso de Vitest para testes unitários;
+- Uso de Vitest para testes unitários e e2e;
 
 &nbsp;
 
@@ -648,6 +625,21 @@ NEXT_PUBLIC_URL_API="http://localhost:3000/api/transactions-json"
 npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
 
+### 🧭 Rodando a aplicação (Modo desenvolvimento) com API Nextjs com Prisma e docker com database MariaDB (MySQL)
+
+```bash
+git clone https://github.com/LivioAlvarenga/t-money-finance # Clone este repositório
+cd dt-money-finance # Acesse a pasta do projeto no seu terminal/cmd
+npm install # Instale as dependências
+
+# Modificar variável de ambiente NEXT_PUBLIC_URL_API no arquivo .env para:
+NEXT_PUBLIC_URL_API="http://localhost:3000/api/transactions"
+
+npm run start-docker # Execute o docker-compose para criar um container com o banco de dados MariaDB (MySQL). O container será executado na porta:3306 - acesse http://localhost:3306
+
+npm run dev # Execute a aplicação em modo de desenvolvimento, a aplicação será aberta na porta:3000 - acesse http://localhost:3000
+```
+
 ### 🧭 Rodando a aplicação (Modo produção)
 
 ```bash
@@ -666,7 +658,13 @@ npm run generate # Gerar diagrama do banco de dados
 
 ### 🧭 Testes
 
-...
+```bash
+npm run test # Rodar testes unitários
+npm run test:watch # Rodar testes unitários em watch mode
+npm run test:ui # Rodar testes unitários com vitest ui
+npm run test:coverage # Rodar testes unitários com vitest coverage
+npm run test:e2e # Rodar testes e2e
+```
 
 &nbsp;
 

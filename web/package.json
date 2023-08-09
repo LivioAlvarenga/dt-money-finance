@@ -17,7 +17,7 @@
     "test": "vitest run --dir src/use-cases",
     "test:watch": "vitest --dir src/use-cases",
     "test:ui": "vitest --ui --no-threads",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage --no-threads",
     "test:e2e": "vitest run --dir src/http/controllers --no-threads"
   },
   "dependencies": {
