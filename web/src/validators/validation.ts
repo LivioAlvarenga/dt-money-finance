@@ -30,7 +30,18 @@ export const transactionParamsSchema = z.object({
   order: z.enum(['asc', 'desc']),
   page: z.coerce.number().min(1, { message: 'A página deve ser maior que 0' }),
   limit: z.coerce.number().min(1, { message: 'O limite deve ser maior que 0' }),
-  searchTerm: z.string().optional(),
+})
+
+export const transactionSearchParamsSchema = z.object({
+  searchTerm: z
+    .string()
+    .max(255, { message: 'A pesquisa deve ter no máximo 255 caracteres' })
+    .trim()
+    .toLowerCase()
+    .regex(/^[a-zA-ZÀ-ú0-9\s.,!?@#$%^&*()_+-=]+$/g, {
+      message:
+        'A pesquisa deve conter apenas letras, números e os caracteres especiais: .,!?@#$%^&*()_+-=',
+    }),
 })
 
 export const transactionIdSchema = z.object({

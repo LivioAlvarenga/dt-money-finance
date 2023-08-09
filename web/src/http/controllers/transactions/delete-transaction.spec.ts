@@ -33,7 +33,7 @@ describe('Delete Transaction (e2e)', () => {
     expect(checkResponse.statusCode).toEqual(400)
   })
 
-  it('should throw InvalidTransactionIdError when trying to delete a non-existent transaction', async () => {
+  it('should throw Invalid Transaction Id when trying to delete a non-existent transaction', async () => {
     const nonExistentId = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
 
     const response = await request(process.env.NEXT_PUBLIC_URL_API).delete(
@@ -42,5 +42,19 @@ describe('Delete Transaction (e2e)', () => {
 
     expect(response.statusCode).toEqual(404)
     expect(response.body.error).toEqual('Invalid Transaction Id')
+  })
+})
+
+describe('Delete Transaction Validation (e2e)', () => {
+  it('should return a validation error for a non-UUID transaction id', async () => {
+    const invalidId = '12345-invalid-id'
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).delete(
+      `/${invalidId}`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain('Invalid uuid')
   })
 })

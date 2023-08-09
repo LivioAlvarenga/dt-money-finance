@@ -4,7 +4,7 @@ import {
 } from '@/repositories/transactions-repository'
 import 'dotenv/config'
 import request from 'supertest'
-import { afterAll, describe, expect, it } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 let transactionId: string
 
@@ -64,7 +64,7 @@ describe('Edit Transaction (e2e)', () => {
     expect(checkResponse.body.type).toBe(editData.type)
   })
 
-  it('should throw InvalidTransactionIdError when trying to edit a non-existent transaction', async () => {
+  it('should throw Invalid Transaction Id when trying to edit a non-existent transaction', async () => {
     const nonExistentId = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
     const transactionData: EditTransactionDTO = {
       description: 'Test transaction',
@@ -79,5 +79,130 @@ describe('Edit Transaction (e2e)', () => {
 
     expect(response.statusCode).toEqual(404)
     expect(response.body.error).toEqual('Invalid Transaction Id')
+  })
+})
+
+describe('Edit Transaction Validation (e2e)', () => {
+  let transactionId: string
+  const validTransactionData: CreateTransactionDTO = {
+    description: 'compra de itens',
+    price: 100,
+    category: 'compras',
+    type: 'outcome',
+  }
+
+  beforeAll(async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send(validTransactionData)
+
+    transactionId = response.body.id
+  })
+
+  afterAll(async () => {
+    // Delete the transaction to clean up the database
+    await request(process.env.NEXT_PUBLIC_URL_API).delete(`/${transactionId}`)
+  })
+
+  it('should not allow empty description when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, description: '' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A descrição deve ter pelo menos 1 caracteres',
+    )
+  })
+
+  it('should not allow overly long description when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, description: 'a'.repeat(256) })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A descrição deve ter no máximo 255 caracteres',
+    )
+  })
+
+  it('should not allow invalid characters in description when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, description: '<script>' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A descrição deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+
+  it('should not allow negative price when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, price: -100 })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('O preço deve ser maior que 0')
+  })
+
+  it('should not allow zero price when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, price: 0 })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('O preço deve ser maior que 0')
+  })
+
+  it('should not allow invalid transaction type when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, type: 'invalidType' })
+
+    expect(response.statusCode).toEqual(400)
+  })
+
+  it('should not allow empty category when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, category: '' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A categoria deve ter pelo menos 1 caracteres',
+    )
+  })
+
+  it('should not allow overly long category when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, category: 'a'.repeat(256) })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A categoria deve ter no máximo 255 caracteres',
+    )
+  })
+
+  it('should not allow invalid characters in category when editing', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, category: '<script>' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A categoria deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+
+  it('should not allow invalid UUID format when editing', async () => {
+    const invalidUUID = 'not-a-valid-uuid'
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${invalidUUID}`)
+      .send(validTransactionData)
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('Invalid uuid')
   })
 })

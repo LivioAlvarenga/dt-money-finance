@@ -16,7 +16,7 @@
     "stop-docker": "docker-compose stop",
     "test": "vitest run --dir src/use-cases",
     "test:watch": "vitest --dir src/use-cases",
-    "test:ui": "vitest --ui",
+    "test:ui": "vitest --ui --no-threads",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "vitest run --dir src/http/controllers --no-threads"
   },

@@ -34,3 +34,104 @@ describe('Create Transaction (e2e)', () => {
     expect(response.body.type).toBe(transactionData.type)
   })
 })
+
+describe('Create Transaction Validation (e2e)', () => {
+  const validTransactionData: CreateTransactionDTO = {
+    description: 'compra de itens',
+    price: 100,
+    category: 'compras',
+    type: 'outcome',
+  }
+
+  it('should not allow empty description', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, description: '' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A descrição deve ter pelo menos 1 caracteres',
+    )
+  })
+
+  it('should not allow overly long description', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, description: 'a'.repeat(256) })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A descrição deve ter no máximo 255 caracteres',
+    )
+  })
+
+  it('should not allow invalid characters in description', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, description: '<script>' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A descrição deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+
+  it('should not allow negative price', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, price: -100 })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('O preço deve ser maior que 0')
+  })
+
+  it('should not allow zero price', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, price: 0 })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('O preço deve ser maior que 0')
+  })
+
+  it('should not allow invalid transaction type', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, type: 'invalidType' })
+
+    expect(response.statusCode).toEqual(400)
+  })
+
+  it('should not allow empty category', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, category: '' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A categoria deve ter pelo menos 1 caracteres',
+    )
+  })
+
+  it('should not allow overly long category', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, category: 'a'.repeat(256) })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A categoria deve ter no máximo 255 caracteres',
+    )
+  })
+
+  it('should not allow invalid characters in category', async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send({ ...validTransactionData, category: '<script>' })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A categoria deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+})
