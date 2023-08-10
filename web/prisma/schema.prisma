@@ -2,9 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"
-}
+// to deploy in vercel comment this
+// generator erd {
+//   provider = "prisma-erd-generator"
+// }
 
 datasource db {
   provider          = "mysql"
