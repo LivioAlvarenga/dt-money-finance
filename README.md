@@ -464,9 +464,16 @@ export default defineConfig({
   "test:watch": "vitest --dir src/use-cases", // Create script to run vitest in watch mode
   "test:ui": "vitest --ui --no-threads", // Create script to run vitest with ui in browser with no-threads
   "test:coverage": "vitest run --coverage --no-threads", // Create script to run vitest with coverage in browser with no-threads
-  "test:e2e": "vitest run --dir src/http/controllers --no-threads" // Create script to run vitest with e2e in browser with no-threads
+  "test:e2e": "vitest run --dir src/http/controllers --no-threads", // Create script to run vitest with e2e with no-threads
+  "test:safety": "vitest run --dir src/http/middlewares" // Create script to run vitest with safety
 },
 ```
+
+>Foram criados 79 testes: sendo 55 e2e em 7 arquivos, 1 de segurança tentativa de Ataques DoS e DDoS e 23 testes unitários em 7 arquivos. Todas as rotas foram testadas, e todos os casos de uso foram testados.
+
+<p align="center">
+  <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/tests-ui-vitest.PNG?raw=true">
+<p>
 
 Observe que testes e2e, ui e coverage não utilizam threads, pois não foi possível criar um vitest-environment-prisma para rodar os teste e2e isolados, sendo assim utilizamos o mesmo banco de dados para todos os testes, e isso pode gerar problemas de concorrência. Por isso não utilizamos threads.
 
@@ -477,6 +484,22 @@ Como a API inicia junto com a aplicação Nextjs, sendo assim mesmo trocando a v
 O preço a ser pago é não rodar os testes e2e em paralelo, pois não podemos utilizar threads. Com isso perdemos um pouco de performance, mas ganhamos em confiabilidade. Neste trade-off optei por confiabilidade.
 
 Poderia criar uma API SOLID REST isolada, mas o objetivo era criar uma API REST com NextJs 13 e App Router. Assim optei por utilizar a API interna do NextJs.
+
+**Proteções Implementadas:**
+
+&nbsp;
+
+- **Rate Limiting**: Meu aplicativo possui um sistema de limitação de taxa para evitar ataques de inundação e prevenir sobrecarga do servidor. Isso é essencial para combater ataques DoS (Denial-of-Service) e DDoS (Distributed Denial-of-Service).
+
+- **Validações de Parâmetros de Entrada**: Meus testes asseguram que os parâmetros de entrada estão sendo corretamente validados. Isso é crucial para prevenir vulnerabilidades como SQL injection, garantindo que entradas mal-intencionadas sejam rejeitadas.
+
+- **Proteção contra SQL Injection**: Implementei testes específicos para detectar tentativas de injeção SQL em vários parâmetros. Isso é vital para impedir que atacantes executem comandos SQL não autorizados no banco de dados do meu aplicativo.
+
+- **Erros de Validação Amigáveis**: Utilizando o ZodError, faço questão de retornar mensagens de erro claras e amigáveis. Isso ajuda a ocultar detalhes internos do sistema, mantendo uma boa prática de segurança.
+
+- **Tratamento de Erros**: Graças ao middleware de tratamento de erros, posso ter certeza de que erros não tratados não causarão instabilidades no aplicativo nem revelarão informações sensíveis.
+
+&nbsp;
 
 Sem mais delongas, let's code! 🚀🚀🚀
 
@@ -575,6 +598,7 @@ npm install react-hot-toast # Install react-hot-toast to use toast notifications
 
 ### RNF - Requisitos Não Funcionais
 
+- O preço deve ser armazenado em centavos para evitar erros de precisão, recebendo o valor em reais e convertendo para centavos e vice-versa;
 - Uso de Zod para validação de dados de entrada;
 - Uso de Eslint para padronização de código;
 - Uso de Prettier para padronização de código;
@@ -664,6 +688,7 @@ npm run test:watch # Rodar testes unitários em watch mode
 npm run test:ui # Rodar testes unitários com vitest ui
 npm run test:coverage # Rodar testes unitários com vitest coverage
 npm run test:e2e # Rodar testes e2e
+npm run test:safety # Rodar testes de segurança
 ```
 
 &nbsp;
