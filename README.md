@@ -26,15 +26,34 @@
 
 ## 💻 Sobre o projeto
 
-🚀 Olá, sou Livio Alvarenga, um desenvolvedor Full Stack. Hoje, tenho o prazer de apresentar a vocês uma solução inovadora que desenvolvi - o DT Money, uma aplicação de gestão financeira. Utilizando tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, esse aplicativo oferece uma maneira eficiente de gerenciar suas finanças.
+🚀 Olá a todos! Meu nome é Livio Alvarenga e gostaria de apresentar a vocês o projeto dt-money-finance, uma aplicação que criei para gerenciamento financeiro.
 
-Com o DT Money, você pode ter controle total sobre suas transações financeiras, registrando entradas e saídas, categorizando-as e visualizando o balanço geral. Projetado com uma interface amigável e responsiva, o aplicativo é compatível com diferentes dispositivos, incluindo desktop, tablet e mobile.
+**Objetivo:**
+O principal objetivo ao desenvolver este projeto foi explorar e integrar o Next.js 13 com o App Router e uma API integrada. Esta abordagem moderna permite uma integração mais suave entre o front-end e o back-end, resultando em uma experiência de usuário mais fluida e otimizada.
 
-Neste repositório, você encontrará todo o código-fonte, bem como detalhes sobre as funcionalidades e tecnologias empregadas. Além das tecnologias já mencionadas, inclui recursos como um roteador de aplicativos, integração com a API e componentes reutilizáveis.
+**Funcionalidades Principais:**
+Interface Responsiva: A aplicação foi projetada com uma abordagem "mobile first", garantindo que funcione perfeitamente em dispositivos de todos os tamanhos.
 
-Eu defini algumas regras de negócio que devem ser observadas, e também incorporei boas práticas de desenvolvimento, como o uso de hooks e componentização.
+Gestão de Transações: Os usuários podem facilmente:
 
-Convido vocês a explorarem o aplicativo em detalhes, aprendendo com o código e contribuindo se desejarem. Seja bem-vindo ao meu universo de codificação!
+Adicionar novas transações.
+Remover transações existentes.
+Editar detalhes das transações.
+Resumo Financeiro: A aplicação oferece um resumo claro das entradas, saídas e o saldo total.
+
+Tabela Paginada de Transações: Para uma navegação eficiente e visualização das transações.
+
+Filtro de Transações: Uma ferramenta poderosa que permite aos usuários pesquisar transações por descrição, preço ou categoria.
+
+**Especificações Técnicas:**
+API REST com Arquitetura SOLID: A arquitetura SOLID foi fundamental para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
+
+Testes: Utilizei o Vitest para realizar testes unitários e end-to-end (e2e). Isso assegura que cada funcionalidade da aplicação funcione como esperado e que quaisquer alterações ou adições ao código não quebrem funcionalidades existentes.
+
+Práticas de Desenvolvimento Modernas: O projeto foi desenvolvido utilizando várias ferramentas e práticas recomendadas, como Zod para validação de dados, Eslint & Prettier para padronização do código, TailwindCSS para estilização, e Prisma como ORM.
+
+**Conclusão:**
+O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento financeiro. É um testemunho do que é possível quando as melhores práticas de desenvolvimento são combinadas com tecnologias modernas. Foi um desafio, mas estou orgulhoso do resultado e espero que possa ser uma ferramenta útil para muitos. Agradeço pela oportunidade de compartilhar este projeto com vocês e estou aberto a quaisquer perguntas ou feedbacks!
 
 &nbsp;
 
@@ -60,10 +79,10 @@ Convido vocês a explorarem o aplicativo em detalhes, aprendendo com o código e
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                                                                             |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :placard: Vitrine.Dev |                                                                                                                                                                   |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | :sparkles: Nome       | **Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest SOLID Nextjs.** |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, Docker, Prisma, MySql, Vitest, EsLint, prettier.        |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, Docker, Prisma, MySql, Vitest, EsLint, prettier.              |
 
 ---
 
@@ -470,7 +489,7 @@ export default defineConfig({
 },
 ```
 
->Foram criados 79 testes: sendo 55 e2e em 7 arquivos, 1 de segurança tentativa de Ataques DoS e DDoS e 23 testes unitários em 7 arquivos. Todas as rotas foram testadas, e todos os casos de uso foram testados.
+> Foram criados 79 testes: sendo 55 e2e em 7 arquivos, 1 de segurança tentativa de Ataques DoS e DDoS e 23 testes unitários em 7 arquivos. Todas as rotas foram testadas, e todos os casos de uso foram testados.
 
 <p align="center">
   <img alt="deploy badge Vercel" height=300 src="https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/tests-ui-vitest.PNG?raw=true">
