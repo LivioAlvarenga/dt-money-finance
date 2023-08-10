@@ -7,7 +7,7 @@ import {
 import { NextRequest, NextResponse } from 'next/server'
 
 export const editTransaction = withErrorHandler(
-  async (req: NextRequest, params: { slug: string }) => {
+  async (req: NextRequest, params?: { slug: string }) => {
     const { slug: id } = transactionIdSchema.parse(params)
     const data = transactionBodySchema.parse(await req.json())
 

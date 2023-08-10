@@ -4,7 +4,7 @@ import { transactionIdSchema } from '@/validators/validation'
 import { NextRequest, NextResponse } from 'next/server'
 
 export const getTransaction = withErrorHandler(
-  async (req: NextRequest, params: { slug: string }) => {
+  async (req: NextRequest, params?: { slug: string }) => {
     const { slug: id } = transactionIdSchema.parse(params)
 
     const getTransactionUseCase = makeGetTransactionUseCase()
