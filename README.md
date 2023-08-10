@@ -69,10 +69,8 @@ O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento finance
   <a href="https://github.com/LivioAlvarenga/dt-money-finance"><img src="https://img.shields.io/github/repo-size/LivioAlvarenga/dt-money-finance" alt="repository size" /></a>
 <p>
 
-Deploy em implementação...
-
 <p align="center">
-  <a href= "#"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
+  <a href= "https://dt-money-finance.vercel.app/"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
 <p>
 
 &nbsp;
@@ -735,9 +733,25 @@ npm run test:safety # Rodar testes de segurança
 
 O deploy foi realizado na plataforma Vercel.com.
 
+[Clique aqui para ver o DT Money em ambiente de produção](https://dt-money-finance.vercel.app/)
+
 As variáveis de ambiente configuradas incluem:
 
-- ...
+- NEXT_PUBLIC_NODE_ENV
+- NEXT_PUBLIC_URL_API
+- NEXT_PUBLIC_RATE_LIMIT_MAX
+- NEXT_PUBLIC_DATABASE_URL
+- NEXT_PUBLIC_SHADOW_DATABASE_URL
+
+Foi comentado a linha `generator erd` no arquivo `prisma/schema.prisma`, pois a lib `prisma-erd-generator` não funciona no ambiente de produção e esta dando conflito com o prisma no deploy na Vercel.
+
+Foi modificado o scrip build para rodar antes o prisma generate e depois o next build.
+
+```json
+"build": "prisma generate && next build",
+```
+
+O banco de dados utilizado foi o MySQL MariaDB. Foi necessário criar um banco de dados sombra (Shadow), pois o serviço utilizado para criar o banco de dados não permite a criação de um banco de dados para testes. O Prisma utiliza um banco de dados sombra para realizar seus processos de migrações (migrations) e testes.
 
 ---
 
