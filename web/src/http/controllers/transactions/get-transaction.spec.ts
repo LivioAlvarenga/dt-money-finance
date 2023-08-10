@@ -43,7 +43,7 @@ describe('Get Transaction By ID (e2e)', () => {
   it('should throw Invalid Transaction Id when trying to get a non-existent transaction', async () => {
     const nonExistentId = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'
 
-    const response = await request(process.env.NEXT_PUBLIC_URL_API).delete(
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
       `/${nonExistentId}`,
     )
 
@@ -56,8 +56,23 @@ describe('Get Transaction Validation (e2e)', () => {
   it('should return a validation error for a non-UUID transaction id', async () => {
     const invalidId = '12345-invalid-id'
 
-    const response = await request(process.env.NEXT_PUBLIC_URL_API).delete(
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
       `/${invalidId}`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain('Invalid uuid')
+  })
+})
+
+describe('Get Transaction Security (e2e)', () => {
+  it('should prevent SQL injection attempts in the transaction ID field', async () => {
+    // Try to delete a transaction with a malicious ID
+    const maliciousId = "'; DROP TABLE transactions; --"
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `/${maliciousId}`,
     )
 
     expect(response.statusCode).toEqual(400)

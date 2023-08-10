@@ -206,3 +206,76 @@ describe('Edit Transaction Validation (e2e)', () => {
     expect(response.body.details).toContain('Invalid uuid')
   })
 })
+
+describe('Edit Transaction Security (e2e)', () => {
+  let transactionId: string
+  const validTransactionData: CreateTransactionDTO = {
+    description: 'compra de itens',
+    price: 100,
+    category: 'compras',
+    type: 'outcome',
+  }
+
+  beforeAll(async () => {
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send(validTransactionData)
+
+    transactionId = response.body.id
+  })
+
+  afterAll(async () => {
+    await request(process.env.NEXT_PUBLIC_URL_API).delete(`/${transactionId}`)
+  })
+
+  it('should prevent SQL injection attempts in the description field', async () => {
+    const maliciousDescription = "'; DROP TABLE transactions; --"
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, description: maliciousDescription })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain(
+      'A descrição deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+
+  it('should prevent SQL injection attempts in the price field', async () => {
+    const maliciousPrice = '0; DROP TABLE transactions;'
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, price: maliciousPrice })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain('Expected number')
+  })
+
+  it('should prevent SQL injection attempts in the category field', async () => {
+    const maliciousCategory =
+      "'; DELETE FROM transactions WHERE id = 'some-id'; --"
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${transactionId}`)
+      .send({ ...validTransactionData, category: maliciousCategory })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain(
+      'A categoria deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+
+  it('should prevent SQL injection attempts in the transaction ID field', async () => {
+    // Try to delete a transaction with a malicious ID
+    const maliciousId = "'; DROP TABLE transactions; --"
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .put(`/${maliciousId}`)
+      .send({ ...validTransactionData })
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain('Invalid uuid')
+  })
+})

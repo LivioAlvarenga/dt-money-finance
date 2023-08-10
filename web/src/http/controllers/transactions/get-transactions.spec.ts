@@ -156,3 +156,59 @@ describe('Fetch Transactions Validation (e2e)', () => {
     )
   })
 })
+
+describe('Fetch Transactions Security (e2e)', () => {
+  it('should prevent SQL injection attempts in the _sort parameter', async () => {
+    const maliciousSort = 'createdAt; DROP TABLE transactions; --'
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `?_sort=${maliciousSort}&_order=asc&_page=1&_limit=5`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('Invalid enum value')
+  })
+
+  it('should prevent SQL injection attempts in the _order parameter', async () => {
+    const maliciousOrder = 'asc; DELETE FROM transactions; --'
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `?_sort=createdAt&_order=${maliciousOrder}&_page=1&_limit=5`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('Invalid enum value')
+  })
+
+  it('should prevent SQL injection attempts in the _page parameter', async () => {
+    const maliciousPage = '1; DROP TABLE users; --'
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `?_sort=createdAt&_order=asc&_page=${maliciousPage}&_limit=5`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('Expected number')
+  })
+
+  it('should prevent SQL injection attempts in the _limit parameter', async () => {
+    const maliciousLimit =
+      "5; INSERT INTO users (username, password) VALUES ('hacker', 'password123'); --"
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `?_sort=createdAt&_order=asc&_page=1&_limit=${maliciousLimit}`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain('Expected number')
+  })
+
+  it('should prevent SQL injection attempts in the searchTerm', async () => {
+    const maliciousSearchTerm =
+      "'; DELETE FROM transactions WHERE price > 100; --"
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).get(
+      `?_sort=createdAt&_order=asc&_page=1&_limit=5&q=${maliciousSearchTerm}`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.details).toContain(
+      'A pesquisa deve conter apenas letras, números e os caracteres especiais',
+    )
+  })
+})

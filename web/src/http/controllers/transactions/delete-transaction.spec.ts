@@ -58,3 +58,18 @@ describe('Delete Transaction Validation (e2e)', () => {
     expect(response.body.details).toContain('Invalid uuid')
   })
 })
+
+describe('Delete Transaction Security (e2e)', () => {
+  it('should prevent SQL injection attempts in the transaction ID field', async () => {
+    // Try to delete a transaction with a malicious ID
+    const maliciousId = "'; DROP TABLE transactions; --"
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API).delete(
+      `/${maliciousId}`,
+    )
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toEqual('Validation Error')
+    expect(response.body.details).toContain('Invalid uuid')
+  })
+})

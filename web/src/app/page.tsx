@@ -16,8 +16,8 @@ export default function Transactions() {
   return (
     <main className="flex flex-col items-start justify-start">
       <h1 className="wrapper headline6 sm:headline4 lg:headline3 mb-0 mt-5 text-center font-playfair400 text-tGray lg:max-w-7xl">
-        Projeto de <b style={textShadow}>DT Money Gestão Financeira</b> com
-        Nextjs 13 App Router, React, Typescript e Tailwindcss.
+        Projeto de <b style={textShadow}>DT Money</b> com Nextjs 13 App Router,
+        React, Typescript, Tailwindcss, Axios e Api Rest SOLID no Nextjs
       </h1>
       <NewTransactionButton />
       <Summary />

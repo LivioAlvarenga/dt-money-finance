@@ -135,3 +135,60 @@ describe('Create Transaction Validation (e2e)', () => {
     )
   })
 })
+
+describe('Transaction Creation Security (e2e)', () => {
+  it('should prevent SQL injection in the description field', async () => {
+    const maliciousData: CreateTransactionDTO = {
+      description: "'; DROP TABLE transactions; --",
+      price: 100,
+      category: 'compras',
+      type: 'outcome',
+    }
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send(maliciousData)
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toBe('Validation Error')
+    expect(response.body.details).toContain(
+      'A descrição deve conter apenas letras, números e os caracteres especiais: .,!?@#$%^&*()_+-=',
+    )
+  })
+
+  it('should prevent SQL injection in the price field', async () => {
+    const maliciousData: CreateTransactionDTO = {
+      description: 'compra de itens',
+      price: '100; DROP TABLE transactions; --' as any, // we cast to any here to bypass TypeScript checks, in reality an attacker won't have these checks
+      category: 'compras',
+      type: 'outcome',
+    }
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send(maliciousData)
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toBe('Validation Error')
+    expect(response.body.details).toContain('Expected number')
+  })
+
+  it('should prevent SQL injection in the category field', async () => {
+    const maliciousData: CreateTransactionDTO = {
+      description: 'compra de itens',
+      price: 100,
+      category: "'; DROP TABLE transactions; --",
+      type: 'outcome',
+    }
+
+    const response = await request(process.env.NEXT_PUBLIC_URL_API)
+      .post('')
+      .send(maliciousData)
+
+    expect(response.statusCode).toEqual(400)
+    expect(response.body.error).toBe('Validation Error')
+    expect(response.body.details).toContain(
+      'A categoria deve conter apenas letras, números e os caracteres especiais: .,!?@#$%^&*()_+-=',
+    )
+  })
+})
