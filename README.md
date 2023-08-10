@@ -432,18 +432,23 @@ generator erd {
   "migrate": "npx prisma migrate dev", // Create script to migrate database
   "seed": "npx prisma db seed" // Create script to seed database
 },
+"prisma": {
+    "seed": "tsx prisma/seed.ts" // Create script to seed database
+},
 ```
+
+Em /prisma existe um arquivo `seedDb.json` e o `seed.ts`. Ambos são utilizados para popular o banco de dados com dados para desenvolvimento.
 
 **`Environment variables to databases mysql`**
 
 &nbsp;
 
-_Create **`DATABASE_URL`** in .env and .env.example file with **`MySql`**_
+_Create **`NEXT_PUBLIC_DATABASE_URL`** in .env and .env.example file with **`MySql`**_
 
 ```.env
-DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
+NEXT_PUBLIC_DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
 
-SHADOW_DATABASE_URL="mysql://OTHER_USER:PASSWORD@HOST:PORT/OTHER_DATABASE_NAME"
+NEXT_PUBLIC_SHADOW_DATABASE_URL="mysql://OTHER_USER:PASSWORD@HOST:PORT/OTHER_DATABASE_NAME"
 ```
 
 > I used mysql, but you can use postgresql, mariadb, sqlite, sqlserver, mongodb, etc.
@@ -452,8 +457,8 @@ SHADOW_DATABASE_URL="mysql://OTHER_USER:PASSWORD@HOST:PORT/OTHER_DATABASE_NAME"
 // Add datasource in prisma.schema to mysql database
 datasource db {
   provider          = "mysql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  url               = env("NEXT_PUBLIC_DATABASE_URL")
+  shadowDatabaseUrl = env("NEXT_PUBLIC_SHADOW_DATABASE_URL")
 }
 // https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database
 // Exist provider that user cannot have access to create a database, to resolve this problem, you can use shadow database
@@ -505,7 +510,7 @@ Observe que testes e2e, ui e coverage não utilizam threads, pois não foi poss�
 
 Estamos usando uma API interna do NextJs e não consegui que o vitest reconhecesse o vitest-environment-prisma. Por isso o desafio foi criar testes e2e que apos cada teste ele limpasse os dados criados pelos testes.
 
-Como a API inicia junto com a aplicação Nextjs, sendo assim mesmo trocando a variável de ambiente DATABASE_URL apos cada teste, a API não reconhece a troca da variável de ambiente. Por mais este motivo optei por realizar os testes e2e no mesmo banco de dados de desenvolvimento.
+Como a API inicia junto com a aplicação Nextjs, sendo assim mesmo trocando a variável de ambiente NEXT_PUBLIC_DATABASE_URL apos cada teste, a API não reconhece a troca da variável de ambiente. Por mais este motivo optei por realizar os testes e2e no mesmo banco de dados de desenvolvimento.
 
 O preço a ser pago é não rodar os testes e2e em paralelo, pois não podemos utilizar threads. Com isso perdemos um pouco de performance, mas ganhamos em confiabilidade. Neste trade-off optei por confiabilidade.
 
@@ -553,6 +558,8 @@ npm install zod # Install zod to use types in NodeJs and validate data
 npm install clsx # Install clsx to generate dynamic classnames
 
 npm install react-hot-toast # Install react-hot-toast to use toast notifications
+
+npm install -D tsx # Install tsx to use typescript in NodeJs (run seed on prisma)
 ```
 
 ---

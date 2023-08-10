@@ -1,0 +1,166 @@
+{
+  "transactions": [
+    {
+      "description": "Vendi celular Iphone",
+      "price": 130000,
+      "category": "venda",
+      "type": "income"
+    },
+    {
+      "description": "Comprei pastel",
+      "price": 4550,
+      "category": "Alimentação",
+      "type": "outcome"
+    },
+    {
+      "description": "Achei na rua",
+      "price": 5000,
+      "category": "credito",
+      "type": "income"
+    },
+    {
+      "description": "Supermercado",
+      "price": 126000,
+      "category": "Alimentação",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de livros",
+      "price": 25000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Aluguel de apartamento",
+      "price": 400000,
+      "category": "Moradia",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de sapatos",
+      "price": 75000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Salário",
+      "price": 2000000,
+      "category": "Salário",
+      "type": "income"
+    },
+    {
+      "description": "Restaurante",
+      "price": 25000,
+      "category": "Alimentação",
+      "type": "outcome"
+    },
+    {
+      "description": "Presente aniversário",
+      "price": 10000,
+      "category": "Outros",
+      "type": "income"
+    },
+    {
+      "description": "Farmácia",
+      "price": 45000,
+      "category": "Saúde",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de relógio",
+      "price": 120000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Passeio no parque",
+      "price": 15000,
+      "category": "Lazer",
+      "type": "outcome"
+    },
+    {
+      "description": "Concerto de carro",
+      "price": 300000,
+      "category": "Transporte",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de brinquedo",
+      "price": 35000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Bar",
+      "price": 30000,
+      "category": "Lazer",
+      "type": "outcome"
+    },
+    {
+      "description": "Bonus de trabalho",
+      "price": 500000,
+      "category": "credito",
+      "type": "income"
+    },
+    {
+      "description": "Cinema",
+      "price": 11000,
+      "category": "Lazer",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de bicicleta",
+      "price": 250000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Compra de roupas",
+      "price": 15000,
+      "category": "Vestuário",
+      "type": "outcome"
+    },
+    {
+      "description": "Gasolina",
+      "price": 12000,
+      "category": "Transporte",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de câmera",
+      "price": 500000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Assinatura de revista",
+      "price": 20000,
+      "category": "Educação",
+      "type": "outcome"
+    },
+    {
+      "description": "Curso online",
+      "price": 150000,
+      "category": "Educação",
+      "type": "outcome"
+    },
+    {
+      "description": "Viagem para Italia",
+      "price": 1807900,
+      "category": "Educação",
+      "type": "outcome"
+    },
+    {
+      "description": "Venda de computador",
+      "price": 20000,
+      "category": "Venda",
+      "type": "income"
+    },
+    {
+      "description": "Jantar com amigos",
+      "price": 8500,
+      "category": "Alimentação",
+      "type": "outcome"
+    }
+  ]
+}
