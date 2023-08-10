@@ -18,7 +18,8 @@
     "test:watch": "vitest --dir src/use-cases",
     "test:ui": "vitest --ui --no-threads",
     "test:coverage": "vitest run --coverage --no-threads",
-    "test:e2e": "vitest run --dir src/http/controllers --no-threads"
+    "test:e2e": "vitest run --dir src/http/controllers --no-threads",
+    "test:safety": "vitest run --dir src/http/middlewares"
   },
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
