@@ -28,10 +28,12 @@
 
 🚀 Olá a todos! Meu nome é Livio Alvarenga e gostaria de apresentar a vocês o projeto dt-money-finance, uma aplicação que criei para gerenciamento financeiro.
 
-**Objetivo:**
+> **Objetivo:**
+
 O principal objetivo ao desenvolver este projeto foi explorar e integrar o Next.js 13 com o App Router e uma API integrada. Esta abordagem moderna permite uma integração mais suave entre o front-end e o back-end, resultando em uma experiência de usuário mais fluida e otimizada.
 
-**Funcionalidades Principais:**
+> **Funcionalidades Principais:**
+
 Interface Responsiva: A aplicação foi projetada com uma abordagem "mobile first", garantindo que funcione perfeitamente em dispositivos de todos os tamanhos.
 
 Gestão de Transações: Os usuários podem facilmente:
@@ -45,14 +47,16 @@ Tabela Paginada de Transações: Para uma navegação eficiente e visualização
 
 Filtro de Transações: Uma ferramenta poderosa que permite aos usuários pesquisar transações por descrição, preço ou categoria.
 
-**Especificações Técnicas:**
+> **Especificações Técnicas:**
+
 API REST com Arquitetura SOLID: A arquitetura SOLID foi fundamental para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
 
 Testes: Utilizei o Vitest para realizar testes unitários e end-to-end (e2e). Isso assegura que cada funcionalidade da aplicação funcione como esperado e que quaisquer alterações ou adições ao código não quebrem funcionalidades existentes.
 
 Práticas de Desenvolvimento Modernas: O projeto foi desenvolvido utilizando várias ferramentas e práticas recomendadas, como Zod para validação de dados, Eslint & Prettier para padronização do código, TailwindCSS para estilização, e Prisma como ORM.
 
-**Conclusão:**
+> **Conclusão:**
+
 O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento financeiro. É um testemunho do que é possível quando as melhores práticas de desenvolvimento são combinadas com tecnologias modernas. Foi um desafio, mas estou orgulhoso do resultado e espero que possa ser uma ferramenta útil para muitos. Agradeço pela oportunidade de compartilhar este projeto com vocês e estou aberto a quaisquer perguntas ou feedbacks!
 
 &nbsp;
@@ -64,6 +68,8 @@ O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento finance
   <a href="https://github.com/LivioAlvarenga/dt-money-finance"><img src="https://img.shields.io/github/languages/top/LivioAlvarenga/dt-money-finance" alt="most used language in the projects" /></a>
   <a href="https://github.com/LivioAlvarenga/dt-money-finance"><img src="https://img.shields.io/github/repo-size/LivioAlvarenga/dt-money-finance" alt="repository size" /></a>
 <p>
+
+Deploy em implementação...
 
 <p align="center">
   <a href= "#"><img alt="deploy badge Vercel" height=40 src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/fc06a7aa8d0f8ed5f446dcd83efd842e810d77df/files/vercel-badge.svg"></a>
