@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:server": "node src/lib/json-server.js",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "studio": "npx prisma studio -b chrome -p 5173",
