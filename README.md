@@ -1,6 +1,7 @@
 <h1 align="center"> 
-	Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest Nextjs.
+	Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest SOLID Nextjs.
 </h1>
+
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#-vitrine-dev">Vitrine Dev</a> •
@@ -485,9 +486,9 @@ O preço a ser pago é não rodar os testes e2e em paralelo, pois não podemos u
 
 Poderia criar uma API SOLID REST isolada, mas o objetivo era criar uma API REST com NextJs 13 e App Router. Assim optei por utilizar a API interna do NextJs.
 
-**Proteções Implementadas:**
-
 &nbsp;
+
+**Proteções Implementadas:**
 
 - **Rate Limiting**: Meu aplicativo possui um sistema de limitação de taxa para evitar ataques de inundação e prevenir sobrecarga do servidor. Isso é essencial para combater ataques DoS (Denial-of-Service) e DDoS (Distributed Denial-of-Service).
 
