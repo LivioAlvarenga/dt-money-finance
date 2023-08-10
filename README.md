@@ -62,7 +62,7 @@ Convido vocês a explorarem o aplicativo em detalhes, aprendendo com o código e
 
 | :placard: Vitrine.Dev |                                                                                                                                                             |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :sparkles: Nome       | **Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest Nextjs.** |
+| :sparkles: Nome       | **Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest SOLID Nextjs.** |
 | :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, Docker, Prisma, MySql, Vitest, EsLint, prettier.        |
 
 ---
