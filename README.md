@@ -51,7 +51,7 @@ O principal objetivo ao desenvolver este projeto foi explorar e integrar o **Nex
 
 > **Especificações Técnicas:**
 
-- **API REST com Arquitetura SOLID**: A arquitetura SOLID foi fundamental para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
+- **API REST com SOLID**: O princípios de design de software SOLID foram fundamentais para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
 
 - **Testes**: Utilizei o Vitest para realizar testes unitários e end-to-end (e2e). Isso assegura que cada funcionalidade da aplicação funcione como esperado e que quaisquer alterações ou adições ao código não quebrem funcionalidades existentes.
 
