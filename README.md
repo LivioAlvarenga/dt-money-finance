@@ -1,5 +1,5 @@
 <h1 align="center"> 
-	Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest SOLID Nextjs.
+	Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest, API Rest SOLID Nextjs e PWA.
 </h1>
 
 <p align="center">
@@ -26,38 +26,38 @@
 
 ## 💻 Sobre o projeto
 
-🚀 Olá a todos! Meu nome é Livio Alvarenga e gostaria de apresentar a vocês o projeto dt-money-finance, uma aplicação que criei para gerenciamento financeiro.
+🚀 Olá a todos! Meu nome é **Livio Alvarenga** e gostaria de apresentar a vocês o projeto **dt-money-finance**, uma aplicação que criei para gerenciamento financeiro.
 
-> **Objetivo:**
+>**Objetivo:**
 
-O principal objetivo ao desenvolver este projeto foi explorar e integrar o Next.js 13 com o App Router e uma API integrada. Esta abordagem moderna permite uma integração mais suave entre o front-end e o back-end, resultando em uma experiência de usuário mais fluida e otimizada.
+O principal objetivo ao desenvolver este projeto foi explorar e integrar o **Next.js 13** com o **App Router**, uma **API integrada** e funcionalidades de **Progressive Web App (PWA)**. A combinação destes recursos permite não só uma integração mais suave entre o front-end e o back-end, mas também uma experiência offline otimizada, tornando a aplicação acessível mesmo quando o usuário não possui conexão com a internet.
 
-> **Funcionalidades Principais:**
+>**Funcionalidades Principais:**
 
-Interface Responsiva: A aplicação foi projetada com uma abordagem "mobile first", garantindo que funcione perfeitamente em dispositivos de todos os tamanhos.
+- **Interface Responsiva**: A aplicação foi projetada com uma abordagem "mobile first", garantindo que funcione perfeitamente em dispositivos de todos os tamanhos.
+- **Gestão de Transações**: Os usuários podem facilmente:
 
-Gestão de Transações: Os usuários podem facilmente:
+  - Adicionar novas transações.
+  - Remover transações existentes.
+  - Editar detalhes das transações.
 
-Adicionar novas transações.
-Remover transações existentes.
-Editar detalhes das transações.
-Resumo Financeiro: A aplicação oferece um resumo claro das entradas, saídas e o saldo total.
+- **Resumo Financeiro**: A aplicação oferece um resumo claro das entradas, saídas e o saldo total.
 
-Tabela Paginada de Transações: Para uma navegação eficiente e visualização das transações.
+- **Tabela Paginada de Transações**: Para uma navegação eficiente e visualização das transações.
 
-Filtro de Transações: Uma ferramenta poderosa que permite aos usuários pesquisar transações por descrição, preço ou categoria.
+- **Filtro de Transações**: Uma ferramenta poderosa que permite aos usuários pesquisar transações por descrição, preço ou categoria.
 
-> **Especificações Técnicas:**
+>**Especificações Técnicas:**
 
-API REST com Arquitetura SOLID: A arquitetura SOLID foi fundamental para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
+- **API REST com Arquitetura SOLID**: A arquitetura SOLID foi fundamental para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
 
-Testes: Utilizei o Vitest para realizar testes unitários e end-to-end (e2e). Isso assegura que cada funcionalidade da aplicação funcione como esperado e que quaisquer alterações ou adições ao código não quebrem funcionalidades existentes.
+- **Testes**: Utilizei o Vitest para realizar testes unitários e end-to-end (e2e). Isso assegura que cada funcionalidade da aplicação funcione como esperado e que quaisquer alterações ou adições ao código não quebrem funcionalidades existentes.
 
-Práticas de Desenvolvimento Modernas: O projeto foi desenvolvido utilizando várias ferramentas e práticas recomendadas, como Zod para validação de dados, Eslint & Prettier para padronização do código, TailwindCSS para estilização, e Prisma como ORM.
+- **Práticas de Desenvolvimento Modernas**: O projeto foi desenvolvido utilizando várias ferramentas e práticas recomendadas, como Zod para validação de dados, Eslint & Prettier para padronização do código, TailwindCSS para estilização, e Prisma como ORM.
 
-> **Conclusão:**
+>**Conclusão:**
 
-O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento financeiro. É um testemunho do que é possível quando as melhores práticas de desenvolvimento são combinadas com tecnologias modernas. Foi um desafio, mas estou orgulhoso do resultado e espero que possa ser uma ferramenta útil para muitos. Agradeço pela oportunidade de compartilhar este projeto com vocês e estou aberto a quaisquer perguntas ou feedbacks!
+O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento financeiro. É um testemunho do que é possível quando as melhores práticas de desenvolvimento são combinadas com tecnologias modernas. Com a integração do PWA, os usuários podem esperar uma experiência de usuário mais consistente e confiável, independentemente de sua conexão com a Internet. Foi um desafio, mas estou orgulhoso do resultado e espero que possa ser uma ferramenta útil para muitos. Agradeço pela oportunidade de compartilhar este projeto com vocês e estou aberto a quaisquer perguntas ou feedbacks!
 
 &nbsp;
 
@@ -83,10 +83,10 @@ O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento finance
 
 ## 📺 Vitrine Dev
 
-| :placard: Vitrine.Dev |                                                                                                                                                                   |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| :sparkles: Nome       | **Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest e API Rest SOLID Nextjs.** |
-| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, Docker, Prisma, MySql, Vitest, EsLint, prettier.              |
+| :placard: Vitrine.Dev |                                                                                                                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :sparkles: Nome       | **Projeto FULLSTACK DT Money Gestão Financeira com Nextjs 13 App Router, React, Typescript, Tailwindcss, Axios, Docker, Prisma, Vitest, API Rest SOLID Nextjs e PWA.** |
+| :label: Tecnologias   | NodeJs, TypeScript, JavaScript, Typescript, Nextjs, React, React Hook Form, Tailwind, ZodJs, Axios, Docker, Prisma, MySql, Vitest, EsLint, prettier.                   |
 
 ---
 
@@ -117,6 +117,7 @@ As seguintes ferramentas foram usadas na construção do projeto
   <a href= "https://www.docker.com/"><img alt="Docker badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d7f6873e652db237a89583607eb70757ebaaa6d1/files/docker-badge.svg"></a>
   <a href= "https://www.mysql.com/"><img alt="MySQL badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/d7f6873e652db237a89583607eb70757ebaaa6d1/files/mysql-badge.svg"></a>
   <a href= "https://vitest.dev/"><img alt="Vitest Badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/28993b470420f2c44db532b4e6e662e60a186954/files/vitest-badge.svg"></a>
+  <a href= "https://dt-money-finance.vercel.app"><img alt="PWA Badge" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/8c4772548d73eb8246063453aed94556e16b07b4/files/pwa-badge.svg"></a>
   <a href= "https://code.visualstudio.com/download" target="_blank" rel="noopener noreferrer"><img alt="vscode download" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/vsCode-badge.svg"></a>
   <a href= "https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer"><img alt="code formatter prettier" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/2467074c4c912dd04b12bcee1076cb5ca7ba9eaf/files/prettier-badge.svg"></a>
   <a href= "https://eslint.org/" target="_blank" rel="noopener noreferrer"><img alt="code standardization eslint" src="https://raw.githubusercontent.com/LivioAlvarenga/LivioAlvarenga/59575ed19b13121cd113cfc66a71f18dea210c79/files/eslint-badge.svg"></a>
