@@ -16,6 +16,37 @@ export const metadata: Metadata = {
   keywords:
     'DT Money, Gestão Financeira, Nextjs 13, React, TypeScript, Tailwindcss, Axios, Livio Alvarenga, Portfolio, Desenvolvedor FullStack',
   manifest: 'https://dt-money-finance.vercel.app/manifest.json',
+  appleWebApp: {
+    title: 'DT Money',
+    statusBarStyle: 'black-translucent',
+    startupImage: [
+      '/apple_splash_2048.png',
+      {
+        url: '/apple_splash_1668.png',
+        media: '(min-device-width: 1536px) and (max-device-width: 1668px)',
+      },
+      {
+        url: '/apple_splash_1536.png',
+        media: '(min-device-width: 1242px) and (max-device-width: 1536px)',
+      },
+      {
+        url: '/apple_splash_1242.png',
+        media: '(min-device-width: 1125px) and (max-device-width: 1242px)',
+      },
+      {
+        url: '/apple_splash_1125.png',
+        media: '(min-device-width: 750px) and (max-device-width: 1125px)',
+      },
+      {
+        url: '/apple_splash_750.png',
+        media: '(min-device-width: 640px) and (max-device-width: 750px)',
+      },
+      {
+        url: '/apple_splash_640.png',
+        media: '(max-device-width: 640px)',
+      },
+    ],
+  },
   openGraph: {
     title: 'DT Money por Livio Alvarenga | Gestão Financeira',
     description:
