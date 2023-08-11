@@ -22,17 +22,19 @@
 
 ![DT Money mobile](https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/mobile.png?raw=true)
 
+![DT Money pwa](https://github.com/LivioAlvarenga/dt-money-finance/blob/main/files/pwa-android.jpg?raw=true)
+
 <a id="-sobre-o-projeto"></a>
 
 ## 💻 Sobre o projeto
 
 🚀 Olá a todos! Meu nome é **Livio Alvarenga** e gostaria de apresentar a vocês o projeto **dt-money-finance**, uma aplicação que criei para gerenciamento financeiro.
 
->**Objetivo:**
+> **Objetivo:**
 
 O principal objetivo ao desenvolver este projeto foi explorar e integrar o **Next.js 13** com o **App Router**, uma **API integrada** e funcionalidades de **Progressive Web App (PWA)**. A combinação destes recursos permite não só uma integração mais suave entre o front-end e o back-end, mas também uma experiência offline otimizada, tornando a aplicação acessível mesmo quando o usuário não possui conexão com a internet.
 
->**Funcionalidades Principais:**
+> **Funcionalidades Principais:**
 
 - **Interface Responsiva**: A aplicação foi projetada com uma abordagem "mobile first", garantindo que funcione perfeitamente em dispositivos de todos os tamanhos.
 - **Gestão de Transações**: Os usuários podem facilmente:
@@ -47,7 +49,7 @@ O principal objetivo ao desenvolver este projeto foi explorar e integrar o **Nex
 
 - **Filtro de Transações**: Uma ferramenta poderosa que permite aos usuários pesquisar transações por descrição, preço ou categoria.
 
->**Especificações Técnicas:**
+> **Especificações Técnicas:**
 
 - **API REST com Arquitetura SOLID**: A arquitetura SOLID foi fundamental para garantir que a API fosse escalável, manutenível e robusta. Isso garante que cada parte do sistema tenha uma responsabilidade única, tornando-o menos suscetível a erros e mais fácil de modificar ou expandir no futuro.
 
@@ -55,7 +57,7 @@ O principal objetivo ao desenvolver este projeto foi explorar e integrar o **Nex
 
 - **Práticas de Desenvolvimento Modernas**: O projeto foi desenvolvido utilizando várias ferramentas e práticas recomendadas, como Zod para validação de dados, Eslint & Prettier para padronização do código, TailwindCSS para estilização, e Prisma como ORM.
 
->**Conclusão:**
+> **Conclusão:**
 
 O dt-money-finance é mais do que apenas uma ferramenta de gerenciamento financeiro. É um testemunho do que é possível quando as melhores práticas de desenvolvimento são combinadas com tecnologias modernas. Com a integração do PWA, os usuários podem esperar uma experiência de usuário mais consistente e confiável, independentemente de sua conexão com a Internet. Foi um desafio, mas estou orgulhoso do resultado e espero que possa ser uma ferramenta útil para muitos. Agradeço pela oportunidade de compartilhar este projeto com vocês e estou aberto a quaisquer perguntas ou feedbacks!
 
