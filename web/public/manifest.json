@@ -1,0 +1,49 @@
+{
+  "theme_color": "#26a9e0",
+  "background_color": "#121214",
+  "categories": [
+    "finance",
+    "business",
+    "productivity"
+  ],
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "https://dt-money-finance.vercel.app/",
+  "name": "DT Money Gest\u00e3o Financeira",
+  "short_name": "DT Money",
+  "description": "O DT Money de Livio Alvarenga \u00e9 uma aplica\u00e7\u00e3o de gest\u00e3o financeira altamente eficaz. Desenvolvido com tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, este aplicativo oferece uma maneira eficiente de gerenciar suas finan\u00e7as.",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots-with-phone-pwa-home.png",
+      "sizes": "586x1041",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots-with-phone-pwa-new-transaction.png",
+      "sizes": "586x1041",
+      "type": "image/png"
+    }
+  ]
+}

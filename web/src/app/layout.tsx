@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'O DT Money de Livio Alvarenga é uma aplicação de gestão financeira altamente eficaz. Desenvolvido com tecnologias modernas como Nextjs 13, React, TypeScript, Tailwindcss e Axios, este aplicativo oferece uma maneira eficiente de gerenciar suas finanças.',
   keywords:
     'DT Money, Gestão Financeira, Nextjs 13, React, TypeScript, Tailwindcss, Axios, Livio Alvarenga, Portfolio, Desenvolvedor FullStack',
+  manifest: 'https://dt-money-finance.vercel.app/manifest.json',
   openGraph: {
     title: 'DT Money por Livio Alvarenga | Gestão Financeira',
     description:
@@ -73,9 +74,9 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code', // ! TODO: Change this
   },
   alternates: {
-    canonical: 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/', // ! TODO: Change this URL
+    canonical: 'https://dt-money-finance.vercel.app/', // ! TODO: Change this URL
     languages: {
-      'pt-BR': 'https://dt-money-qaf7ns626-livioalvarenga.vercel.app/', // ! TODO: Change this URL
+      'pt-BR': 'https://dt-money-finance.vercel.app/', // ! TODO: Change this URL
     },
   },
   category: 'Gestão Financeira',
